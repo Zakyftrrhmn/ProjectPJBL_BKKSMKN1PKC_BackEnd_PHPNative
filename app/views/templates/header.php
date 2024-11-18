@@ -8,7 +8,7 @@
   <title>Tables | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="<?= base_url ?>/assets/favicon.ico" />
-  <link href="<?= base_url ?>/assets/style.css" rel="stylesheet" />
+  <link href="<?= base_url ?>/assets/satoshi.css" rel="stylesheet" />
 </head>
 
 <body

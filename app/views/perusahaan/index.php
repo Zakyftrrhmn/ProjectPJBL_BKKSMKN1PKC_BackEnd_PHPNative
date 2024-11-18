@@ -38,10 +38,10 @@
         <div class="p-3">
           <div class="overflow-x-auto">
             <table class="table-auto w-full">
-              <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+              <thead class="text-xs font-semibold uppercase  bg-gray-50">
                 <tr>
                   <th class="p-2 whitespace-nowrap text-center">No</th>
-                  <th class="p-2 whitespace-nowrap text-left">Perusahaan</th>
+                  <th class="p-2 whitespace-nowrap text-left ">Perusahaan</th>
                   <th class="p-2 whitespace-nowrap text-left">Email</th>
                   <th class="p-2 whitespace-nowrap text-left">Alamat</th>
                   <th class="p-2 whitespace-nowrap text-left">No.Telp</th>

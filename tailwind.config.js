@@ -2,7 +2,12 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./src/**/*.{html,js}'],
+  content: [
+    "./app/**/*.php",        // Semua file PHP di folder app dan subfoldernya
+    "./public/assets/**/*.css", // Semua file CSS di folder assets dan subfoldernya
+    "./public/src/**/*.js",   // Semua file JS di folder src dan subfoldernya
+    "./public/**/*.html",     // Jika ada file HTML di folder public
+  ],
   darkMode: 'class',
   theme: {
     fontFamily: {
