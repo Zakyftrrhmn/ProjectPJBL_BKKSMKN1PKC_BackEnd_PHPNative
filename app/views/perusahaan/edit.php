@@ -1,140 +1,113 @@
-<!-- ===== Main Content Start ===== -->
 <main>
     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         <!-- Breadcrumb Start -->
         <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Edit <?= $data['title']; ?>
+                <?= $data['title']; ?>
             </h2>
-
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="index.html">Dashboard /</a>
+                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary">
-                        Edit <?= $data['title']; ?>
-                    </li>
+                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
         <!-- Breadcrumb End -->
 
-        <div class="flex flex-col justify-center h-full">
-            <?php Flasher::Message(); ?>
-            <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-lg dark:bg-boxdark dark:drop-shadow-none p-6">
-                <form class="max-w-2xl mx-auto p-4" method="POST" action="<?= base_url ?>/perusahaan/updatePerusahaan" enctype="multipart/form-data">
+        <?php Flasher::flash(); ?>
 
-                    <!-- Hidden Input for ID Perusahaan -->
-                    <input type="hidden" name="id" value="<?= $data['perusahaan']['id']; ?>">
-                    <input type="hidden" name="logo_lama" value="<?= $data['perusahaan']['logo_perusahaan']; ?>">
+        <!-- Table Section Start -->
+        <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
 
-                    <!-- Nama Perusahaan -->
-                    <div class="mb-5">
-                        <label for="nama_perusahaan" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                            Nama Perusahaan
-                        </label>
-                        <input
-                            type="text"
-                            id="nama_perusahaan"
-                            name="nama_perusahaan"
-                            class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-black dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="<?= $data['perusahaan']['nama_perusahaan']; ?>"
-                            required />
-                    </div>
+            <!-- Responsive Table -->
+            <form action="<?= base_url; ?>/perusahaan/updatePerusahaan" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
+                <input type="hidden" name="id" value="<?= $data['perusahaan']['id']; ?>" />
+                <input type="hidden" name="logo_perusahaan_lama" value="<?= $data['perusahaan']['logo_perusahaan']; ?>" />
 
-                    <!-- Alamat Perusahaan -->
-                    <div class="mb-5">
-                        <label for="alamat_perusahaan" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                            Alamat Perusahaan
-                        </label>
-                        <input
-                            type="text"
-                            id="alamat_perusahaan"
-                            name="alamat_perusahaan"
-                            class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-black dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="<?= $data['perusahaan']['alamat_perusahaan']; ?>"
-                            required />
-                    </div>
+                <!-- Nama Perusahaan -->
+                <div class="mb-5">
+                    <label for="nama_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Perusahaan </label>
+                    <input type="text" id="nama_perusahaan" name="nama_perusahaan"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        value="<?= $data['perusahaan']['nama_perusahaan']; ?>" placeholder="Nama perusahaan" required />
+                </div>
 
-                    <!-- Email Perusahaan -->
-                    <div class="mb-5">
-                        <label for="email_perusahaan" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                            Email Perusahaan
-                        </label>
-                        <input
-                            type="email"
-                            id="email_perusahaan"
-                            name="email_perusahaan"
-                            class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-black dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="<?= $data['perusahaan']['email_perusahaan']; ?>"
-                            required />
-                    </div>
+                <!-- Email Perusahaan -->
+                <div class="mb-5">
+                    <label for="email_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Perusahaan </label>
+                    <input type="email" id="email_perusahaan" name="email_perusahaan"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        value="<?= $data['perusahaan']['email_perusahaan']; ?>" placeholder="email@perusahaan.com" required />
+                </div>
 
-                    <!-- Telepon Perusahaan -->
-                    <div class="mb-5">
-                        <label for="telepon_perusahaan" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                            Telepon Perusahaan
-                        </label>
-                        <input
-                            type="tel"
-                            id="telepon_perusahaan"
-                            name="telepon_perusahaan"
-                            class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-black dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="<?= $data['perusahaan']['telepon_perusahaan']; ?>"
-                            required />
-                    </div>
+                <!-- Alamat Perusahaan -->
+                <div class="mb-5">
+                    <label for="alamat_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat Perusahaan </label>
+                    <input id="alamat_perusahaan" name="alamat_perusahaan" rows="3"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        value="<?= $data['perusahaan']['alamat_perusahaan']; ?>" placeholder="Alamat lengkap perusahaan" required></input>
+                </div>
 
-                    <!-- Logo Perusahaan -->
-                    <div class="mb-5">
-                        <label for="logo_perusahaan" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                            Logo Perusahaan
-                        </label>
-                        <input
-                            type="file"
-                            id="logo_perusahaan"
-                            name="logo_perusahaan"
-                            class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-black dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        <small class="text-gray-500">Max size: 1MB, Format: JPG, PNG, JPEG</small>
-                        <p class="mt-2 text-sm text-gray-600">Current Logo: <img src="<?= base_url ?>/uploads/perusahaan/<?= $data['perusahaan']['logo_perusahaan']; ?>" alt="Logo Perusahaan" class="inline-block h-12" /></p>
-                    </div>
+                <!-- Telepon Perusahaan -->
+                <div class="mb-5">
+                    <label for="telepon_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telepon Perusahaan </label>
+                    <input type="text" id="telepon_perusahaan" name="telepon_perusahaan"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        value="<?= $data['perusahaan']['telepon_perusahaan']; ?>" placeholder="08xxxxxxxxxx" required />
+                </div>
 
-                    <!-- Industri Perusahaan -->
-                    <div class="mb-5">
-                        <label for="industry_perusahaan" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                            Bidang Perusahaan
-                        </label>
-                        <input
-                            type="text"
-                            id="industry_perusahaan"
-                            name="industry_perusahaan"
-                            class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-black dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="<?= $data['perusahaan']['industry_perusahaan']; ?>"
-                            required />
-                    </div>
+                <!-- Logo Perusahaan -->
+                <div class="mb-5">
+                    <label for="logo_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Logo Perusahaan
+                        <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Opsional</span>
+                    </label>
 
-                    <!-- Submit Button -->
-                    <div class="">
-                        <button
-                            type="submit"
-                            class="px-6 py-2.5 text-sm font-medium text-white bg-primary rounded-lg shadow 
-               hover:bg-primaryhover focus:outline-none focus:ring-2 focus:ring-blue-500 
-               dark:bg-primarydark dark:hover:bg-primaryhover dark:focus:ring-offset-gray-800">
-                            Update Perusahaan
-                        </button>
-                        <a
-                            href="<?= base_url ?>/perusahaan"
-                            class="px-6 py-2.5 text-sm font-medium text-white bg-black rounded-lg shadow 
-               hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 
-               dark:bg-primarydark dark:hover:bg-gray-600">
-                            Kembali
-                        </a>
-                    </div>
+                    <!-- Input File untuk Logo Baru -->
+                    <input type="file" id="logo_perusahaan" name="logo_perusahaan"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        accept="image/*" />
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Unggah file dalam format .jpg, .png, atau .jpeg.</p>
 
-                </form>
-            </div>
+                    <!-- Tampilkan Logo Lama (Jika Ada) -->
+                    <?php if (!empty($data['perusahaan']['logo_perusahaan'])) : ?>
+                        <div class="mt-3">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Logo saat ini:</p>
+                            <img src="<?= base_url; ?>/uploads/perusahaan/<?= $data['perusahaan']['logo_perusahaan']; ?>"
+                                alt="Logo Perusahaan"
+                                class="mt-2 h-20 rounded-lg shadow-md">
+                        </div>
+                        <!-- Checkbox untuk Menghapus Logo -->
+                        <div class="mt-3">
+                            <input type="checkbox" id="hapus_logo" name="hapus_logo" value="1"
+                                class="text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="hapus_logo" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Hapus logo saat ini
+                            </label>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Input Hidden untuk Menyimpan Logo Lama -->
+                    <input type="hidden" name="logo_perusahaan_lama" value="<?= $data['perusahaan']['logo_perusahaan']; ?>" />
+                </div>
+
+
+
+                <!-- Industri Perusahaan -->
+                <div class="mb-5">
+                    <label for="industry_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Industri Perusahaan </label>
+                    <input type="text" id="industry_perusahaan" name="industry_perusahaan"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        value="<?= $data['perusahaan']['industry_perusahaan']; ?>" placeholder="Industri perusahaan (misalnya: Teknologi, Keuangan, dll.)" required />
+                </div>
+
+                <!-- Tombol Submit -->
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update Perusahaan</button>
+
+                <a href="<?= base_url; ?>/perusahaan" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Kembali</a>
+            </form>
         </div>
-
+        <!-- Table Section End -->
     </div>
-</main>
-<!-- ===== Main Content End ===== -->

@@ -40,9 +40,14 @@
   },
   "dependencies": {
     "@alpinejs/persist": "^3.12.0",
+    "@tiptap/core": "^2.10.2",
+    "@tiptap/pm": "^2.10.2",
+    "@tiptap/starter-kit": "^2.10.2",
     "alpinejs": "^3.10.3",
     "apexcharts": "^3.36.3",
     "flatpickr": "^4.6.13",
-    "jsvectormap": "^1.5.1"
+    "flowbite-typography": "^1.0.5",
+    "jsvectormap": "^1.5.1",
+    "simple-datatables": "^9.2.1"
   }
 }

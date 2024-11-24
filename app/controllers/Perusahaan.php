@@ -1,10 +1,25 @@
 <?php
+
 class Perusahaan extends Controller
 {
     public function index()
     {
         $data['title'] = 'Data Perusahaan';
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
+
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('templates/navbar', $data);
+        $this->view('perusahaan/index', $data);
+        $this->view('templates/footer');
+    }
+
+    public function cari()
+    {
+        $data['title'] = 'Data Perusahaan';
+        $data['perusahaan'] = $this->model('PerusahaanModel')->cariPerusahaan();
+        $data['key'] = $_POST['key'];
+
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
@@ -25,47 +40,48 @@ class Perusahaan extends Controller
 
     public function simpanPerusahaan()
     {
-        // Cek apakah ada file yang diunggah
-        if (!empty($_FILES['logo_perusahaan']['name'])) {
-            $targetDir = "uploads/perusahaan/"; // Direktori tujuan
-            $fileName = basename($_FILES['logo_perusahaan']['name']);
-            $targetFilePath = $targetDir . $fileName;
+        // Proses upload file
+        if (isset($_FILES['logo_perusahaan']) && $_FILES['logo_perusahaan']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['logo_perusahaan']['tmp_name'];
+            $fileName = $_FILES['logo_perusahaan']['name'];
+            $fileSize = $_FILES['logo_perusahaan']['size'];
+            $fileType = $_FILES['logo_perusahaan']['type'];
+            $fileNameCmps = explode(".", $fileName);
+            $fileExtension = strtolower(end($fileNameCmps));
+            $allowedFileExtensions = ['jpg', 'png', 'jpeg'];
 
-            // Validasi ukuran file (maksimal 2MB)
-            if ($_FILES['logo_perusahaan']['size'] > 1 * 1024 * 1024) {
-                Flasher::setMessage('Gagal', 'Ukuran file terlalu besar! Maksimal 1MB.', 'danger');
-                header('location:' . base_url . '/perusahaan/tambah');
-                exit;
-            }
+            if (in_array($fileExtension, $allowedFileExtensions)) {
+                $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+                $uploadFileDir = 'uploads/perusahaan/';
+                $dest_path = $uploadFileDir . $newFileName;
 
-            // Validasi format file (hanya JPG, PNG, JPEG)
-            $allowedExtensions = ['jpg', 'jpeg', 'png'];
-            $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-            if (!in_array($fileExtension, $allowedExtensions)) {
-                Flasher::setMessage('Gagal', 'Format Logo tidak valid! Harus JPG, JPEG, atau PNG.', 'danger');
-                header('location:' . base_url . '/perusahaan/tambah');
-                exit;
-            }
+                if (!is_dir($uploadFileDir)) {
+                    mkdir($uploadFileDir, 0777, true);
+                }
 
-            // Pindahkan file ke direktori target
-            if (move_uploaded_file($_FILES['logo_perusahaan']['tmp_name'], $targetFilePath)) {
-                $_POST['logo_perusahaan'] = $fileName;
+                if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                    $_POST['logo_perusahaan'] = $newFileName;
+                } else {
+                    Flasher::setMessage('Gagal', ' mengunggah logo perusahaan ', 'danger');
+                    header('location:' . base_url . '/perusahaan/tambah');
+                    exit;
+                }
             } else {
-                Flasher::setMessage('Gagal', 'mengunggah logo', 'danger');
+                Flasher::setMessage(' File tidak valid! Hanya gambar JPG, JPEG atau PNG yang diperbolehkan.', '', 'warning');
                 header('location:' . base_url . '/perusahaan/tambah');
                 exit;
             }
         } else {
-            $_POST['logo_perusahaan'] = null;
+            $_POST['logo_perusahaan'] = '';
         }
 
-        // Simpan data perusahaan
+        // Simpan data ke model
         if ($this->model('PerusahaanModel')->tambahPerusahaan($_POST) > 0) {
-            Flasher::setMessage('Berhasil', 'ditambahkan', 'success');
+            Flasher::setMessage(' Data berhasil ditambahkan!', 'success');
             header('location:' . base_url . '/perusahaan');
             exit;
         } else {
-            Flasher::setMessage('Gagal', 'ditambahkan', 'danger');
+            Flasher::setMessage(' Tidak ada data yang diubah!', 'danger');
             header('location:' . base_url . '/perusahaan');
             exit;
         }
@@ -73,8 +89,9 @@ class Perusahaan extends Controller
 
     public function edit($id)
     {
-        $data['title'] = 'Edit Perusahaan';
+        $data['title'] = 'Edit Data Perusahaan';
         $data['perusahaan'] = $this->model('PerusahaanModel')->getPerusahaanById($id);
+
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -85,79 +102,73 @@ class Perusahaan extends Controller
 
     public function updatePerusahaan()
     {
-        // Cek apakah ada file logo yang diunggah
-        if (!empty($_FILES['logo_perusahaan']['name'])) {
-            $targetDir = "uploads/perusahaan/";
-            $fileName = basename($_FILES['logo_perusahaan']['name']);
-            $targetFilePath = $targetDir . $fileName;
-
-            // Validasi ukuran file (maksimal 1MB)
-            if ($_FILES['logo_perusahaan']['size'] > 1 * 1024 * 1024) {
-                Flasher::setMessage('Gagal', 'Ukuran file terlalu besar! Maksimal 1MB.', 'danger');
-                header('location:' . base_url . '/perusahaan/edit/' . $_POST['id']);
-                exit;
-            }
-
-            // Validasi format file (hanya JPG, PNG, JPEG)
-            $allowedExtensions = ['jpg', 'jpeg', 'png'];
+        // Proses upload file baru (jika ada)
+        if (isset($_FILES['logo_perusahaan']) && $_FILES['logo_perusahaan']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['logo_perusahaan']['tmp_name'];
+            $fileName = $_FILES['logo_perusahaan']['name'];
             $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-            if (!in_array($fileExtension, $allowedExtensions)) {
-                Flasher::setMessage('Gagal', 'Format Logo tidak valid! Harus JPG, JPEG, atau PNG.', 'danger');
-                header('location:' . base_url . '/perusahaan/edit/' . $_POST['id']);
-                exit;
-            }
+            $allowedFileExtensions = ['jpg', 'png', 'jpeg'];
 
-            // Pindahkan file ke direktori target
-            if (move_uploaded_file($_FILES['logo_perusahaan']['tmp_name'], $targetFilePath)) {
-                $_POST['logo_perusahaan'] = $fileName;
+            // Validasi MIME type untuk memastikan file adalah gambar
+            $imageInfo = getimagesize($fileTmpPath);
+            $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+            if ($imageInfo && in_array($fileExtension, $allowedFileExtensions) && in_array($imageInfo['mime'], $allowedMimeTypes)) {
+                $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+                $uploadFileDir = 'uploads/perusahaan/';
+                $dest_path = $uploadFileDir . $newFileName;
+
+                if (!is_dir($uploadFileDir)) {
+                    mkdir($uploadFileDir, 0777, true);
+                }
+
+                if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                    // Hapus logo lama jika ada logo baru
+                    if (!empty($_POST['logo_perusahaan_lama']) && file_exists('uploads/perusahaan/' . $_POST['logo_perusahaan_lama'])) {
+                        unlink('uploads/perusahaan/' . $_POST['logo_perusahaan_lama']);
+                    }
+
+                    $_POST['logo_perusahaan'] = $newFileName;
+                }
             } else {
-                Flasher::setMessage('Gagal', 'mengunggah logo', 'danger');
+                Flasher::setMessage('File tidak valid! Hanya gambar JPG, JPEG, atau PNG yang diperbolehkan.', 'warning');
                 header('location:' . base_url . '/perusahaan/edit/' . $_POST['id']);
                 exit;
             }
+        } elseif (isset($_POST['hapus_logo']) && $_POST['hapus_logo'] === "1") {
+            // Hapus logo jika checkbox dicentang
+            if (!empty($_POST['logo_perusahaan_lama']) && file_exists('uploads/perusahaan/' . $_POST['logo_perusahaan_lama'])) {
+                unlink('uploads/perusahaan/' . $_POST['logo_perusahaan_lama']);
+            }
+            $_POST['logo_perusahaan'] = ''; // Logo dihapus
         } else {
-            $_POST['logo_perusahaan'] = $_POST['logo_lama']; // Gunakan logo lama jika tidak ada file yang diunggah
+            // Pertahankan logo lama jika tidak ada perubahan
+            $_POST['logo_perusahaan'] = $_POST['logo_perusahaan_lama'];
         }
 
-        // Update data perusahaan
-        if ($this->model('PerusahaanModel')->updateDataPerusahaan($_POST) > 0) {
-            Flasher::setMessage('Berhasil', 'diupdate', 'success');
+        // Update data ke model
+        if ($this->model('PerusahaanModel')->updatePerusahaan($_POST) > 0) {
+            Flasher::setMessage('Data berhasil diperbarui!', 'success');
             header('location:' . base_url . '/perusahaan');
             exit;
         } else {
-            Flasher::setMessage('Gagal', 'diupdate', 'danger');
+            Flasher::setMessage('Tidak ada perubahan data.', 'danger');
             header('location:' . base_url . '/perusahaan');
             exit;
         }
     }
+
+
     public function hapus($id)
     {
         if ($this->model('PerusahaanModel')->deletePerusahaan($id) > 0) {
-            Flasher::setMessage('Berhasil', 'dihapus', 'success');
+            Flasher::setMessage(' Data berhasil dihapus!', 'success');
             header('location:' . base_url . '/perusahaan');
             exit;
         } else {
-            Flasher::setMessage('Gagal', 'dihapus', 'danger');
+            Flasher::setMessage(' Data gagal dihapus', 'danger');
             header('location:' . base_url . '/perusahaan');
             exit;
         }
-    }
-
-    public function cari()
-    {
-        // Memeriksa apakah ada input pencarian
-        $key = isset($_POST['key']) ? $_POST['key'] : '';
-
-        // Mengambil data perusahaan berdasarkan pencarian
-        $data['title'] = 'Data Perusahaan';
-        $data['perusahaan'] = $this->model('PerusahaanModel')->cariPerusahaan($key);
-        $data['key'] = $key;
-
-        // Memuat tampilan
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('templates/navbar', $data);
-        $this->view('perusahaan/index', $data);
-        $this->view('templates/footer');
     }
 }

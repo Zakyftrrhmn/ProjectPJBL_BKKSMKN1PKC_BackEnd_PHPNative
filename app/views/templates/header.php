@@ -7,8 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tables | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="icon" href="<?= base_url ?>/assets/favicon.ico" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" href="<?= base_url ?>/uploads/logo/logo.jpg" />
   <link href="<?= base_url ?>/assets/satoshi.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
 </head>
 
 <body

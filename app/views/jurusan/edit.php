@@ -1,4 +1,3 @@
-<!-- ===== Main Content Start ===== -->
 <main>
     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         <!-- Breadcrumb Start -->
@@ -6,64 +5,40 @@
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
                 Edit <?= $data['title']; ?>
             </h2>
-
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="index.html">Dashboard /</a>
+                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary">
-                        Edit <?= $data['title']; ?>
-                    </li>
+                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
         <!-- Breadcrumb End -->
 
-        <div class="flex flex-col justify-center h-full">
-            <?php Flasher::Message(); ?>
-            <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-lg dark:bg-boxdark dark:drop-shadow-none p-6">
-                <form class="max-w-2xl mx-auto p-4" method="POST" action="<?= base_url ?>/jurusan/updateJurusan" enctype="multipart/form-data">
+        <?php Flasher::flash(); ?>
 
-                    <!-- Hidden Input for ID Jurusan -->
-                    <input type="hidden" name="id" value="<?= $data['jurusan']['id']; ?>">
+        <!-- Table Section Start -->
+        <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
 
-                    <!-- Nama Jurusan -->
-                    <div class="mb-5">
-                        <label for="nama_jurusan" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                            Nama Jurusan
-                        </label>
-                        <input
-                            type="text"
-                            id="nama_jurusan"
-                            name="nama_jurusan"
-                            class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black text-sm rounded-lg shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-black dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="<?= $data['jurusan']['nama_jurusan']; ?>"
-                            required />
-                    </div>
+            <!-- Responsive Table -->
+            <form action="<?= base_url; ?>/jurusan/updateJurusan" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
+                <input type="hidden" name="id" value="<?= $data['jurusan']['id']; ?>" />
 
-                    <!-- Submit Button -->
-                    <div class="">
-                        <button
-                            type="submit"
-                            class="px-6 py-2.5 text-sm font-medium text-white bg-primary rounded-lg shadow 
-               hover:bg-primaryhover focus:outline-none focus:ring-2 focus:ring-blue-500 
-               dark:bg-primarydark dark:hover:bg-primaryhover dark:focus:ring-offset-gray-800">
-                            Update Jurusan
-                        </button>
-                        <a
-                            href="<?= base_url ?>/jurusan"
-                            class="px-6 py-2.5 text-sm font-medium text-white bg-black rounded-lg shadow 
-               hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 
-               dark:bg-primarydark dark:hover:bg-gray-600">
-                            Kembali
-                        </a>
-                    </div>
 
-                </form>
-            </div>
+                <!-- Nama Jurusan -->
+                <div class="mb-5">
+                    <label for="nama_jurusan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Jurusan</label>
+                    <input type="text" id="nama_jurusan" name="nama_jurusan"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        value="<?= $data['jurusan']['nama_jurusan']; ?>" placeholder="Nama Jurusan" required />
+                </div>
+
+                <!-- Tombol Submit -->
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update Jurusan</button>
+
+                <a href="<?= base_url; ?>/jurusan" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Kembali</a>
+            </form>
         </div>
-
+        <!-- Table Section End -->
     </div>
-</main>
-<!-- ===== Main Content End ===== -->

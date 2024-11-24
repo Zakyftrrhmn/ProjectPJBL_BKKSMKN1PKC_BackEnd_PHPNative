@@ -14,10 +14,9 @@ class Jurusan extends Controller
         $this->view('templates/footer');
     }
 
-
     public function tambah()
     {
-        $data['title'] = 'Tambah Jurusan';
+        $data['title'] = 'Tambah Data Jurusan';
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -25,14 +24,15 @@ class Jurusan extends Controller
         $this->view('jurusan/create', $data);
         $this->view('templates/footer');
     }
+
     public function simpanJurusan()
     {
         if ($this->model('JurusanModel')->tambahJurusan($_POST) > 0) {
-            Flasher::setMessage('Berhasil', 'ditambahkan', 'success');
+            Flasher::setMessage(' Data berhasil di Tambah!', 'success');
             header('location:' . base_url . '/jurusan');
             exit;
         } else {
-            Flasher::setMessage('Gagal', 'ditambahkan', 'danger');
+            Flasher::setMessage(' Data gagal di Tambah!', 'danger');
             header('location:' . base_url . '/jurusan');
             exit;
         }
@@ -53,11 +53,11 @@ class Jurusan extends Controller
     public function updateJurusan()
     {
         if ($this->model('JurusanModel')->updateDataJurusan($_POST) > 0) {
-            Flasher::setMessage('Berhasil', 'diupdate', 'success');
+            Flasher::setMessage(' Data berhasil di Update!', 'success');
             header('location:' . base_url . '/jurusan');
             exit;
         } else {
-            Flasher::setMessage('Gagal', 'diupdate', 'danger');
+            Flasher::setMessage(' Tidak ada data di Update!', 'danger');
             header('location:' . base_url . '/jurusan');
             exit;
         }
@@ -66,11 +66,11 @@ class Jurusan extends Controller
     public function hapus($id)
     {
         if ($this->model('JurusanModel')->deleteJurusan($id) > 0) {
-            Flasher::setMessage('Berhasil', 'dihapus', 'success');
+            Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/jurusan');
             exit;
         } else {
-            Flasher::setMessage('Gagal', 'dihapus', 'danger');
+            Flasher::setMessage(' Data gagal di Hapus!', 'danger');
             header('location:' . base_url . '/jurusan');
             exit;
         }
@@ -81,7 +81,6 @@ class Jurusan extends Controller
         $data['title'] = 'Data Jurusan';
         $data['jurusan'] = $this->model('JurusanModel')->cariJurusan();
         $data['key'] = $_POST['key'];
-
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
