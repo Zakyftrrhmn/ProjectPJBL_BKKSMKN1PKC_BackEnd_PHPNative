@@ -2210,6 +2210,11 @@ body{
   border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));
 }
 
+.border-red-900{
+  --tw-border-opacity: 1;
+  border-color: rgb(127 29 29 / var(--tw-border-opacity, 1));
+}
+
 .border-secondary{
   --tw-border-opacity: 1;
   border-color: rgb(128 202 238 / var(--tw-border-opacity, 1));

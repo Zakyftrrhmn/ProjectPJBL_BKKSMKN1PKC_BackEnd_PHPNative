@@ -20,21 +20,19 @@
 
         <!-- Table Section Start -->
         <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
-            <?php foreach ($data['about'] as $row) : ?>
-                <!-- Responsive Table -->
-                <form action="<?= base_url; ?>/about/updateAbout" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
-                    <input type="hidden" name="id" value="<?= $row['id']; ?>" />
-                    <input type="hidden" name="id" value="<?= $data['about'][0]['id']; ?>" />
+            <!-- Responsive Table -->
+            <form action="<?= base_url; ?>/about/updateAbout" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
+                <input type="hidden" name="id" value="<?= isset($data['about'][0]['id']) ? $data['about'][0]['id'] : ''; ?>" />
 
-                    <div class="mb-5">
-                        <label for="penjelasan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penjelasan Apa itu BKK?</label>
-                        <textarea id="penjelasan" name="penjelasan" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <?= $data['about'][0]['penjelasan']; ?></textarea>
-                    </div>
 
-                    <!-- Tombol Submit -->
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">Update Contact</button>
-                </form>
-            <?php endforeach; ?>
+                <div class="mb-5">
+                    <label for="penjelasan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penjelasan Apa itu BKK?</label>
+                    <textarea id="penjelasan" name="penjelasan" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required><?= !empty($data['about'][0]['penjelasan']) ? $data['about'][0]['penjelasan'] : 'Bursa Kerja Khusus (BKK) adalah platform yang disediakan oleh SMKN 1 Pangkalan Kerinci untuk membantu siswa dan alumni dalam mendapatkan informasi seputar lowongan kerja, pelatihan, serta penyaluran tenaga kerja. Sebagai mitra Dinas Tenaga Kerja dan Transmigrasi, BKK berperan sebagai penghubung antara sekolah dengan dunia industri, mendukung siswa siap kerja dan memperluas peluang karir mereka.'; ?></textarea>
+                </div>
+
+                <!-- Tombol Submit -->
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">Update Contact</button>
+            </form>
         </div>
         <!-- Table Section End -->
     </div>

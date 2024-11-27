@@ -139,6 +139,7 @@
     }
 </script>
 
+
 <script defer src="<?= base_url ?>/assets/bundle.js"></script>
 </body>
 

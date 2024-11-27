@@ -31,19 +31,7 @@ class About extends Controller
         $this->cekAkses('Super Admin');
 
         $data['title'] = 'Halaman Apa itu BKK?';
-
-        // Cek apakah data sudah ada di database
-        $dataCount = $this->model('AboutModel')->countData();
-
-        if ($dataCount > 0) {
-            $data['about'] = $this->model('AboutModel')->getAllAbout();
-        } else {
-            // Data default jika belum ada di database
-            $data['about'] = [[
-                'id' => '',
-                'penjelasan' => 'Bursa Kerja Khusus (BKK) adalah platform yang disediakan oleh SMKN 1 Pangkalan Kerinci untuk membantu siswa dan alumni dalam mendapatkan informasi seputar lowongan kerja, pelatihan, serta penyaluran tenaga kerja. Sebagai mitra Dinas Tenaga Kerja dan Transmigrasi, BKK berperan sebagai penghubung antara sekolah dengan dunia industri, mendukung siswa siap kerja dan memperluas peluang karir mereka.',
-            ]];
-        }
+        $data['about'] = $this->model('AboutModel')->getAllAbout();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -52,9 +40,19 @@ class About extends Controller
         $this->view('templates/footer', $data);
     }
 
+
     public function updateAbout()
     {
         $this->cekAkses('Super Admin');
+
+        $inputs = ['penjelasan'];
+        foreach ($inputs as $input) {
+            if (empty(trim($_POST[$input]))) {
+                Flasher::setMessage("$input tidak boleh kosong atau hanya berisi spasi!", 'danger');
+                header('Location: ' . base_url . '/about');
+                exit;
+            }
+        }
 
         $dataCount = $this->model('AboutModel')->countData();
 
@@ -62,19 +60,24 @@ class About extends Controller
             // Update jika data sudah ada
             if ($this->model('AboutModel')->updateDataAbout($_POST) > 0) {
                 Flasher::setMessage('Data berhasil diupdate!', 'success');
+                header('Location: ' . base_url . '/about');
+                exit;
             } else {
                 Flasher::setMessage('Tidak ada perubahan data!', 'danger');
+                header('Location: ' . base_url . '/about');
+                exit;
             }
         } else {
             // Tambah data jika belum ada
             if ($this->model('AboutModel')->insertDataAbout($_POST) > 0) {
                 Flasher::setMessage('Data berhasil ditambahkan!', 'success');
+                header('Location: ' . base_url . '/about');
+                exit;
             } else {
                 Flasher::setMessage('Gagal menambahkan data!', 'danger');
+                header('Location: ' . base_url . '/about');
+                exit;
             }
         }
-
-        header('Location: ' . base_url . '/about');
-        exit;
     }
 }

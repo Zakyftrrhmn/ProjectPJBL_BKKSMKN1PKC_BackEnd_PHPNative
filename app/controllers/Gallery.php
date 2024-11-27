@@ -104,10 +104,6 @@ class Gallery extends Controller
     public function edit($id)
     {
         $this->cekAkses('Super Admin');
-        if ($_SESSION['role'] !== 'super admin') {
-            echo "Akses ditolak!";
-            exit;
-        }
         $data['title'] = 'Edit Gallery';
         $data['gallery'] = $this->model('GalleryModel')->getGalleryById($id);
 
@@ -157,11 +153,15 @@ class Gallery extends Controller
         // Update ke database
         if ($this->model('GalleryModel')->updateDataGallery($_POST) > 0) {
             Flasher::setMessage('Data berhasil diupdate.', 'success');
+
+            header('location:' . base_url . '/gallery');
+            exit;
         } else {
             Flasher::setMessage('Tidak ada perubahan data.', 'danger');
+
+            header('location:' . base_url . '/gallery');
+            exit;
         }
-        header('location:' . base_url . '/gallery');
-        exit;
     }
 
 
