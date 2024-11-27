@@ -25,7 +25,6 @@
             <form action="<?= base_url; ?>/user/updateUser" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
                 <!-- Hidden Input for User ID -->
                 <input type="hidden" name="id" value="<?= $data['user']['id']; ?>">
-                <input type="hidden" name="photo_lama" value="<?= $data['user']['photo']; ?>">
 
                 <!-- Nama -->
                 <div class="mb-5">
@@ -53,10 +52,11 @@
 
                 <!-- password -->
                 <div class="mb-5">
-                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">password</label>
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">password
+                        <span class="bg-red-200 text-red-800 rounded-full px-2 py-1">Abaikan Jika Tidak Diubah</span>
+                    </label>
                     <input type="password" id="password" name="password"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        value="<?= $data['user']['password']; ?>" required />
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" />
                 </div>
 
 

@@ -105,8 +105,8 @@
                             <span class="block text-xs font-medium">Super Admin</span>
                         </span>
 
-                        <span class="rounded-full h-9 w-9">
-                            <img src="<?= base_url ?>/uploads/logo/images.jpg" alt="User" />
+                        <span>
+                            <img class="w-10 h-10 rounded-full object-cover" src="<?= base_url ?>/uploads/logo/" alt="User" />
                         </span>
 
                         <svg

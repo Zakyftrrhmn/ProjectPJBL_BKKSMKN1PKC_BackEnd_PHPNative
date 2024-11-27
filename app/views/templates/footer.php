@@ -121,6 +121,24 @@
         }
     });
 </script>
+
+<script>
+    function validateCharacterCount() {
+        const textArea = document.getElementById('penjelasan');
+        const warning = document.getElementById('char-warning');
+        const charCount = textArea.value.trim().length; // Menghitung jumlah huruf
+
+        if (charCount > 500) {
+            warning.classList.remove('hidden'); // Tampilkan peringatan
+            warning.textContent = `Jumlah huruf: ${charCount}. Jumlah huruf tidak boleh lebih dari 500.`;
+            return false; // Mencegah pengiriman formulir
+        } else {
+            warning.classList.add('hidden'); // Sembunyikan peringatan jika valid
+            return true;
+        }
+    }
+</script>
+
 <script defer src="<?= base_url ?>/assets/bundle.js"></script>
 </body>
 

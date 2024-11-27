@@ -34,7 +34,7 @@ class UserModel
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('username', $data['username']);
         $this->db->bind('email', $data['email']);
-        $this->db->bind('password', $data['password']);
+        $this->db->bind('password', md5($data['password']));
         $this->db->bind('role', $data['role']);
         $this->db->bind('photo', $data['photo'] ?? null);
         $this->db->execute();
@@ -65,19 +65,34 @@ class UserModel
 
     public function updateUser($data)
     {
-        $query = "UPDATE user SET nama=:nama, username=:username, email=:email, password=:password, role=:role, photo=:photo WHERE id=:id";
-        $this->db->query($query);
-        $this->db->bind('id', $data['id']);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('username', $data['username']);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('password', $data['password']);
-        $this->db->bind('role', $data['role']);
-        $this->db->bind('photo', $data['photo'] ?? null);
-        $this->db->execute();
+        // Cek apakah password kosong atau tidak
+        if (empty($data['password'])) {
+            // Jika password kosong, tidak mengupdate field password
+            $query = "UPDATE user SET nama=:nama, username=:username, email=:email, role=:role, photo=:photo WHERE id=:id";
+            $this->db->query($query);
+            $this->db->bind('id', $data['id']);
+            $this->db->bind('nama', $data['nama']);
+            $this->db->bind('username', $data['username']);
+            $this->db->bind('email', $data['email']);
+            $this->db->bind('role', $data['role']);
+            $this->db->bind('photo', $data['photo'] ?? null);
+        } else {
+            // Jika password tidak kosong, field password juga ikut diupdate
+            $query = "UPDATE user SET nama=:nama, username=:username, email=:email, password=:password, role=:role, photo=:photo WHERE id=:id";
+            $this->db->query($query);
+            $this->db->bind('id', $data['id']);
+            $this->db->bind('nama', $data['nama']);
+            $this->db->bind('username', $data['username']);
+            $this->db->bind('email', $data['email']);
+            $this->db->bind('password', md5($data['password']));
+            $this->db->bind('role', $data['role']);
+            $this->db->bind('photo', $data['photo'] ?? null);
+        }
 
+        $this->db->execute();
         return $this->db->rowCount();
     }
+
 
     public function deleteUser($id)
     {

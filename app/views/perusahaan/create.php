@@ -57,7 +57,7 @@
 
                 <!-- Logo Perusahaan -->
                 <div class="mb-5">
-                    <label for="logo_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo Perusahaan <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Opsional</span></label>
+                    <label for="logo_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo Perusahaan</label>
                     <input type="file" id="logo_perusahaan" name="logo_perusahaan"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         accept="image/*" />

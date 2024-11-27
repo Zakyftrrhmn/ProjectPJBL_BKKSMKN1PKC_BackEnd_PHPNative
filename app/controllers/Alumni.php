@@ -82,7 +82,6 @@ class Alumni extends Controller
         }
     }
 
-
     public function hapus($id)
     {
         if ($this->model('AlumniModel')->deleteAlumni($id) > 0) {

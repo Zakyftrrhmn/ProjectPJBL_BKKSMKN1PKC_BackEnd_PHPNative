@@ -110,27 +110,17 @@
                     class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
                     href="<?= base_url ?>/beranda"
                     :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/beranda') }">
-                    <i class="bx bx-home-alt text-xl"></i> Beranda
+                    <i class="bx bx-home text-xl"></i> Beranda
                   </a>
                 </li>
 
-                <!-- Banner -->
+                <!-- About -->
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                    href="<?= base_url ?>/banner"
-                    :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/banner') }">
-                    <i class="bx bx-image text-xl"></i> Banner
-                  </a>
-                </li>
-
-                <!-- Tentang Kami -->
-                <li>
-                  <a
-                    class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                    href="<?= base_url ?>/tentangKami"
-                    :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/tentangKami') }">
-                    <i class="bx bx-info-circle text-xl"></i> Tentang Kami
+                    href="<?= base_url ?>/about"
+                    :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/about') }">
+                    <i class='bx bx-question-mark'></i> Apa itu bkk?
                   </a>
                 </li>
 
@@ -140,20 +130,41 @@
                     class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
                     href="<?= base_url ?>/tujuan"
                     :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/tujuan') }">
-                    <i class="bx bx-target-lock text-xl"></i> Tujuan
+                    <i class="bx bx-bullseye text-xl"></i> Tujuan
                   </a>
                 </li>
 
-                <!-- Contact -->
+                <!-- Gallery -->
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                    href="<?= base_url ?>/contact"
-                    :class="{ 'bg-graydark dark:bg-meta-4 ': page.includes('/contact') }">
-                    <i class="bx bx-envelope text-xl"></i> Contact
+                    href="<?= base_url ?>/gallery"
+                    :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/gallery') }">
+                    <i class="bx bx-image-alt text-xl"></i> Gallery
+                  </a>
+                </li>
+
+                <!-- Info -->
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                    href="<?= base_url ?>/info"
+                    :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/info') }">
+                    <i class="bx bx-info-square text-xl"></i> Info
+                  </a>
+                </li>
+
+                <!-- Logo -->
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                    href="<?= base_url ?>/logo"
+                    :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/logo') }">
+                    <i class="bx bx-star text-xl"></i> Logo
                   </a>
                 </li>
               </ul>
+
             </div>
           </nav>
           <!-- Sidebar Menu -->
