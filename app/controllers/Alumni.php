@@ -2,8 +2,19 @@
 
 class Alumni extends Controller
 {
+    public function __construct()
+    {
+        if ($_SESSION['session_login'] != 'sudah login') {
+            Flasher::setMessage('Anda Belum Login', 'danger');
+            header('location:' . base_url . '/login');
+            exit;
+        }
+    }
+
+
     public function index()
     {
+
         $data['title'] = 'Data Alumni';
         $data['alumni'] = $this->model('AlumniModel')->getAllAlumni();
 
@@ -11,7 +22,7 @@ class Alumni extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('alumni/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function tambah()
@@ -23,7 +34,7 @@ class Alumni extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('alumni/create', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function simpanAlumni()
@@ -55,7 +66,7 @@ class Alumni extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('alumni/edit', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function updateAlumni()
@@ -105,7 +116,7 @@ class Alumni extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('alumni/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function detail($id)
@@ -118,6 +129,6 @@ class Alumni extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('alumni/detail', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 }

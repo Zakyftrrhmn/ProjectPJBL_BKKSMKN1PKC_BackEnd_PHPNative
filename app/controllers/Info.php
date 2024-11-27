@@ -2,8 +2,34 @@
 
 class Info extends Controller
 {
+    public function __construct()
+    {
+        if ($_SESSION['session_login'] != 'sudah login') {
+            Flasher::setMessage('Anda Belum Login', 'danger');
+            header('location:' . base_url . '/login');
+            exit;
+        }
+    }
+
+    function cekAkses($role)
+    {
+        if (!isset($_SESSION['session_login'])) {
+            header('location:' . base_url . '/login');
+            exit;
+        }
+
+        // Cek apakah role sesuai
+        if ($_SESSION['role'] !== $role) {
+            Flasher::setMessage('Akses ditolak', 'danger');
+            header('location:' . base_url . '/error');
+            exit;
+        }
+    }
+
+
     public function index()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Info Contact';
 
         // Cek apakah data sudah ada di database
@@ -27,11 +53,12 @@ class Info extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('info/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function updateInfo()
     {
+        $this->cekAkses('Super Admin');
         $dataCount = $this->model('InfoModel')->countData();
 
         if ($dataCount > 0) {

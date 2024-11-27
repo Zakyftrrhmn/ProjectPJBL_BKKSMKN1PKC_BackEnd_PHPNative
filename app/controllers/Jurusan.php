@@ -2,8 +2,33 @@
 
 class Jurusan extends Controller
 {
+    public function __construct()
+    {
+        if ($_SESSION['session_login'] != 'sudah login') {
+            Flasher::setMessage('Anda Belum Login', 'danger');
+            header('location:' . base_url . '/login');
+            exit;
+        }
+    }
+
+    function cekAkses($role)
+    {
+        if (!isset($_SESSION['session_login'])) {
+            header('location:' . base_url . '/login');
+            exit;
+        }
+
+        // Cek apakah role sesuai
+        if ($_SESSION['role'] !== $role) {
+            Flasher::setMessage('Akses ditolak', 'danger');
+            header('location:' . base_url . '/error');
+            exit;
+        }
+    }
+
     public function index()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Data Jurusan';
         $data['jurusan'] = $this->model('JurusanModel')->getAllJurusan();
 
@@ -11,22 +36,24 @@ class Jurusan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('jurusan/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function tambah()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data Jurusan';
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('jurusan/create', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function simpanJurusan()
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('JurusanModel')->tambahJurusan($_POST) > 0) {
             Flasher::setMessage(' Data berhasil di Tambah!', 'success');
             header('location:' . base_url . '/jurusan');
@@ -40,6 +67,7 @@ class Jurusan extends Controller
 
     public function edit($id)
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Jurusan';
         $data['jurusan'] = $this->model('JurusanModel')->getJurusanById($id);
 
@@ -47,11 +75,12 @@ class Jurusan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('jurusan/edit', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function updateJurusan()
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('JurusanModel')->updateDataJurusan($_POST) > 0) {
             Flasher::setMessage(' Data berhasil di Update!', 'success');
             header('location:' . base_url . '/jurusan');
@@ -65,6 +94,7 @@ class Jurusan extends Controller
 
     public function hapus($id)
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('JurusanModel')->deleteJurusan($id) > 0) {
             Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/jurusan');
@@ -78,6 +108,7 @@ class Jurusan extends Controller
 
     public function cari()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Data Jurusan';
         $data['jurusan'] = $this->model('JurusanModel')->cariJurusan();
         $data['key'] = $_POST['key'];
@@ -86,6 +117,6 @@ class Jurusan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('jurusan/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 }

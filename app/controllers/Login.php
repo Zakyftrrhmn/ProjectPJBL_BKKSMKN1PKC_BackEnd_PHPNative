@@ -15,12 +15,15 @@ class Login extends Controller
         if ($row) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['nama'] = $row['nama'];
+            $_SESSION['role'] = $row['role'];
             $_SESSION['session_login'] = 'sudah login';
 
-            $message = 'Halo, Selamat Datang ' . $row['nama'];
-            Flasher::setMessage($message, 'success');
-
-            header('location:' . base_url . '/dashboard');
+            // Redirect ke dashboard berdasarkan role
+            if ($row['role'] === 'Super Admin') {
+                header('location:' . base_url . '/dashboard');
+            } else if ($row['role'] === 'Admin') {
+                header('location:' . base_url . '/alumni');
+            }
             exit;
         } else {
             // Jika login gagal

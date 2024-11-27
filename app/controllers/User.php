@@ -2,8 +2,34 @@
 
 class User extends Controller
 {
+    public function __construct()
+    {
+        if ($_SESSION['session_login'] != 'sudah login') {
+            Flasher::setMessage('Anda Belum Login', 'danger');
+            header('location:' . base_url . '/login');
+            exit;
+        }
+    }
+
+    function cekAkses($role)
+    {
+        if (!isset($_SESSION['session_login'])) {
+            header('location:' . base_url . '/login');
+            exit;
+        }
+
+        // Cek apakah role sesuai
+        if ($_SESSION['role'] !== $role) {
+            Flasher::setMessage('Akses ditolak', 'danger');
+            header('location:' . base_url . '/error');
+            exit;
+        }
+    }
+
+
     public function index()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Data Users';
         $data['user'] = $this->model('UserModel')->getAllUser();
 
@@ -11,22 +37,24 @@ class User extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('user/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function tambah()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data User';
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('user/create', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function simpanUser()
     {
+        $this->cekAkses('Super Admin');
         session_start(); // Memulai sesi untuk menyimpan data input
 
         // Menyimpan data input ke session
@@ -99,6 +127,7 @@ class User extends Controller
 
     public function edit($id)
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Edit User';
         $data['user'] = $this->model('UserModel')->getUserById($id);
 
@@ -106,11 +135,12 @@ class User extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('user/edit', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function updateUser()
     {
+        $this->cekAkses('Super Admin');
         // Periksa apakah username sudah digunakan oleh pengguna lain
         $existingUser = $this->model('UserModel')->checkUniqueUsername($_POST['username'], $_POST['id']);
         if ($existingUser) {
@@ -178,6 +208,7 @@ class User extends Controller
 
     public function hapus($id)
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('UserModel')->deleteUser($id) > 0) {
             Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/user');
@@ -191,6 +222,7 @@ class User extends Controller
 
     public function cari()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Data User';
         $data['user'] = $this->model('UserModel')->cariUser();
         $data['key'] = $_POST['key'];
@@ -199,6 +231,6 @@ class User extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('user/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 }

@@ -719,6 +719,10 @@ body{
   bottom: 1rem;
 }
 
+.end-2{
+  inset-inline-end: 0.5rem;
+}
+
 .end-2\.5{
   inset-inline-end: 0.625rem;
 }
@@ -805,10 +809,6 @@ body{
 
 .top-full{
   top: 100%;
-}
-
-.end-2{
-  inset-inline-end: 0.5rem;
 }
 
 .-z-1{

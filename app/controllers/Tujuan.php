@@ -2,8 +2,34 @@
 
 class Tujuan extends Controller
 {
+    public function __construct()
+    {
+        if ($_SESSION['session_login'] != 'sudah login') {
+            Flasher::setMessage('Anda Belum Login', 'danger');
+            header('location:' . base_url . '/login');
+            exit;
+        }
+    }
+
+    function cekAkses($role)
+    {
+        if (!isset($_SESSION['session_login'])) {
+            header('location:' . base_url . '/login');
+            exit;
+        }
+
+        // Cek apakah role sesuai
+        if ($_SESSION['role'] !== $role) {
+            Flasher::setMessage('Akses ditolak', 'danger');
+            header('location:' . base_url . '/error');
+            exit;
+        }
+    }
+
+
     public function index()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Setting Halaman Tujuan';
         $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
 
@@ -11,22 +37,24 @@ class Tujuan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('tujuan/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function tambah()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data Tujuan';
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('tujuan/create', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function simpanTujuan()
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('TujuanModel')->tambahTujuan($_POST) > 0) {
             Flasher::setMessage(' Data berhasil di Tambah!', 'success');
             header('location:' . base_url . '/tujuan');
@@ -40,6 +68,7 @@ class Tujuan extends Controller
 
     public function edit($id)
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Tujuan';
         $data['tujuan'] = $this->model('TujuanModel')->getTujuanById($id);
 
@@ -47,11 +76,12 @@ class Tujuan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('tujuan/edit', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function updateTujuan()
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('TujuanModel')->updateDataTujuan($_POST) > 0) {
             Flasher::setMessage(' Data berhasil di Update!', 'success');
             header('location:' . base_url . '/tujuan');
@@ -65,6 +95,7 @@ class Tujuan extends Controller
 
     public function hapus($id)
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('TujuanModel')->deleteTujuan($id) > 0) {
             Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/tujuan');
@@ -78,6 +109,7 @@ class Tujuan extends Controller
 
     public function cari()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Setting Halaman Tujuan';
         $data['tujuan'] = $this->model('TujuanModel')->cariTujuan();
         $data['key'] = $_POST['key'];
@@ -86,6 +118,6 @@ class Tujuan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('tujuan/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 }

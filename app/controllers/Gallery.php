@@ -2,8 +2,33 @@
 
 class Gallery extends Controller
 {
+    public function __construct()
+    {
+        if ($_SESSION['session_login'] != 'sudah login') {
+            Flasher::setMessage('Anda Belum Login', 'danger');
+            header('location:' . base_url . '/login');
+            exit;
+        }
+    }
+
+    function cekAkses($role)
+    {
+        if (!isset($_SESSION['session_login'])) {
+            header('location:' . base_url . '/login');
+            exit;
+        }
+
+        // Cek apakah role sesuai
+        if ($_SESSION['role'] !== $role) {
+            Flasher::setMessage('Akses ditolak', 'danger');
+            header('location:' . base_url . '/error');
+            exit;
+        }
+    }
+
     public function index()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Gallery Website BKK';
         $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
 
@@ -11,22 +36,24 @@ class Gallery extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('gallery/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function tambah()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Gallery';
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('gallery/create', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function simpanGallery()
     {
+        $this->cekAkses('Super Admin');
         // Proses upload file
         if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['gambar']['tmp_name'];
@@ -76,6 +103,11 @@ class Gallery extends Controller
 
     public function edit($id)
     {
+        $this->cekAkses('Super Admin');
+        if ($_SESSION['role'] !== 'super admin') {
+            echo "Akses ditolak!";
+            exit;
+        }
         $data['title'] = 'Edit Gallery';
         $data['gallery'] = $this->model('GalleryModel')->getGalleryById($id);
 
@@ -83,11 +115,12 @@ class Gallery extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('gallery/edit', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function updateGallery()
     {
+        $this->cekAkses('Super Admin');
         if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
             // Proses upload
             $fileTmpPath = $_FILES['gambar']['tmp_name'];
@@ -134,6 +167,7 @@ class Gallery extends Controller
 
     public function hapus($id)
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('GalleryModel')->deleteGallery($id) > 0) {
             Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/gallery');
@@ -147,6 +181,7 @@ class Gallery extends Controller
 
     public function cari()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Gallery Website BKK';
         $data['gallery'] = $this->model('GalleryModel')->cariGallery();
         $data['key'] = $_POST['key'];
@@ -155,6 +190,6 @@ class Gallery extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('gallery/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 }

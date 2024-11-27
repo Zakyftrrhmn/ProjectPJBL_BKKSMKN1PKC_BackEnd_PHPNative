@@ -2,8 +2,33 @@
 
 class Perusahaan extends Controller
 {
+    public function __construct()
+    {
+        if ($_SESSION['session_login'] != 'sudah login') {
+            Flasher::setMessage('Anda Belum Login', 'danger');
+            header('location:' . base_url . '/login');
+            exit;
+        }
+    }
+
+    function cekAkses($role)
+    {
+        if (!isset($_SESSION['session_login'])) {
+            header('location:' . base_url . '/login');
+            exit;
+        }
+
+        // Cek apakah role sesuai
+        if ($_SESSION['role'] !== $role) {
+            Flasher::setMessage('Akses ditolak', 'danger');
+            header('location:' . base_url . '/error');
+            exit;
+        }
+    }
+
     public function index()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Data Perusahaan';
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
 
@@ -11,11 +36,12 @@ class Perusahaan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('perusahaan/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function cari()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Data Perusahaan';
         $data['perusahaan'] = $this->model('PerusahaanModel')->cariPerusahaan();
         $data['key'] = $_POST['key'];
@@ -24,22 +50,24 @@ class Perusahaan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('perusahaan/index', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function tambah()
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data Perusahaan';
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('perusahaan/create', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function simpanPerusahaan()
     {
+        $this->cekAkses('Super Admin');
         // Proses upload file
         if (isset($_FILES['logo_perusahaan']) && $_FILES['logo_perusahaan']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['logo_perusahaan']['tmp_name'];
@@ -89,6 +117,7 @@ class Perusahaan extends Controller
 
     public function edit($id)
     {
+        $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Data Perusahaan';
         $data['perusahaan'] = $this->model('PerusahaanModel')->getPerusahaanById($id);
 
@@ -97,11 +126,12 @@ class Perusahaan extends Controller
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
         $this->view('perusahaan/edit', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 
     public function updatePerusahaan()
     {
+        $this->cekAkses('Super Admin');
         // Proses upload file baru (jika ada)
         if (isset($_FILES['logo_perusahaan']) && $_FILES['logo_perusahaan']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['logo_perusahaan']['tmp_name'];
@@ -158,9 +188,9 @@ class Perusahaan extends Controller
         }
     }
 
-
     public function hapus($id)
     {
+        $this->cekAkses('Super Admin');
         if ($this->model('PerusahaanModel')->deletePerusahaan($id) > 0) {
             Flasher::setMessage(' Data berhasil dihapus!', 'success');
             header('location:' . base_url . '/perusahaan');

@@ -27,7 +27,7 @@
                     <p class="text-sm mt-6 text-white">Selamat datang! Silakan login untuk mengakses dashboard BKK SMKN 1 Pangkalan Kerinci.</p>
                 </div>
 
-                <form action="<?= base_url; ?>/login/prosesLogin" method="POST" class="bg-white rounded-xl px-6 py-8 space-y-6 max-w-md md:ml-auto w-full">
+                <form action="<?= base_url; ?>/login/prosesLogin" method="post" class="bg-white rounded-xl px-6 py-8 space-y-6 max-w-md md:ml-auto w-full">
                     <h3 class="text-3xl font-extrabold mb-12">
                         Sign In
                     </h3>
