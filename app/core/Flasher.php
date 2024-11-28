@@ -4,6 +4,8 @@ class Flasher
 {
     public static function setMessage($message, $type)
     {
+
+        session_start(); // Pastikan sesi dimulai
         $_SESSION['flash'] = [
             'message' => $message,
             'type' => $type

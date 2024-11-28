@@ -13,15 +13,11 @@ class Home extends Controller
 
     public function index()
     {
-        if ($_SESSION['role'] !== 'super admin') {
-            echo "Akses ditolak!";
-            exit;
-        }
-        $data['title'] = 'Halaman Home';
-
+        $data['title'] = 'Not Found';
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
-        $this->view('home/index', $data);
+        $this->view('templates/navbar', $data);
+        $this->view('home/error', $data);
         $this->view('templates/footer', $data);
     }
 }

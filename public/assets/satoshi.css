@@ -1556,6 +1556,10 @@ body{
   max-width: 1024px;
 }
 
+.max-w-screen-xl{
+  max-width: 1280px;
+}
+
 .max-w-sm{
   max-width: 24rem;
 }
@@ -1837,8 +1841,17 @@ body{
        column-gap: 0.5rem;
 }
 
+.gap-x-8{
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+
 .gap-y-3{
   row-gap: 0.75rem;
+}
+
+.gap-y-4{
+  row-gap: 1rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
@@ -1946,6 +1959,14 @@ body{
 
 .whitespace-nowrap{
   white-space: nowrap;
+}
+
+.text-wrap{
+  text-wrap: wrap;
+}
+
+.text-balance{
+  text-wrap: balance;
 }
 
 .break-normal{
@@ -2463,6 +2484,11 @@ body{
   background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1));
 }
 
+.bg-indigo-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(67 56 202 / var(--tw-bg-opacity, 1));
+}
+
 .bg-meta-1{
   --tw-bg-opacity: 1;
   background-color: rgb(220 53 69 / var(--tw-bg-opacity, 1));
@@ -2734,6 +2760,10 @@ body{
   padding: 3rem;
 }
 
+.p-16{
+  padding: 4rem;
+}
+
 .p-17{
   padding: 4.25rem;
 }
@@ -2914,6 +2944,11 @@ body{
   padding-bottom: 1.75rem;
 }
 
+.py-7\.5{
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+}
+
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -3083,6 +3118,21 @@ body{
   line-height: 2.5rem;
 }
 
+.text-5xl{
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-6xl{
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.text-8xl{
+  font-size: 6rem;
+  line-height: 1;
+}
+
 .text-base{
   font-size: 1rem;
   line-height: 1.5rem;
@@ -3181,6 +3231,10 @@ body{
 
 .tracking-normal{
   letter-spacing: 0em;
+}
+
+.tracking-tight{
+  letter-spacing: -0.025em;
 }
 
 .tracking-wider{
@@ -3350,6 +3404,11 @@ body{
 .text-indigo-600{
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity, 1));
+}
+
+.text-indigo-700{
+  --tw-text-opacity: 1;
+  color: rgb(67 56 202 / var(--tw-text-opacity, 1));
 }
 
 .text-meta-1{
@@ -4566,6 +4625,21 @@ span.flatpickr-weekday:is(.dark *),
     padding-left: 1.875rem;
     padding-right: 1.875rem;
   }
+
+  .sm\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .sm\:text-6xl{
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .sm\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
 }
 
 @media (min-width: 768px){
@@ -4591,6 +4665,10 @@ span.flatpickr-weekday:is(.dark *),
 
   .md\:gap-6{
     gap: 1.5rem;
+  }
+
+  .md\:p-12{
+    padding: 3rem;
   }
 
   .md\:p-5{
@@ -4678,6 +4756,10 @@ span.flatpickr-weekday:is(.dark *),
 
   .\32xl\:p-10{
     padding: 2.5rem;
+  }
+
+  .\32xl\:p-16{
+    padding: 4rem;
   }
 
   .\32xl\:px-11{

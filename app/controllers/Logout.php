@@ -6,6 +6,8 @@ class Logout
     {
         session_start();
         session_destroy();
-        header("location: " . base_url . '/login');
+        Flasher::setMessage('Selamat Anda Berhasil Logout!', 'success');
+        header('location:' . base_url . '/login');
+        exit;
     }
 }
