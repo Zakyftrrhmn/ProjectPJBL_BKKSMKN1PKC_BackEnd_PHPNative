@@ -123,7 +123,7 @@
                             class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
                             <li>
                                 <a
-                                    href="<?= base_url ?>/account"
+                                    href="<?= base_url ?>/admin/account"
                                     class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                                     <svg
                                         class="fill-current"
@@ -144,7 +144,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="<?= base_url; ?>/logout"
+                                    href="<?= base_url; ?>/admin/logout"
                                     class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                                     <svg
                                         class="fill-current"

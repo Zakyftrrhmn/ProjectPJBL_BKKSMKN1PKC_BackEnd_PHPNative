@@ -8,9 +8,9 @@
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
+                        <a class="font-medium text-primary" href="<?= base_url; ?>/admin/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
+                    <li class="font-medium"><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -22,7 +22,7 @@
         <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
 
             <!-- Responsive Table -->
-            <form action="<?= base_url; ?>/account/updateAccount" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
+            <form action="<?= base_url; ?>/admin/account/updateAccount" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
                 <!-- Hidden Input for User ID -->
                 <input type="hidden" name="id" value="<?= $data['user']['id']; ?>">
 

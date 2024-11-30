@@ -58,7 +58,7 @@ class GalleryModel
         return $this->db->rowCount();
     }
 
-    public function cariGallery ()
+    public function cariGallery()
     {
         $key = $_POST['key'];
         $this->db->query("SELECT * FROM " . $this->table . "  WHERE keterangan LIKE :key");

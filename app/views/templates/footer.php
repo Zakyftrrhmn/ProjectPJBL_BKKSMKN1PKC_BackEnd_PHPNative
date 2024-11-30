@@ -79,47 +79,54 @@
 
 <script>
     // Ambil data dari PHP yang sudah dihitung di controller
-    const bekerja = <?= $data['bekerja'] ?>;
-    const kuliah = <?= $data['kuliah'] ?>;
-    const unknown = <?= $data['unknown'] ?>;
-    const totalAlumni = <?= $data['totalAlumni'] ?>;
+    const bekerja = <?= $data['bekerja'] ?? 0 ?>;
+    const kuliah = <?= $data['kuliah'] ?? 0 ?>;
+    const unknown = <?= $data['unknown'] ?? 0 ?>;
+    const totalAlumni = <?= $data['totalAlumni'] ?? 0 ?>;
 
-    // Menghitung persentase
-    const persentaseBekerja = (bekerja / totalAlumni) * 100;
-    const persentaseKuliah = (kuliah / totalAlumni) * 100;
-    const persentaseUnknown = (unknown / totalAlumni) * 100;
+    // Pastikan totalAlumni tidak nol untuk menghindari pembagian dengan nol
+    if (totalAlumni > 0) {
+        // Menghitung persentase
+        const persentaseBekerja = (bekerja / totalAlumni) * 100;
+        const persentaseKuliah = (kuliah / totalAlumni) * 100;
+        const persentaseUnknown = (unknown / totalAlumni) * 100;
 
-    // Membuat grafik menggunakan Chart.js
-    const ctx = document.getElementById('chartThree').getContext('2d');
-    const chart = new Chart(ctx, {
-        type: 'doughnut', // Jenis grafik donut
-        data: {
-            datasets: [{
-                label: 'Alumni Statistik',
-                data: [persentaseBekerja, persentaseKuliah, persentaseUnknown], // Data persentase
-                backgroundColor: ['#859a28', '#8FD0EF', '#0FADCF'], // Warna untuk tiap kategori
-                borderColor: ['#859a28', '#8FD0EF', '#0FADCF'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2) + '%'; // Format persentase di tooltip
+        // Membuat grafik menggunakan Chart.js
+        const ctx = document.getElementById('chartThree').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'doughnut', // Jenis grafik donut
+            data: {
+                datasets: [{
+                    label: 'Alumni Statistik',
+                    data: [persentaseBekerja, persentaseKuliah, persentaseUnknown], // Data persentase
+                    backgroundColor: ['#859a28', '#8FD0EF', '#0FADCF'], // Warna untuk tiap kategori
+                    borderColor: ['#859a28', '#8FD0EF', '#0FADCF'],
+                    borderWidth: 1
+                }],
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2) + '%'; // Format persentase di tooltip
+                            }
                         }
                     }
-                }
-            },
-            // Menambahkan cutoutPercentage untuk membuat efek donat dengan lubang
-            cutout: '70%', // Mengatur area kosong di tengah untuk membuat lubang donat
-        }
-    });
+                },
+                cutout: '70%', // Menambahkan efek donat dengan lubang tengah
+            }
+        });
+    } else {
+        // Jika totalAlumni adalah nol, tampilkan pesan
+        document.getElementById('chartThree').innerHTML = `
+        <p style="text-align: center; color: #666;">Tidak ada data untuk ditampilkan.</p>
+    `;
+    }
 </script>
 
 <script>

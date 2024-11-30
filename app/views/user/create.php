@@ -8,9 +8,9 @@
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="index.html">Dashboard /</a>
+                        <a class="font-medium text-primary" href="<?= base_url; ?>/admin/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
+                    <li class=" font-medium "><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -19,10 +19,10 @@
         <?php Flasher::flash(); ?>
 
         <!-- Table Section Start -->
-        <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
+        <div class=" bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
 
             <!-- Responsive Table -->
-            <form action="<?= base_url; ?>/user/simpanUser" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
+            <form action="<?= base_url; ?>/admin/user/simpanUser" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
                 <!-- Nama -->
                 <div class="mb-5">
                     <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
@@ -88,7 +88,7 @@
                 <!-- Tombol Submit -->
                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Tambah User</button>
 
-                <a href="<?= base_url; ?>/user" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Kembali</a>
+                <a href="<?= base_url; ?>/admin/user" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Kembali</a>
             </form>
 
 

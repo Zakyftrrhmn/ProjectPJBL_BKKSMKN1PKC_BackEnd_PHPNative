@@ -8,9 +8,9 @@
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
+                        <a class="font-medium text-primary" href="<?= base_url; ?>/admin/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
+                    <li class="font-medium "><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -21,7 +21,7 @@
         <!-- Table Section Start -->
         <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
             <!-- Responsive Table -->
-            <form action="<?= base_url; ?>/about/updateAbout" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
+            <form action="<?= base_url; ?>/admin/about/updateAbout" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
                 <input type="hidden" name="id" value="<?= isset($data['about'][0]['id']) ? $data['about'][0]['id'] : ''; ?>" />
 
 
@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- Tombol Submit -->
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">Update Contact</button>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-3">Update Penjelasan</button>
             </form>
         </div>
         <!-- Table Section End -->

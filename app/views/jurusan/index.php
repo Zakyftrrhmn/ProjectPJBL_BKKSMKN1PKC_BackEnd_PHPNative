@@ -8,9 +8,9 @@
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
+                        <a class="font-medium text-primary" href="<?= base_url; ?>/admin/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
+                    <li class="font-medium"><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -23,12 +23,12 @@
             <!-- Header Section -->
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
                 <!-- Tambah jurusan Button -->
-                <a href="<?= base_url; ?>/jurusan/tambah" class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href="<?= base_url; ?>/admin/jurusan/tambah" class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <i class="bx bx-book text-lg mr-2"></i> Tambah Jurusan
                 </a>
 
                 <!-- Form Search -->
-                <form action="<?= base_url; ?>/jurusan/cari" method="post" class="flex items-center w-full max-w-lg gap-2">
+                <form action="<?= base_url; ?>/admin/jurusan/cari" method="post" class="flex items-center w-full max-w-lg gap-2">
                     <input type="text" id="voice-search" name="key"
                         class="flex-grow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Search nama jurusan..."
@@ -39,7 +39,7 @@
                         <i class='bx bx-search-alt-2'></i> Search
                     </button>
 
-                    <a href="<?= base_url; ?>/jurusan" class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:text-white dark:focus:ring-blue-800">
+                    <a href="<?= base_url; ?>/admin/jurusan" class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:text-white dark:focus:ring-blue-800">
                         <i class='bx bx-reset'></i> Reset
                     </a>
                 </form>
@@ -64,8 +64,8 @@
                                 <td class="px-2 py-2 text-center"><?= $no; ?></td>
                                 <td class="px-6 py-4"><?= $row['nama_jurusan']; ?></td>
                                 <td class="px-6 py-4 ">
-                                    <a href="<?= base_url; ?>/jurusan/edit/<?= $row['id'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
-                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/jurusan/hapus/<?= $row['id'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
+                                    <a href="<?= base_url; ?>/admin/jurusan/edit/<?= $row['id'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
+                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/admin/jurusan/hapus/<?= $row['id'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
                                         <i class='bx bxs-trash'></i>
                                     </a>
 

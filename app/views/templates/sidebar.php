@@ -9,7 +9,7 @@
 
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-      <a href="<?= base_url ?>/index">
+      <a href="<?= base_url ?>/admin/">
         <img src="<?= base_url ?>/assets/src/images/logo/logo.svg" alt="Logo" />
       </a>
       <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">
@@ -36,7 +36,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/dashboard"
+                  href="<?= base_url ?>/admin/dashboard"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/dashboard') }">
                   <i class="bx bx-home text-xl"></i> Dashboard
                 </a>
@@ -44,7 +44,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/event"
+                  href="<?= base_url ?>/admin/event"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/event') }">
                   <i class="bx bx-calendar-event text-xl"></i> Event
                 </a>
@@ -52,7 +52,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/pengumuman"
+                  href="<?= base_url ?>/admin/pengumuman"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/pengumuman') }">
                   <i class='bx bx-bell'></i> Pengumuman
                 </a>
@@ -60,7 +60,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/perusahaan"
+                  href="<?= base_url ?>/admin/perusahaan"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/perusahaan') }">
                   <i class="bx bx-buildings text-xl"></i> Perusahaan
                 </a>
@@ -68,7 +68,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/jurusan"
+                  href="<?= base_url ?>/admin/jurusan"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/jurusan') }">
                   <i class="bx bx-book text-xl"></i> Jurusan
                 </a>
@@ -76,7 +76,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/user"
+                  href="<?= base_url ?>/admin/user"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/user') }">
                   <i class='bx bxs-user'></i> Users
                 </a>
@@ -88,7 +88,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/alumni"
+                  href="<?= base_url ?>/admin/alumni"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/alumni') }">
                   <i class="bx bx-group text-xl"></i> Alumni
                 </a>
@@ -108,7 +108,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/beranda"
+                  href="<?= base_url ?>/admin/beranda"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/beranda') }">
                   <i class="bx bx-home text-xl"></i> Beranda
                 </a>
@@ -118,7 +118,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/about"
+                  href="<?= base_url ?>/admin/about"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/about') }">
                   <i class='bx bx-question-mark'></i> Apa itu bkk?
                 </a>
@@ -128,7 +128,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/tujuan"
+                  href="<?= base_url ?>/admin/tujuan"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/tujuan') }">
                   <i class="bx bx-bullseye text-xl"></i> Tujuan
                 </a>
@@ -138,7 +138,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/gallery"
+                  href="<?= base_url ?>/admin/gallery"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/gallery') }">
                   <i class="bx bx-image-alt text-xl"></i> Gallery
                 </a>
@@ -148,7 +148,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/info"
+                  href="<?= base_url ?>/admin/info"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/info') }">
                   <i class="bx bx-info-square text-xl"></i> Info
                 </a>
@@ -158,7 +158,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                  href="<?= base_url ?>/logo"
+                  href="<?= base_url ?>/admin/logo"
                   :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/logo') }">
                   <i class="bx bx-star text-xl"></i> Logo
                 </a>

@@ -8,7 +8,7 @@
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
+                        <a class="font-medium text-primary" href="<?= base_url; ?>/admin/dashboard">Dashboard /</a>
                     </li>
                 </ol>
             </nav>

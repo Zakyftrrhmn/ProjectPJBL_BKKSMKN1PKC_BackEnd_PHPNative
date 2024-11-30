@@ -8,9 +8,9 @@
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
+                        <a class="font-medium text-primary" href="<?= base_url; ?>/admin/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
+                    <li class="font-medium "><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -20,7 +20,7 @@
 
         <!-- Form Tambah Event Start -->
         <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
-            <form action="<?= base_url; ?>/event/simpanEvent" method="post" class="w-full mx-auto" id="form">
+            <form action="<?= base_url; ?>/admin/event/simpanEvent" method="post" class="w-full mx-auto" id="form">
 
                 <!-- Tipe event -->
                 <div class="mb-5">
@@ -103,7 +103,7 @@
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Tambah
                     Event</button>
-                <a href="<?= base_url; ?>/event"
+                <a href="<?= base_url; ?>/admin/event"
                     class="text-white bg-gray-800 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5">Kembali</a>
             </form>
         </div>

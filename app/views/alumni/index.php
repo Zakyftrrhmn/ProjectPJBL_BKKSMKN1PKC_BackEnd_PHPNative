@@ -8,9 +8,9 @@
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
+                        <a class="font-medium text-primary" href="<?= base_url; ?>/admin/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
+                    <li class="font-medium"><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -23,12 +23,12 @@
             <!-- Header Section -->
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
                 <!-- Tambah Alumni Button -->
-                <a href="<?= base_url; ?>/alumni/tambah" class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href="<?= base_url; ?>/admin/alumni/tambah" class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <i class="bx bx-group text-lg mr-2"></i> Tambah Alumni
                 </a>
 
                 <!-- Form Search -->
-                <form action="<?= base_url; ?>/alumni/cari" method="post" class="flex items-center w-full max-w-lg gap-2">
+                <form action="<?= base_url; ?>/admin/alumni/cari" method="post" class="flex items-center w-full max-w-lg gap-2">
                     <input type="text" id="voice-search" name="key"
                         class="flex-grow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Search Alumni..."
@@ -39,7 +39,7 @@
                         <i class='bx bx-search-alt-2'></i> Search
                     </button>
 
-                    <a href="<?= base_url; ?>/alumni" class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:text-white dark:focus:ring-blue-800">
+                    <a href="<?= base_url; ?>/admin/alumni" class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:text-white dark:focus:ring-blue-800">
                         <i class='bx bx-reset'></i> Reset
                     </a>
                 </form>
@@ -89,9 +89,9 @@
 
 
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="<?= base_url; ?>/alumni/detail/<?= $row['id'] ?>" class="text-lg text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i></a>
-                                    <a href="<?= base_url; ?>/alumni/edit/<?= $row['id'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
-                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/alumni/hapus/<?= $row['id'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
+                                    <a href="<?= base_url; ?>/admin/alumni/detail/<?= $row['id'] ?>" class="text-lg text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i></a>
+                                    <a href="<?= base_url; ?>/admin/alumni/edit/<?= $row['id'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
+                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/admin/alumni/hapus/<?= $row['id'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
                                         <i class='bx bxs-trash'></i>
                                     </a>
 

@@ -8,9 +8,9 @@
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium" href="<?= base_url; ?>/dashboard">Dashboard /</a>
+                        <a class="font-medium text-primary" href="<?= base_url; ?>/admin/dashboard">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary"><?= $data['title']; ?></li>
+                    <li class="font-medium"><?= $data['title']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -75,7 +75,7 @@
             </div>
             <!-- Back Button -->
             <div class="mt-6">
-                <a href="<?= base_url; ?>/alumni"
+                <a href="<?= base_url; ?>/admin/alumni"
                     class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
                     Kembali
                 </a>
