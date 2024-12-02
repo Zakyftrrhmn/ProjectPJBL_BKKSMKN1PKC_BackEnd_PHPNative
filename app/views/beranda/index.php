@@ -28,7 +28,7 @@
 
                 <!-- Input Video -->
                 <div class="mb-5">
-                    <label for="video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link URL Video</label>
+                    <label for="video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Video Tutorial</label>
                     <input type="text" id="video" name="video" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['beranda'][0]['video']) ? $data['beranda'][0]['video'] : 'https://www.youtube.com/watch?v=Dyv8h-0-K2Y'; ?>" required />
                 </div>
 
@@ -39,14 +39,14 @@
                 </div>
 
                 <div class="mb-5">
-                    <label for="gambar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar</label>
+                    <label for="gambar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Rekomendasi ukuran gambar (450px x 450px)</span></label>
                     <input type="file" id="gambar" name="gambar" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <div class="mt-3">
                         <p class="text-sm text-gray-600 dark:text-gray-400">Foto saat ini:</p>
                         <?php
                         $gambar = !empty($data['beranda'][0]['gambar']) && file_exists('uploads/beranda/gambar/' . $data['beranda'][0]['gambar'])
                             ? $data['beranda'][0]['gambar']
-                            : 'default-gambar.jpg';
+                            : 'default-gambar.png';
                         ?>
                         <img src="<?= base_url; ?>/uploads/beranda/gambar/<?= $gambar; ?>" alt="Photo Beranda"
                             class="mt-2 h-20 w-20 rounded-sm object-cover shadow-md mb-4">
@@ -56,7 +56,7 @@
 
                 <!-- Input Banner -->
                 <div class="mb-5">
-                    <label for="banner" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Banner</label>
+                    <label for="banner" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Banner <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Rekomendasi ukuran gambar (1056px x 300px)</span></label>
                     <input type="file" id="banner" name="banner" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <div class="mt-3">
                         <p class="text-sm text-gray-600 dark:text-gray-400">Foto saat ini:</p>
@@ -66,7 +66,7 @@
                             : 'default-banner.png';
                         ?>
                         <img src="<?= base_url; ?>/uploads/beranda/banner/<?= $gambar; ?>" alt="Photo Beranda"
-                            class="mt-2 h-20 w-20 rounded-sm object-cover shadow-md mb-4">
+                            class="mt-2 w-auto h-20 rounded-sm object-fit shadow-md mb-4">
                     </div>
                 </div>
 

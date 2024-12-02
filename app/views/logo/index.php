@@ -40,7 +40,7 @@
 
                 <!-- Input Logo BKK -->
                 <div class="mb-5">
-                    <label for="logo_bkk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo BKK (Bursa Kerja Khusu)</label>
+                    <label for="logo_bkk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo BKK (Bursa Kerja Khusu) <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Rekomendasi ukuran gambar (224px x 128px)</span></label>
                     <input type="file" id="logo_bkk" name="logo_bkk" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <div class="mt-3">
                         <p class="text-sm text-gray-600 dark:text-gray-400">Foto saat ini:</p>
@@ -50,13 +50,13 @@
                             : 'default-logobkk.png';
                         ?>
                         <img src="<?= base_url; ?>/uploads/logo/logobkk/<?= $logo_bkk; ?>" alt="Logo BKK"
-                            class="mt-2 h-20 w-20 rounded-sm object-cover shadow-md mb-4">
+                            class="mt-2 w-28 h-16 rounded-sm object-cover shadow-md mb-4">
                     </div>
                 </div>
 
                 <!-- Input Logo Sekolah -->
                 <div class="mb-5">
-                    <label for="logo_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo Sekolah</label>
+                    <label for="logo_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo Sekolah <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Rekomendasi ukuran gambar (128px x 128px)</span></label>
                     <input type="file" id="logo_sekolah" name="logo_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <div class="mt-3">
                         <p class="text-sm text-gray-600 dark:text-gray-400">Foto saat ini:</p>

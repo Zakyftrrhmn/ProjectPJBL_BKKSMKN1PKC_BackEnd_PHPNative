@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><?= $data['title']; ?> - BKK SMKN 1 PKC</title>
+  <title>Dashboard BKK SMKN 1 PKC - <?= $data['title']; ?></title>
+  <link rel="icon" href="<?= !empty($data['logo']['logo_sekolah']) ? base_url . '/uploads/logo/logobkk/' . $data['logo']['logo_sekolah'] : base_url . '/assets/img/1._Logo_BKK-removebg-preview.png' ?>" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="icon" href="<?= base_url ?>/uploads/logo/logo.jpg" />
   <link href="<?= base_url ?>/assets/satoshi.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
 </head>

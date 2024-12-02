@@ -10,6 +10,7 @@ class PerusahaanModel
         $this->db = new Database;
     }
 
+
     public function getAllPerusahaan()
     {
         $this->db->query('SELECT * FROM ' . $this->table);

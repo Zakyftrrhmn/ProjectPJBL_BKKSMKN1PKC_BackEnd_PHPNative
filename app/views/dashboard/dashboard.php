@@ -94,7 +94,7 @@
                 <div class="-mx-8 flex flex-col items-center justify-center gap-y-3">
                     <div class="w-full px-8 ">
                         <div class="flex w-full items-center">
-                            <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
+                            <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#859a28]"></span>
                             <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
                                 <span> Bekerja </span>
                                 <span> <?= $data['bekerja'] ?> Alumni (<?= number_format(($data['bekerja'] / $data['totalAlumni']) * 100, 2) ?>%) </span>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="w-full px-8 ">
                         <div class="flex w-full items-center">
-                            <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#859a28]"></span>
+                            <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#0FADCF]"></span>
                             <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
                                 <span> Unknown </span>
                                 <span> <?= $data['unknown'] ?> Alumni (<?= number_format(($data['unknown'] / $data['totalAlumni']) * 100, 2) ?>%) </span>

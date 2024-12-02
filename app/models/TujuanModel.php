@@ -11,6 +11,7 @@ class TujuanModel
         $this->db = new Database;
     }
 
+    
     public function getAllTujuan()
     {
         $this->db->query('SELECT * FROM ' . $this->table);

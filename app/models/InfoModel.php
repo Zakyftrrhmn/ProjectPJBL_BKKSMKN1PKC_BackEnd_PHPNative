@@ -11,6 +11,12 @@ class InfoModel
         $this->db = new Database;
     }
 
+    public function getAllInfoo()
+    {
+        $this->db->query("SELECT * FROM " . $this->table . " LIMIT 1");
+        return $this->db->single();
+    }
+
     public function getAllInfo()
     {
         $this->db->query('SELECT * FROM ' . $this->table);

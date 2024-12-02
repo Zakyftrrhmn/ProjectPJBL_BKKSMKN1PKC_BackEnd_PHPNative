@@ -11,6 +11,12 @@ class AboutModel
         $this->db = new Database;
     }
 
+    public function getAllAboutt()
+    {
+        $this->db->query("SELECT * FROM " . $this->table . " LIMIT 1");
+        return $this->db->single();
+    }
+
     public function getAllAbout()
     {
         $this->db->query('SELECT * FROM ' . $this->table);

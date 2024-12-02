@@ -11,6 +11,12 @@ class BerandaModel
         $this->db = new Database;
     }
 
+    public function getAllBerandaa()
+    {
+        $this->db->query("SELECT * FROM " . $this->table . " LIMIT 1");
+        return $this->db->single();
+    }
+
     public function getAllBeranda()
     {
         $this->db->query('SELECT * FROM ' . $this->table);

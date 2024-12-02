@@ -12,7 +12,7 @@ class EventModel
 
     public function getAllEvent()
     {
-        $this->db->query('SELECT event.*, perusahaan.nama_perusahaan 
+        $this->db->query('SELECT event.*, perusahaan.nama_perusahaan, perusahaan.logo_perusahaan 
                           FROM ' . $this->table . ' 
                           JOIN perusahaan ON perusahaan.id = event.id_perusahaan 
                           ORDER BY event.id DESC'); // Mengurutkan berdasarkan id secara menurun

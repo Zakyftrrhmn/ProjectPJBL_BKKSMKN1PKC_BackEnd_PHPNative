@@ -11,6 +11,13 @@ class LogoModel
         $this->db = new Database;
     }
 
+    public function getAllLogoo()
+    {
+        $this->db->query("SELECT * FROM " . $this->table . " LIMIT 1");
+        return $this->db->single(); // Gunakan single() untuk mengambil satu baris
+    }
+
+
     public function getAllLogo()
     {
         $this->db->query('SELECT * FROM ' . $this->table);
