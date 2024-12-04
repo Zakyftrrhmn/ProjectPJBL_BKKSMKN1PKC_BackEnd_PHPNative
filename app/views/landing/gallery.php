@@ -45,7 +45,7 @@
                     <div class="">
                         <img
                             class="h-60 w-full object-cover rounded-lg"
-                            src="<?= $row['gambar'] ?>"
+                            src="<?= base_url ?>/uploads/gallery/<?= $row['gambar'] ?>"
                             alt="Gambar <?= $row['keterangan'] ?>" />
                     </div>
                 <?php endforeach ?>

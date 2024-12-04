@@ -19,10 +19,25 @@ class PendaftaranModel
 
     public function getPendaftaranById($id)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+        // Query untuk mengambil data pelamar beserta data event dan perusahaan
+        $this->db->query('
+            SELECT 
+                pelamar.*, 
+                event.tipe AS tipe,
+                event.lokasi AS lokasi,
+                event.posisi AS posisi,
+                perusahaan.nama_perusahaan
+            FROM pelamar
+            JOIN event ON pelamar.id_event = event.id
+            JOIN perusahaan ON event.id_perusahaan = perusahaan.id
+            WHERE pelamar.id = :id
+        ');
+
         $this->db->bind('id', $id);
+
         return $this->db->single();
     }
+
 
     public function tambahPendaftaran($data)
     {
@@ -60,6 +75,10 @@ class PendaftaranModel
 
         $this->db->execute();
 
-        return $this->db->rowCount();
+        // Mengambil ID terakhir yang dimasukkan
+        $lastIdQuery = "SELECT LAST_INSERT_ID() AS last_id";
+        $this->db->query($lastIdQuery);
+        $result = $this->db->single();
+        return $result['last_id'];  // Mengembalikan ID terakhir
     }
 }

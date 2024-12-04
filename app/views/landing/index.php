@@ -373,7 +373,7 @@
                                 <div class="flex justify-between">
                                     <p class="text-sm font-bold">Perkiraan gaji</p>
                                     <p class="text-sm text-gray-600">
-                                        <?= 'Rp ' . number_format($row['gaji'], 0, ',', '.'); ?>
+                                        <?= htmlspecialchars($row['gaji']); ?>
                                     </p>
                                 </div>
                                 <div class="flex justify-between">
@@ -459,7 +459,7 @@
                     <div class="album-item">
                         <img
                             class="h-60 w-full object-cover rounded-lg"
-                            src="<?= $row['gambar'] ?>"
+                            src="<?= base_url ?>/uploads/gallery/<?= $row['gambar'] ?>"
                             alt="Gambar <?= $row['keterangan'] ?>" />
                     </div>
                 <?php endforeach ?>
@@ -471,7 +471,7 @@
         <div class="text-center mt-6">
             <a href="<?= base_url ?>/landing/gallery"
                 class="w-fit mt-10 text-sm bg-purple-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-purple-600 hover:shadow-xl transition duration-200 cursor-pointer">
-                Lihat Semua Album
+                Lihat Semua Foto
             </a>
         </div>
     </div>

@@ -73,7 +73,7 @@
                             <div class="flex justify-between">
                                 <p class="text-sm font-bold">Perkiraan gaji</p>
                                 <p class="text-sm text-gray-600">
-                                    <?= 'Rp ' . number_format($data['event']['gaji'], 0, ',', '.'); ?>
+                                    <?= $data['event']['gaji']; ?>
                                 </p>
                             </div>
                             <div class="flex justify-between">
@@ -87,9 +87,17 @@
 
                     <!-- Date -->
                     <div class="mt-4 flex items-center text-xs text-gray-500">
-                        <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">
-                            masih berlangsung hingga <?php echo date('d M Y', strtotime($data['event']['tanggal_terakhir'])); ?>
-                        </span>
+                        <?php
+                        $currentDate = date('Y-m-d'); // Get current date
+                        $endDate = date('Y-m-d', strtotime($data['event']['tanggal_terakhir'])); // Convert to comparable format
+
+                        // Check if the event has ended
+                        if ($endDate < $currentDate) {
+                            echo '<span class=" bg-red-200 text-red-800 rounded-full px-2 py-1">Event telah berakhir</span>';
+                        } else {
+                            echo '<span class=" bg-green-200 text-green-800 rounded-full px-2 py-1">masih berlangsung hingga ' . date('d M Y', strtotime($data['event']['tanggal_terakhir'])) . '</span>';
+                        }
+                        ?>
                     </div>
 
                 </div>
@@ -113,16 +121,17 @@
                     <input type="hidden" name="id_event" value="<?= $data['event']['id'] ?>">
                     <div class="space-y-5">
                         <?php Flasher::flash(); ?>
+
                         <!-- Nama Lengkap -->
                         <div>
                             <label for="nama_lengkap" class="block text-xs font-semibold text-gray-700">Nama Lengkap</label>
-                            <input type="text" id="nama_lengkap" name="nama_lengkap" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="text" id="nama_lengkap" name="nama_lengkap" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="100" required />
                         </div>
 
                         <!-- Nomor KTP -->
                         <div>
                             <label for="nomor_ktp" class="block text-xs font-semibold text-gray-700">Nomor KTP (NIK)</label>
-                            <input type="number" id="nomor_ktp" name="nomor_ktp" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="text" id="nomor_ktp" name="nomor_ktp" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="16" required />
                         </div>
 
                         <!-- Tanggal Lahir -->
@@ -134,13 +143,13 @@
                         <!-- Tempat Lahir -->
                         <div>
                             <label for="tempat_lahir" class="block text-xs font-semibold text-gray-700">Tempat Lahir</label>
-                            <input type="text" id="tempat_lahir" name="tempat_lahir" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="text" id="tempat_lahir" name="tempat_lahir" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="100" required />
                         </div>
 
                         <!-- Usia -->
                         <div>
                             <label for="usia" class="block text-xs font-semibold text-gray-700">Usia</label>
-                            <input type="number" id="usia" name="usia" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="number" id="usia" name="usia" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="2" required />
                         </div>
 
                         <!-- Jenis Kelamin -->
@@ -155,58 +164,56 @@
                         <!-- No Handphone -->
                         <div>
                             <label for="no_handphone" class="block text-xs font-semibold text-gray-700">No Handphone</label>
-                            <input type="text" id="no_handphone" name="no_handphone" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="text" id="no_handphone" name="no_handphone" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="20" required />
                         </div>
 
                         <!-- Email -->
                         <div>
                             <label for="email" class="block text-xs font-semibold text-gray-700">Email Aktif</label>
-                            <input type="email" id="email" name="email" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="email" id="email" name="email" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="100" required />
                         </div>
 
                         <!-- Agama -->
                         <div>
                             <label for="agama" class="block text-xs font-semibold text-gray-700">Agama</label>
-                            <input type="text" id="agama" name="agama" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="text" id="agama" name="agama" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="20" required />
                         </div>
 
                         <!-- Tinggi Badan -->
                         <div>
                             <label for="tinggi_badan" class="block text-xs font-semibold text-gray-700">Tinggi Badan</label>
-                            <input type="number" id="tinggi_badan" name="tinggi_badan" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="number" id="tinggi_badan" name="tinggi_badan" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="10" required />
                         </div>
 
                         <!-- Berat Badan -->
                         <div>
                             <label for="berat_badan" class="block text-xs font-semibold text-gray-700">Berat Badan</label>
-                            <input type="number" id="berat_badan" name="berat_badan" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="number" id="berat_badan" name="berat_badan" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="10" required />
                         </div>
 
                         <!-- Alamat -->
                         <div>
                             <label for="alamat_sekarang" class="block text-xs font-semibold text-gray-700">Alamat Sekarang</label>
-                            <input type="text" id="alamat_sekarang" name="alamat_sekarang" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="text" id="alamat_sekarang" name="alamat_sekarang" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="255" required />
                         </div>
 
                         <!-- Asal Sekolah -->
                         <div>
                             <label for="asal_sekolah" class="block text-xs font-semibold text-gray-700">Asal Sekolah</label>
-                            <input type="text" id="asal_sekolah" name="asal_sekolah" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="text" id="asal_sekolah" name="asal_sekolah" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="255" required />
                         </div>
 
-                        <!-- jurusan -->
+                        <!-- Jurusan -->
                         <div>
-                            <label for="jurusan" class="block text-xs font-semibold text-gray-700">jurusan</label>
-                            <input type="text" id="jurusan" name="jurusan" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <label for="jurusan" class="block text-xs font-semibold text-gray-700">Jurusan</label>
+                            <input type="text" id="jurusan" name="jurusan" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="255" required />
                         </div>
 
-                        <!-- tahun_lulus -->
+                        <!-- Tahun Lulus -->
                         <div>
                             <label for="tahun_lulus" class="block text-xs font-semibold text-gray-700">Tahun Lulus</label>
-                            <input type="number" id="tahun_lulus" name="tahun_lulus" class="text-xs w-full p-2 border rounded-md mt-1" required />
+                            <input type="number" id="tahun_lulus" name="tahun_lulus" class="text-xs w-full p-2 border rounded-md mt-1" maxlength="4" required />
                         </div>
-
-
 
                         <!-- Foto KK -->
                         <div>
@@ -214,20 +221,19 @@
                             <input type="file" id="foto_kk" name="foto_kk" class="text-xs w-full p-2 border rounded-md mt-1" required />
                         </div>
 
-                        <!-- Foto KP -->
+                        <!-- Foto KTP -->
                         <div>
-                            <label for="foto_ktp" class="block text-xs font-semibold text-gray-700">Foto KTP </label>
+                            <label for="foto_ktp" class="block text-xs font-semibold text-gray-700">Foto KTP</label>
                             <input type="file" id="foto_ktp" name="foto_ktp" class="text-xs w-full p-2 border rounded-md mt-1" required />
                         </div>
 
                         <!-- CV -->
                         <div>
-                            <label for="file_cv" class="block text-xs font-semibold text-gray-700">CV Anda </label>
+                            <label for="file_cv" class="block text-xs font-semibold text-gray-700">CV Anda</label>
                             <input type="file" id="file_cv" name="file_cv" class="text-xs w-full p-2 border rounded-md mt-1" required />
                         </div>
 
-
-                        <!-- CV -->
+                        <!-- Sertifikat -->
                         <div>
                             <label for="sertifikat" class="block text-xs font-semibold text-gray-700">Sertifikat Pendukung <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Opsional</span></label>
                             <input type="file" id="sertifikat" name="sertifikat" class="text-xs w-full p-2 border rounded-md mt-1" />
@@ -242,6 +248,7 @@
                     </div>
                 </form>
             </div>
+
 
         </div>
     </div>

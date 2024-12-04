@@ -35,7 +35,7 @@
                 </div>
             </div>
         <?php else: ?>
-            <div class="overflow-x-auto" data-aos="fade-up" data-aos-delay="50">
+            <div class="overflow-x-auto py-14" data-aos="fade-up" data-aos-delay="50">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-white">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-white">
                         <tr>

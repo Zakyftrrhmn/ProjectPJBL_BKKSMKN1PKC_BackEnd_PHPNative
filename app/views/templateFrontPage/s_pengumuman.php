@@ -32,7 +32,7 @@
         </div>
         <a href="<?= base_url ?>/landing/pengumuman"
             class="text-xs font-medium bg-[#44808B] text-white px-8 py-2 rounded-lg shadow-lg hover:bg-[#30626b] hover:shadow-xl transition duration-200 cursor-pointer">
-            Lihat Pengumuman
+            Lihat Hasil Seleksi
         </a>
     </div>
 </section>

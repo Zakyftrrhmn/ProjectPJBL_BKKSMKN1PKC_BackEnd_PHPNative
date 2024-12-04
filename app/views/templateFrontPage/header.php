@@ -28,7 +28,7 @@
     </style>
 </head>
 
-<body class="bg-[#f1f4f5] font-['Poppins']">
+<body class="bg-[#f1f4f5] font-['Poppins'] flex flex-col min-h-screen">
     <!-- Header -->
     <header class="bg-[#44808B] text-white py-2 lg:px-8 px-1">
         <div class="container mx-auto flex justify-between items-center">
