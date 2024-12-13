@@ -78,7 +78,7 @@
             href="<?= base_url ?>/#pengumuman"
             class="block text-sm font-semibold text-gray-600 hover:text-[#44808B] py-2 px-4">Pengumuman</a>
         <div class="text-center py-4">
-            <a
+            <a href="<?= base_url ?>/landing/statistik"
                 class="text-sm bg-purple-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-purple-600 hover:shadow-xl transition duration-200 cursor-pointer">
                 Statistik Alumni
             </a>

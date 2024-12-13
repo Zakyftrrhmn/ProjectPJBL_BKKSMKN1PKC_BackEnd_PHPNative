@@ -15,7 +15,7 @@ class UserModel
     {
         $this->db->query('SELECT * 
                           FROM ' . $this->table . ' 
-                          ORDER BY id DESC'); // Mengurutkan berdasarkan id secara menurun
+                          ORDER BY role DESC'); // Mengurutkan berdasarkan id secara menurun
         return $this->db->resultSet();
     }
 

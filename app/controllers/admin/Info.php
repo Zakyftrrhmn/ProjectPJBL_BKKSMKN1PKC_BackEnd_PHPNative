@@ -28,6 +28,7 @@ class Info extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Info Contact';
         $data['info'] = $this->model('InfoModel')->getAllInfo();

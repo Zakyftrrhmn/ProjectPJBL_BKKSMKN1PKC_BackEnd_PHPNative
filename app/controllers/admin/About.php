@@ -29,7 +29,7 @@ class About extends Controller
     public function index()
     {
         $this->cekAkses('Super Admin');
-
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $data['title'] = 'Apa itu BKK?';
         $data['about'] = $this->model('AboutModel')->getAllAbout();
 

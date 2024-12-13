@@ -8,11 +8,16 @@ class Landing extends Controller
         $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $data['info'] = $this->model('InfoModel')->getAllInfoo();
         $data['beranda'] = $this->model('BerandaModel')->getAllBerandaa();
+        $data['sambutan'] = $this->model('SambutanModel')->getAllSambutann();
         $data['about'] = $this->model('AboutModel')->getAllAboutt();
         $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
-        $data['event'] = $this->model('EventModel')->getAllEvent();
+        $data['event'] = $this->model('EventModel')->getActiveEvents();
         $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
+        // Mengambil data perusahaan
+        $perusahaanData = $this->model('PerusahaanModel')->getAllPerusahaan();
+        $totalPerusahaan = count($perusahaanData);
+        $data['totalPerusahaan'] = $totalPerusahaan;
 
         $this->view('templateFrontPage/header', $data);
         $this->view('templateFrontPage/navbar', $data);
@@ -24,9 +29,18 @@ class Landing extends Controller
     public function lowongan()
     {
         $data['title'] = 'All Lowongan';
+        $data['title'] = 'BKK SMKN 1 Pangkalan Kerinci';
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
+        $data['info'] = $this->model('InfoModel')->getAllInfoo();
+        $data['beranda'] = $this->model('BerandaModel')->getAllBerandaa();
+        $data['sambutan'] = $this->model('SambutanModel')->getAllSambutann();
+        $data['about'] = $this->model('AboutModel')->getAllAboutt();
+        $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
+        $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
+        $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
 
 
-        $data['event'] = $this->model('EventModel')->getAllEvent();
+        $data['event'] = $this->model('EventModel')->getActiveEvents();
 
         $this->view('templateFrontPage/header', $data);
         $this->view('templateFrontPage/navbar', $data);
@@ -39,6 +53,15 @@ class Landing extends Controller
     public function statistik()
     {
         $data['title'] = 'Statistik Alumni';
+
+        $data['title'] = 'BKK SMKN 1 Pangkalan Kerinci';
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
+        $data['info'] = $this->model('InfoModel')->getAllInfoo();
+        $data['beranda'] = $this->model('BerandaModel')->getAllBerandaa();
+        $data['sambutan'] = $this->model('SambutanModel')->getAllSambutann();
+        $data['about'] = $this->model('AboutModel')->getAllAboutt();
+        $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
+        $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
 
         // Mengambil data event
         $eventData = $this->model('EventModel')->getAllEvent();
@@ -90,6 +113,15 @@ class Landing extends Controller
     public function pendaftaran($id)
     {
         $data['title'] = 'Form Pendaftaran';
+        $data['title'] = 'BKK SMKN 1 Pangkalan Kerinci';
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
+        $data['info'] = $this->model('InfoModel')->getAllInfoo();
+        $data['beranda'] = $this->model('BerandaModel')->getAllBerandaa();
+        $data['sambutan'] = $this->model('SambutanModel')->getAllSambutann();
+        $data['about'] = $this->model('AboutModel')->getAllAboutt();
+        $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
+        $data['event'] = $this->model('EventModel')->getActiveEvents();
+        $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
         $data['event'] = $this->model('EventModel')->getEventById($id);
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
 
@@ -154,12 +186,19 @@ class Landing extends Controller
         }
     }
 
-
-
     public function gallery()
     {
         $data['title'] = 'All Gallery';
 
+        $data['title'] = 'BKK SMKN 1 Pangkalan Kerinci';
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
+        $data['info'] = $this->model('InfoModel')->getAllInfoo();
+        $data['beranda'] = $this->model('BerandaModel')->getAllBerandaa();
+        $data['sambutan'] = $this->model('SambutanModel')->getAllSambutann();
+        $data['about'] = $this->model('AboutModel')->getAllAboutt();
+        $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
+        $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
+        $data['event'] = $this->model('EventModel')->getActiveEvents();
         $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
         $this->view('templateFrontPage/header', $data);
         $this->view('templateFrontPage/navbar', $data);
@@ -172,6 +211,16 @@ class Landing extends Controller
     {
         $data['title'] = 'Pengumuman';
 
+        $data['title'] = 'BKK SMKN 1 Pangkalan Kerinci';
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
+        $data['info'] = $this->model('InfoModel')->getAllInfoo();
+        $data['beranda'] = $this->model('BerandaModel')->getAllBerandaa();
+        $data['sambutan'] = $this->model('SambutanModel')->getAllSambutann();
+        $data['about'] = $this->model('AboutModel')->getAllAboutt();
+        $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
+        $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
+        $data['event'] = $this->model('EventModel')->getActiveEvents();
+        $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
         $data['pengumuman'] = $this->model('PengumumanModel')->getAllPengumuman();
         $this->view('templateFrontPage/header', $data);
         $this->view('templateFrontPage/navbar', $data);
@@ -182,6 +231,16 @@ class Landing extends Controller
     public function success($id)
     {
         $data['title'] = 'Pendaftaran Success';
+        $data['title'] = 'BKK SMKN 1 Pangkalan Kerinci';
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
+        $data['info'] = $this->model('InfoModel')->getAllInfoo();
+        $data['beranda'] = $this->model('BerandaModel')->getAllBerandaa();
+        $data['sambutan'] = $this->model('SambutanModel')->getAllSambutann();
+        $data['about'] = $this->model('AboutModel')->getAllAboutt();
+        $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
+        $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
+        $data['event'] = $this->model('EventModel')->getActiveEvents();
+        $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
         $data['pelamar'] = $this->model('PendaftaranModel')->getPendaftaranById($id); // Ambil data berdasarkan ID pelamar
 
         $this->view('templateFrontPage/header', $data);
@@ -190,6 +249,19 @@ class Landing extends Controller
         $this->view('templateFrontPage/footer', $data);
     }
 
+    /*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Generates a PDF document containing registration proof for an applicant.
+     *
+     * This function retrieves applicant and event data based on the provided ID,
+     * and generates a PDF document with the applicant's personal information and
+     * event details. The PDF includes headers with logos and school information,
+     * applicant details, event information, and a footer with the registration date
+     * and the principal's signature.
+     *
+     * @param int $id The ID of the applicant for which the registration proof is generated.
+     */
+    /******  e12bb81e-9d34-4316-be41-d89594526c66  *******/
     public function buktiPendaftaran($id)
     {
         // Mengambil data pelamar dan event berdasarkan ID

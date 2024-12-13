@@ -28,6 +28,7 @@ class Perusahaan extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Perusahaan';
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
@@ -41,6 +42,7 @@ class Perusahaan extends Controller
 
     public function cari()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Perusahaan';
         $data['perusahaan'] = $this->model('PerusahaanModel')->cariPerusahaan();
@@ -55,6 +57,7 @@ class Perusahaan extends Controller
 
     public function tambah()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data Perusahaan';
 
@@ -117,6 +120,7 @@ class Perusahaan extends Controller
 
     public function edit($id)
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Data Perusahaan';
         $data['perusahaan'] = $this->model('PerusahaanModel')->getPerusahaanById($id);

@@ -29,6 +29,7 @@ class User extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Users';
         $data['user'] = $this->model('UserModel')->getAllUser();
@@ -42,6 +43,7 @@ class User extends Controller
 
     public function tambah()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data User';
 
@@ -127,6 +129,7 @@ class User extends Controller
 
     public function edit($id)
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit User';
         $data['user'] = $this->model('UserModel')->getUserById($id);
@@ -222,6 +225,7 @@ class User extends Controller
 
     public function cari()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data User';
         $data['user'] = $this->model('UserModel')->cariUser();

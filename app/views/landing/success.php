@@ -11,10 +11,10 @@
                 </div>
                 <div>
                     <h2 class="text-center text-black text-base font-semibold leading-relaxed pb-1">
-                        Pendaftaran Berhasil! Laporan Telah Disimpan.
+                        Pendaftaran Berhasil! Data Telah Disimpan.
                     </h2>
                     <p class="text-center text-black text-sm font-normal leading-snug pb-4">
-                        Anda dapat mencetak laporan dengan menekan tombol di bawah ini.
+                        Anda dapat mencetak bukti pendaftaran dengan menekan tombol di bawah ini.
                     </p>
                 </div>
                 <div class="flex justify-center gap-3">
@@ -24,7 +24,7 @@
                     </a>
 
                     <a href="<?= base_url ?>/landing/buktiPendaftaran/<?= $data['pelamar']['id'] ?>" class="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                        Cetak Laporan
+                        Cetak Bukti Pendaftaran
                     </a>
                 </div>
             </div>

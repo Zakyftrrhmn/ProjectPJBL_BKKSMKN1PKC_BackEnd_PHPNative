@@ -26,7 +26,7 @@
 
                 <!-- NISN -->
                 <div class="mb-5">
-                    <label for="nisn" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NISN</label>
+                    <label for="nisn" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NISN <span class="text-red-500">*</span></label>
                     <input type="text" id="nisn" name="nisn"
                         inputmode="numeric" pattern="[0-9]*"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -36,7 +36,7 @@
 
                 <!-- NIS -->
                 <div class="mb-5">
-                    <label for="nis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIS</label>
+                    <label for="nis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIS <span class="text-red-500">*</span></label>
                     <input type="text" id="nis" name="nis"
                         inputmode="numeric" pattern="[0-9]*"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -47,7 +47,7 @@
 
                 <!-- Nama Alumni -->
                 <div class="mb-5">
-                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Alumni</label>
+                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Alumni <span class="text-red-500">*</span></label>
                     <input type="text" id="nama" name="nama"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan Nama Alumni" required />
@@ -55,7 +55,7 @@
 
                 <!-- Jurusan -->
                 <div class="mb-5">
-                    <label for="id_jurusan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jurusan</label>
+                    <label for="id_jurusan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jurusan <span class="text-red-500">*</span></label>
                     <select id="id_jurusan" name="id_jurusan"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
                         <option value="" disabled selected>Pilih Jurusan Alumni</option>
@@ -67,7 +67,7 @@
 
                 <!-- Jenis Kelamin -->
                 <div class="mb-5">
-                    <label for="kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
+                    <label for="kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin <span class="text-red-500">*</span></label>
                     <select id="kelamin" name="kelamin"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required>
@@ -79,7 +79,7 @@
 
                 <!-- Tempat Lahir -->
                 <div class="mb-5">
-                    <label for="tempat_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
+                    <label for="tempat_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir <span class="text-red-500">*</span></label>
                     <input type="text" id="tempat_lahir" name="tempat_lahir"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan Tempat Lahir" required />
@@ -87,7 +87,7 @@
 
                 <!-- Tanggal Lahir -->
                 <div class="mb-5">
-                    <label for="tanggal_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
+                    <label for="tanggal_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir <span class="text-red-500">*</span></label>
                     <input type="date" id="tanggal_lahir" name="tanggal_lahir"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required />
@@ -95,7 +95,7 @@
 
                 <!-- tahun_lulus -->
                 <div class="mb-5">
-                    <label for="tahun_lulus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun Lulus</label>
+                    <label for="tahun_lulus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun Lulus <span class="text-red-500">*</span></label>
                     <input type="number" id="tahun_lulus" name="tahun_lulus"
                         maxlength="4" pattern="[0-9]*" inputmode="numeric"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -104,7 +104,7 @@
 
                 <!-- Status -->
                 <div class="mb-5">
-                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status <span class="text-red-500">*</span></label>
                     <select id="status" name="status"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required>

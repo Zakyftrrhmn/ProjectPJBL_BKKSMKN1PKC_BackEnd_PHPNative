@@ -7,7 +7,7 @@
             data-aos="fade-right" data-aos-delay="50">
             <div class="flex flex-col w-full lg:w-[60%]">
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-1">
-                    Event Terbaru
+                    Semua Event
                 </h2>
                 <p class="text-xs sm:text-sm font-bold text-[#44808B] italic">
                     Temukan berbagai lowongan, Pelatihan Serta Job Fair di Website ini
@@ -89,9 +89,9 @@
                             <!-- Salary and Location -->
                             <div class="mt-4 flex flex-col justify-between gap-2">
                                 <div class="flex justify-between">
-                                    <p class="text-sm font-bold">Perkiraan gaji</p>
+                                    <p class="text-sm font-bold">Gaji</p>
                                     <p class="text-sm text-gray-600">
-                                        <?= 'Rp ' . number_format($row['gaji'], 0, ',', '.'); ?>
+                                        <?= htmlspecialchars($row['gaji']); ?>
                                     </p>
                                 </div>
                                 <div class="flex justify-between">

@@ -30,10 +30,9 @@ class BerandaModel
 
     public function insertDataBeranda($data)
     {
-        $query = "INSERT INTO beranda (video, title , gambar, banner) 
-                  VALUES (:video, :title, :gambar, :banner)";
+        $query = "INSERT INTO beranda ( title , gambar, banner) 
+                  VALUES (:title, :gambar, :banner)";
         $this->db->query($query);
-        $this->db->bind('video', $data['video']);
         $this->db->bind('title', $data['title']);
         $this->db->bind('gambar', $data['gambar'] ?? null);
         $this->db->bind('banner', $data['banner'] ?? null);
@@ -45,14 +44,12 @@ class BerandaModel
     public function updateDataBeranda($data)
     {
         $query = "UPDATE beranda SET 
-                  video = :video, 
                   title = :title, 
                   gambar = :gambar, 
                   banner = :banner
                   WHERE id = :id";
         $this->db->query($query);
         $this->db->bind('id', $data['id']);
-        $this->db->bind('video', $data['video']);
         $this->db->bind('title', $data['title']);
         $this->db->bind('gambar', $data['gambar'] ?? null);
         $this->db->bind('banner', $data['banner'] ?? null);

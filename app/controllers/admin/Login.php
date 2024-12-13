@@ -4,6 +4,7 @@ class Login extends Controller
 {
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         // Periksa apakah pengguna sudah login
         if (isset($_SESSION['session_login']) && $_SESSION['session_login'] === 'sudah login') {
             // Redirect ke halaman dashboard sesuai role

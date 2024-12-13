@@ -1,4 +1,4 @@
-<section
+<section id="pengumuman"
     class="pt-14 mb-[-50px] px-4 lg:px-28 relative z-20"
     data-aos="fade-up" data-aos-delay="50">
     <div
@@ -6,7 +6,7 @@
         <!-- Logo -->
         <div class="flex items-center gap-3">
             <img
-                src="<?= !empty($data['logo']['logo_bkk']) ? base_url . '/uploads/logo/logosekolah/' . $data['logo']['logo_bkk'] : base_url . '/assets/img/1._Logo_BKK-removebg-preview.png' ?>"
+                src="<?= !empty($data['logo']['logo_bkk']) ? base_url . '/uploads/logo/logobkk/' . $data['logo']['logo_bkk'] : base_url . '/assets/img/1._Logo_BKK-removebg-preview.png' ?>"
                 alt="Logo"
                 class="md:w-24 md:h-16 w-20 h-14 object-contain" />
             <img

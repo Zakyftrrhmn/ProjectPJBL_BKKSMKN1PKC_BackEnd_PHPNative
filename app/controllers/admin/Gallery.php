@@ -28,6 +28,7 @@ class Gallery extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Gallery    BKK';
         $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
@@ -41,6 +42,7 @@ class Gallery extends Controller
 
     public function tambah()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Gallery';
 
@@ -103,6 +105,7 @@ class Gallery extends Controller
 
     public function edit($id)
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Gallery';
         $data['gallery'] = $this->model('GalleryModel')->getGalleryById($id);
@@ -181,6 +184,7 @@ class Gallery extends Controller
 
     public function cari()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Gallery Website BKK';
         $data['gallery'] = $this->model('GalleryModel')->cariGallery();

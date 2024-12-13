@@ -28,6 +28,7 @@ class Pengumuman extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Pengumuman';
         $data['pengumuman'] = $this->model('PengumumanModel')->getAllPengumuman();
@@ -41,6 +42,7 @@ class Pengumuman extends Controller
 
     public function tambah()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data Pengumuman';
 
@@ -113,6 +115,7 @@ class Pengumuman extends Controller
 
     public function edit($id)
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Pengumuman';
         $data['pengumuman'] = $this->model('PengumumanModel')->getPengumumanById($id);
@@ -187,6 +190,7 @@ class Pengumuman extends Controller
 
     public function cari()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Pengumuman';
         $data['pengumuman'] = $this->model('PengumumanModel')->cariPengumuman();

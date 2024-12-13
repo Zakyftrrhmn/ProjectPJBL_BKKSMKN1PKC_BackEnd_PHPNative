@@ -26,7 +26,7 @@
 
 
                 <div class="mb-5">
-                    <label for="penjelasan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penjelasan Apa itu BKK?</label>
+                    <label for="penjelasan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penjelasan Apa itu BKK? <span class="text-red-500">*</span></label>
                     <textarea id="penjelasan" name="penjelasan" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required><?= !empty($data['about'][0]['penjelasan']) ? $data['about'][0]['penjelasan'] : 'Bursa Kerja Khusus (BKK) adalah platform yang disediakan oleh SMKN 1 Pangkalan Kerinci untuk membantu siswa dan alumni dalam mendapatkan informasi seputar lowongan kerja, pelatihan, serta penyaluran tenaga kerja. Sebagai mitra Dinas Tenaga Kerja dan Transmigrasi, BKK berperan sebagai penghubung antara sekolah dengan dunia industri, mendukung siswa siap kerja dan memperluas peluang karir mereka.'; ?></textarea>
                 </div>
 

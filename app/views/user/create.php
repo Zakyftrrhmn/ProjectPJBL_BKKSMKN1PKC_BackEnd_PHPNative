@@ -25,7 +25,7 @@
             <form action="<?= base_url; ?>/admin/user/simpanUser" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
                 <!-- Nama -->
                 <div class="mb-5">
-                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama <span class="text-red-500">*</span></label>
                     <input type="text" id="nama" name="nama"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan Nama pengguna" required />
@@ -33,7 +33,7 @@
 
                 <!-- username -->
                 <div class="mb-5">
-                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">username</label>
+                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">username <span class="text-red-500">*</span></label>
                     <input type="text" id="username" name="username"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan username pengguna" required />
@@ -41,7 +41,7 @@
 
                 <!-- email -->
                 <div class="mb-5">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">email</label>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">email <span class="text-red-500">*</span></label>
                     <input type="email" id="email" name="email"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan email pengguna" required />
@@ -49,7 +49,7 @@
 
                 <!-- password -->
                 <div class="mb-5">
-                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">password</label>
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">password <span class="text-red-500">*</span></label>
                     <input type="password" id="password" name="password"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan password pengguna" required />
@@ -57,7 +57,7 @@
 
                 <!-- password -->
                 <div class="mb-5">
-                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ulangi Password</label>
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ulangi Password <span class="text-red-500">*</span></label>
                     <input type="password" id="password" name="ulangi_password"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan password pengguna" required />
@@ -65,7 +65,7 @@
 
                 <!-- Role -->
                 <div class="mb-5">
-                    <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                    <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role <span class="text-red-500">*</span></label>
                     <select id="role" name="role"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required>

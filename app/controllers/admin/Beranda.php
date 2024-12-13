@@ -31,6 +31,7 @@ class Beranda extends Controller
         $this->cekAkses('Super Admin');
         $data['title'] = 'Halaman Beranda';
         $data['beranda'] = $this->model('BerandaModel')->getAllBeranda();
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -41,6 +42,7 @@ class Beranda extends Controller
 
     public function updateBeranda()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $dataCount = $this->model('BerandaModel')->countData();
 

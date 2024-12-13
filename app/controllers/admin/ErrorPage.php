@@ -13,6 +13,7 @@ class ErrorPage extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $data['title'] = 'Not Found';
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);

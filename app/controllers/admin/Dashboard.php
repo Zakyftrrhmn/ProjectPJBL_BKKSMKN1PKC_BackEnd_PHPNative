@@ -2,6 +2,7 @@
 
 class Dashboard extends Controller
 {
+
     public function __construct()
     {
         if ($_SESSION['session_login'] != 'sudah login') {
@@ -26,14 +27,13 @@ class Dashboard extends Controller
         }
     }
 
+
     public function index()
     {
-
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
 
         $this->cekAkses('Super Admin');
-        $data['title'] = 'Halaman Dashboard';
-
-
+        $data['title'] = '  Dashboard';
         // Mengambil data event
         $eventData = $this->model('EventModel')->getAllEvent();
         $totalEvent = count($eventData);

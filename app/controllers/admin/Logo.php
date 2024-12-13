@@ -30,7 +30,8 @@ class Logo extends Controller
     {
         $this->cekAkses('Super Admin');
         $data['title'] = 'Logo';
-        $data['logo'] = $this->model('LogoModel')->getAllLogo();
+        $data['logoo'] = $this->model('LogoModel')->getAllLogo();
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -188,7 +189,7 @@ class Logo extends Controller
                     }
 
                     if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                        $_POST['logo'] = $newFileName;
+                        $_POST['logo_sekolah'] = $newFileName;
                     } else {
                         Flasher::setMessage('Gagal', ' mengunggah logo', 'danger');
                         header('location:' . base_url . '/admin/logo');

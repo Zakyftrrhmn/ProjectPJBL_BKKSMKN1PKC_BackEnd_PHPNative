@@ -16,7 +16,7 @@
     <link href="<?= base_url ?>/assets/satoshi.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title class=""><?= $data['title']; ?> - BKK SMKN 1 PKC</title>
-    <link rel="icon" href="<?= !empty($data['logo']['logo_sekolah']) ? base_url . '/uploads/logo/logobkk/' . $data['logo']['logo_sekolah'] : base_url . '/assets/img/1._Logo_BKK-removebg-preview.png' ?>" />
+    <link rel="icon" href="<?= !empty($data['logo']['logo_bkk']) ? base_url . '/uploads/logo/logobkk/' . $data['logo']['logo_bkk'] : base_url . '/assets/img/1._Logo_BKK-removebg-preview.png' ?>" />
     <style>
         /* Custom CSS for image */
         .flexible-img {
@@ -24,6 +24,20 @@
             height: 450px;
             max-width: 450px;
             /* batas maksimum ukuran */
+        }
+
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-slide-left {
+            animation: slideLeft 20s linear infinite;
         }
     </style>
 </head>

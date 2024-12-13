@@ -28,6 +28,7 @@ class Jurusan extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Jurusan';
         $data['jurusan'] = $this->model('JurusanModel')->getAllJurusan();
@@ -41,6 +42,7 @@ class Jurusan extends Controller
 
     public function tambah()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data Jurusan';
 
@@ -67,6 +69,7 @@ class Jurusan extends Controller
 
     public function edit($id)
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Jurusan';
         $data['jurusan'] = $this->model('JurusanModel')->getJurusanById($id);
@@ -108,6 +111,7 @@ class Jurusan extends Controller
 
     public function cari()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Jurusan';
         $data['jurusan'] = $this->model('JurusanModel')->cariJurusan();

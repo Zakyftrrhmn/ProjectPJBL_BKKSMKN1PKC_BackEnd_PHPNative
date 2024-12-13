@@ -1,7 +1,7 @@
 <!-- Hero Section -->
 <section id="beranda" class=" bg-gray-50 shadow-sm" data-aos="fade-up">
     <div
-        class="container mx-auto flex flex-col-reverse lg:flex-row items-center pt-12 pb-56 px-4 lg:px-28">
+        class="container mx-auto flex flex-col-reverse lg:flex-row items-center pt-12 pb-20 px-4 lg:px-28">
         <!-- Text Content -->
         <div class="lg:w-1/2 space-y-6 text-left">
             <!-- Badge -->
@@ -80,10 +80,9 @@
                 </a>
 
                 <!-- Video Button -->
-                <button
-                    id="videoButton"
-                    class="border-2 border-yellow-500 text-yellow-500 px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-500 hover:border-yellow-500 hover:text-white hover:shadow-xl transition duration-200 ease-in mb-4 lg:mb-0">
-                    <i class="bx bx-play-circle text-base"></i> Panduan Pendaftaran
+                <button onclick="toggleModal()"
+                    class="block border-2 border-yellow-500 text-yellow-500 px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-500 hover:border-yellow-500 hover:text-white hover:shadow-xl transition duration-200 ease-in mb-4 lg:mb-0" type="button">
+                    <i class='bx bx-book text-base'></i> Panduan
                 </button>
             </div>
         </div>
@@ -98,18 +97,49 @@
     </div>
 </section>
 
-<!-- Banner Image Section -->
-<section class="mt-[-170px]" data-aos="fade-up" data-aos-delay="50">
+<!-- Kata Sambutan Kepala Sekolah Section -->
+<section class="py-14" data-aos="fade-up" data-aos-delay="50">
     <div class="container mx-auto px-4 lg:px-28">
-        <!-- Banner Image -->
-        <div class="flex justify-center">
-            <img
-                src="<?= !empty($data['beranda']['banner']) ? base_url . '/uploads/beranda/banner/' . $data['beranda']['banner'] : base_url . '/assets/img/4. section_banner.png' ?>"
-                alt="Banner Image"
-                class="w-full max-w-screen-xl h-40 md:h-80 max-h-[200px] md:max-h-[300px] object-fit rounded-lg shadow-xl" />
+        <!-- Title -->
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-extrabold text-gray-800 mb-2">Sambutan Kepala Sekolah </h2>
+            <p class="text-xs sm:text-sm font-bold text-[#44808B] italic">
+                Website BKK kami adalah jembatan menuju kesuksesan karir Anda.
+            </p>
+        </div>
+
+        <!-- Kata Sambutan and Kepala Sekolah Photo -->
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-10">
+            <!-- Kata Sambutan -->
+            <div class="text-center lg:text-left max-w-xl" data-aos="fade-right" data-aos-delay="50">
+                <p
+                    class="text-gray-600 text-sm lg:text-base italic leading-normal lg:leading-relaxed text-justify mb-6">
+                    <?php if (!empty($data['sambutan']) && isset($data['sambutan']['sambutan_kepsek'])): ?>
+                        <?= $data['sambutan']['sambutan_kepsek'] ?>
+                    <?php else: ?>
+                        Assalaamualaikum Wr. Wb. Selamat datang di SMKN 1 Pangkalan Kerinci. Kami berkomitmen memberikan layanan pendidikan terbaik bagi anak bangsa. Kami mengutamakan kualitas, lingkungan belajar yang nyaman, serta penanaman nilai-nilai agama dan Pancasila.
+                    <?php endif; ?>
+                </p>
+                <p class="text-xl font-semibold text-gray-900 dark:text-white italic">
+                    <?php if (!empty($data['sambutan']) && isset($data['sambutan']['nama_kepsek'])): ?>
+                        <?= $data['sambutan']['nama_kepsek'] ?>
+                    <?php else: ?>
+                        H. Nasril, M.Pd
+                    <?php endif; ?>
+                </p>
+            </div>
+
+            <!-- Foto Kepala Sekolah -->
+            <div class="w-72 h-72 lg:w-80 lg:h-80 mb-6 lg:mb-0" data-aos="fade-left" data-aos-delay="50">
+                <img
+                    src="<?= !empty($data['sambutan']['foto_kepsek']) ? base_url . '/uploads/sambutan/' . $data['sambutan']['foto_kepsek'] : base_url . '/assets/img/default-kepsek.jpeg' ?>"
+                    alt="Foto Kepala Sekolah"
+                    class="w-full h-full object-cover rounded-full border-4 border-gray-200 shadow-lg" />
+            </div>
         </div>
     </div>
 </section>
+
 
 <!-- Apa itu Website BKK Section -->
 <section id="tentang-kami" class=" py-14 px-4 lg:px-28">
@@ -213,12 +243,12 @@
 </section>
 
 <!-- Partner Kami Section -->
-<section id="perusahaan" class=" py-14 px-4 lg:px-28 bg-gray-50">
+<section id="perusahaan" class="py-14  bg-gray-50">
     <div class="container mx-auto">
         <!-- Title -->
-        <div class="flex flex-col w-full lg:w-[60%] mb-3" data-aos="fade-right" data-aos-delay="50">
+        <div class=" px-4 lg:px-14 flex flex-col w-full lg:w-[60%] mb-3" data-aos="fade-right" data-aos-delay="50">
             <p class="text-xs sm:text-sm font-bold text-[#44808B] italic">
-                Peluang Kerja Dengan Perusahaan Top
+                Peluang Kerja Dengan Perusahaan Top - Total (<?= $data['totalPerusahaan'] ?> Perusahaan)
             </p>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-7">
                 Daftar Perusahaan yang Bekerja Sama dengan BKK SMKN 1 Pangkalan
@@ -228,7 +258,7 @@
 
         <!-- Jika Data Kosong -->
         <?php if (empty($data['perusahaan'])): ?>
-            <div class="w-full flex items-center flex-wrap justify-center gap-10 pt-14" data-aos="fade-up" data-aos-delay="50">>
+            <div class="w-full flex items-center flex-wrap justify-center gap-10 pt-14" data-aos="fade-up" data-aos-delay="50">
                 <div class="grid gap-4 w-60">
                     <div class="w-20 h-20 mx-auto bg-green-200 rounded-full shadow-sm justify-center items-center inline-flex">
                         <!-- Icon (You can replace this with any other icon you prefer) -->
@@ -251,25 +281,25 @@
             </div>
         <?php else: ?>
             <!-- Jika Data Ada -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8">
-                <!-- Partner 1 -->
-                <?php foreach ($data['perusahaan'] as $row): ?>
-                    <div class="p-4 bg-white shadow-md border border-transparent hover:border-[#44808B] transition duration-200 ease-in rounded-lg flex items-center"
-                        data-aos="fade-up" data-aos-delay="50">
-                        <img
-                            src=" <?= !empty($row['logo_perusahaan']) ? base_url . '/uploads/perusahaan/' . $row['logo_perusahaan'] : base_url . '/assets/img/6.default-logo-perusahaan.png' ?>"
-                            alt="<?= $row['nama_perusahaan']; ?>"
-                            class="w-16 h-16 mr-4" />
-                        <div class="text-left">
-                            <h3 class="text-sm sm:text-base font-bold uppercase">
-                                <?= $row['nama_perusahaan']; ?>
-                            </h3>
-                            <p class="text-xs sm:text-sm text-gray-600">
-                                <?= $row['industry_perusahaan']; ?>
-                            </p>
+            <div class="overflow-hidden py-2">
+                <div class="flex animate-slide-left gap-8">
+                    <?php foreach ($data['perusahaan'] as $row): ?>
+                        <div class="p-4 bg-white shadow-md border border-transparent hover:border-[#44808B] transition duration-200 ease-in rounded-lg flex items-center min-w-max">
+                            <img
+                                src=" <?= !empty($row['logo_perusahaan']) ? base_url . '/uploads/perusahaan/' . $row['logo_perusahaan'] : base_url . '/assets/img/6.default-logo-perusahaan.png' ?>"
+                                alt="<?= $row['nama_perusahaan']; ?>"
+                                class="w-16 h-16 mr-4" />
+                            <div class="text-left">
+                                <h3 class="text-sm sm:text-base font-bold uppercase">
+                                    <?= $row['nama_perusahaan']; ?>
+                                </h3>
+                                <p class="text-xs sm:text-sm text-gray-600">
+                                    <?= $row['industry_perusahaan']; ?>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
         <?php endif; ?>
 
@@ -371,7 +401,7 @@
                             <!-- Salary and Location -->
                             <div class="mt-4 flex flex-col justify-between gap-2">
                                 <div class="flex justify-between">
-                                    <p class="text-sm font-bold">Perkiraan gaji</p>
+                                    <p class="text-sm font-bold">Gaji</p>
                                     <p class="text-sm text-gray-600">
                                         <?= htmlspecialchars($row['gaji']); ?>
                                     </p>

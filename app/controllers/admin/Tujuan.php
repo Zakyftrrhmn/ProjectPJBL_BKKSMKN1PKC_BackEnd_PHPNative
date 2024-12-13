@@ -29,6 +29,7 @@ class Tujuan extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Setting Halaman Tujuan';
         $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
@@ -42,6 +43,7 @@ class Tujuan extends Controller
 
     public function tambah()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Tambah Data Tujuan';
 
@@ -68,6 +70,7 @@ class Tujuan extends Controller
 
     public function edit($id)
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Tujuan';
         $data['tujuan'] = $this->model('TujuanModel')->getTujuanById($id);
@@ -109,6 +112,7 @@ class Tujuan extends Controller
 
     public function cari()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Setting Halaman Tujuan';
         $data['tujuan'] = $this->model('TujuanModel')->cariTujuan();

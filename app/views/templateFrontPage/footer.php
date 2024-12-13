@@ -21,6 +21,48 @@
     </div>
 </footer>
 
+
+<!-- modal script -->
+<div
+    id="modal"
+    class="z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+
+    <!-- Modal Content -->
+    <div class="bg-white w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl rounded-lg shadow-lg overflow-hidden">
+        <!-- Modal Header -->
+        <div class="p-4 border-b">
+            <h2 class="text-lg md:text-xl font-semibold text-gray-800">Panduan Pendaftaran</h2>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="p-4">
+            <img
+                src="<?= !empty($data['beranda']['banner']) ? base_url . '/uploads/beranda/banner/' . $data['beranda']['banner'] : base_url . '/assets/img/panduan.png' ?>"
+                alt="Banner Image"
+                class="w-full h-auto rounded-lg shadow-md object-contain" />
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="flex justify-end p-4 border-t">
+            <button
+                class="px-4 py-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300 focus:outline-none focus:ring focus:ring-gray-400"
+                onclick="toggleModal()">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // Function to toggle modal visibility
+    function toggleModal() {
+        const modal = document.getElementById('modal');
+        modal.classList.toggle('hidden');
+    }
+</script>
+
+
 <script>
     // Get hamburger button and mobile menu
     const hamburgerBtn = document.getElementById("hamburger-btn");

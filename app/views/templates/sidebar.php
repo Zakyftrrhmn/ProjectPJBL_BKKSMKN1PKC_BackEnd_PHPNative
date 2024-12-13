@@ -9,10 +9,10 @@
 
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-      <a href="<?= base_url ?>/admin/">
-        <img src="<?= base_url ?>/assets/src/images/logo/logo.svg" alt="Logo" />
+      <a href="<?= base_url ?>/admin/dashboard">
+        <img src="<?= !empty($data['logo']['logo_bkk']) ? base_url . '/uploads/logo/logobkk/' . $data['logo']['logo_bkk'] : base_url . '/assets/img/1._Logo_BKK-removebg-preview.png' ?>" alt="logo" class='bg-white rounded-lg px-3 w-50 inline-block shadow-lg object-cover' />
       </a>
-      <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">
+      <button class=" block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">
         <svg class="fill-current" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M19 8.175H2.98748L9.36248 1.6875C9.69998 1.35 9.69998 0.825 9.36248 0.4875C9.02498 0.15 8.49998 0.15 8.16248 0.4875L0.399976 8.3625C0.0624756 8.7 0.0624756 9.225 0.399976 9.5625L8.16248 17.4375C8.31248 17.5875 8.53748 17.7 8.76248 17.7C8.98748 17.7 9.17498 17.625 9.36248 17.475C9.69998 17.1375 9.69998 16.6125 9.36248 16.275L3.02498 9.8625H19C19.45 9.8625 19.825 9.4875 19.825 9.0375C19.825 8.55 19.45 8.175 19 8.175Z"
@@ -113,6 +113,16 @@
                   <i class="bx bx-home text-xl"></i> Beranda
                 </a>
               </li>
+
+              <li>
+                <a
+                  class="group relative flex items-center gap-2.5 rounded-full px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                  href="<?= base_url ?>/admin/sambutan"
+                  :class="{ 'bg-graydark dark:bg-meta-4': page.includes('/sambutan') }">
+                  <i class='bx bxs-chalkboard text-xl'></i> Sambutan
+                </a>
+              </li>
+
 
               <!-- About -->
               <li>

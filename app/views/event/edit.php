@@ -25,7 +25,7 @@
 
                 <!-- Tipe event -->
                 <div class="mb-5">
-                    <label for="tipe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe Event</label>
+                    <label for="tipe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe Event <span class="text-red-500">*</span></label>
                     <select id="tipe" name="tipe"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required>
@@ -39,7 +39,7 @@
 
                 <!-- Posisi -->
                 <div class="mb-5">
-                    <label for="posisi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posisi</label>
+                    <label for="posisi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posisi <span class="text-red-500">*</span></label>
                     <input type="text" id="posisi" name="posisi"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         value="<?= $data['event']['posisi']; ?>" required />
@@ -47,7 +47,7 @@
 
                 <!-- Pilih Perusahaan -->
                 <div class="mb-5">
-                    <label for="id_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Perusahaan</label>
+                    <label for="id_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Perusahaan <span class="text-red-500">*</span></label>
                     <select id="id_perusahaan" name="id_perusahaan"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required>
@@ -62,7 +62,7 @@
 
                 <!-- Lokasi -->
                 <div class="mb-5">
-                    <label for="lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lokasi Event</label>
+                    <label for="lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lokasi Event <span class="text-red-500">*</span></label>
                     <input type="text" id="lokasi" name="lokasi"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         value="<?= $data['event']['lokasi']; ?>" required />
@@ -70,7 +70,7 @@
 
                 <!-- Gaji -->
                 <div class="mb-5">
-                    <label for="gaji" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gaji</label>
+                    <label for="gaji" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gaji <span class="text-red-500">*</span></label>
                     <input type="text" id="gaji" name="gaji"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         value="<?= $data['event']['gaji']; ?>" required />
@@ -78,7 +78,7 @@
 
                 <!-- Tanggal terakhir -->
                 <div class="mb-5">
-                    <label for="tanggal_terakhir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deadline</label>
+                    <label for="tanggal_terakhir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deadline <span class="text-red-500">*</span></label>
                     <input type="date" id="tanggal_terakhir" name="tanggal_terakhir"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         value="<?= $data['event']['tanggal_terakhir']; ?>" required />
@@ -86,19 +86,44 @@
 
                 <!-- Job Description -->
                 <div class="mb-5">
-                    <label for="job_description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi Pekerjaan</label>
-                    <textarea id="job_description" name="job_description"
-                        class="list-input shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        rows="4" required><?= $data['event']['job_description']; ?></textarea>
+                    <label for="jobDescriptionInput" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Deskripsi Pekerjaan <span class="text-red-500">*</span>
+                    </label>
+                    <div class="flex items-center mb-2">
+                        <input id="jobDescriptionInput" type="text"
+                            class="list-input shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Masukkan Deskripsi" />
+                        <button type="button" id="addJobDescriptionButton"
+                            class="ml-2 text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-4 py-2">
+                            Tambah
+                        </button>
+                    </div>
+                    <ul id="jobDescriptionListEdit" class="list-disc pl-5 text-gray-900">
+                        <!-- Item dari PHP akan dimasukkan di sini -->
+                    </ul>
+                    <textarea id="job_description" name="job_description" rows="4" hidden required></textarea>
                 </div>
 
                 <!-- Kualifikasi -->
                 <div class="mb-5">
-                    <label for="kualifikasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kualifikasi</label>
-                    <textarea id="kualifikasi" name="kualifikasi"
-                        class="list-input shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        rows="4" required><?= $data['event']['kualifikasi']; ?></textarea>
+                    <label for="kualifikasiInput" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Kualifikasi <span class="text-red-500">*</span>
+                    </label>
+                    <div class="flex items-center mb-2">
+                        <input id="kualifikasiInput" type="text"
+                            class="list-input shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Masukkan Kualifikasi" />
+                        <button type="button" id="addKualifikasiButton"
+                            class="ml-2 text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-4 py-2">
+                            Tambah
+                        </button>
+                    </div>
+                    <ul id="kualifikasiListEdit" class="list-disc pl-5 text-gray-900">
+                        <!-- Item dari PHP akan dimasukkan di sini -->
+                    </ul>
+                    <textarea id="kualifikasi" name="kualifikasi" rows="4" hidden required></textarea>
                 </div>
+
 
                 <!-- Tombol Submit -->
                 <button type="submit"

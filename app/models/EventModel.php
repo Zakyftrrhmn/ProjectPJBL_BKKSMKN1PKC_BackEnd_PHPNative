@@ -15,7 +15,7 @@ class EventModel
         $this->db->query('SELECT event.*, perusahaan.nama_perusahaan, perusahaan.logo_perusahaan 
                           FROM ' . $this->table . ' 
                           JOIN perusahaan ON perusahaan.id = event.id_perusahaan 
-                          ORDER BY event.id DESC'); // Mengurutkan berdasarkan id secara menurun
+                          ORDER BY event.tanggal_terakhir   '); // Mengurutkan berdasarkan id secara menurun
         return $this->db->resultSet();
     }
 
@@ -26,6 +26,21 @@ class EventModel
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+
+    // Di model
+    public function getActiveEvents()
+    {
+        $today = date('Y-m-d'); // Tanggal hari ini
+        $query = ('SELECT event.*, perusahaan.nama_perusahaan, perusahaan.logo_perusahaan 
+                          FROM ' . $this->table . ' 
+                          JOIN perusahaan ON perusahaan.id = event.id_perusahaan 
+                          WHERE event.tanggal_terakhir >= :today 
+                          ORDER BY event.tanggal_terakhir ASC');
+        $this->db->query($query); // Memastikan query di-*prepare*
+        $this->db->bind(':today', $today);
+        return $this->db->resultSet();
+    }
+
 
     public function tambahEvent($data)
     {

@@ -38,6 +38,25 @@ class PendaftaranModel
         return $this->db->single();
     }
 
+    // Di model PelamarModel
+    public function getPelamarByEvent($id)
+    {
+        // Query untuk mengambil data pelamar berdasarkan id_event yang cocok dengan id di tabel event
+        $query = "SELECT pelamar.* 
+                  FROM pelamar 
+                  JOIN event ON pelamar.id_event = event.id
+                  WHERE event.id = :id_event";
+
+        // Siapkan query
+        $this->db->query($query);
+
+        // Binding id_event ke query
+        $this->db->bind(':id_event', $id);
+
+        // Mengembalikan hasil query sebagai array hasil
+        return $this->db->resultSet();
+    }
+
 
     public function tambahPendaftaran($data)
     {

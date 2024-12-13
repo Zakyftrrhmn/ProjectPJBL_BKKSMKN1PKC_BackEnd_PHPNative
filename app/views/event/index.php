@@ -84,7 +84,19 @@
                                             ?>
                                     "><?= $row['tipe']; ?></span>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap"><?= $row['tanggal_terakhir']; ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <?php
+                                    $currentDate = date('Y-m-d'); // Get current date
+                                    $endDate = date('Y-m-d', strtotime($row['tanggal_terakhir'])); // Convert to comparable format
+
+                                    // Check if the event has ended
+                                    if ($endDate < $currentDate) {
+                                        echo '<span class=" bg-red-200 text-red-800 rounded-full px-2 py-1">Ditutup</span>';
+                                    } else {
+                                        echo '<span class=" bg-gray-200 text-gray-800 rounded-full px-2 py-1">' . date('d M Y', strtotime($row['tanggal_terakhir'])) . '</span>';
+                                    }
+                                    ?>
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <a href="<?= base_url; ?>/admin/event/detail/<?= $row['id'] ?>" class="text-lg text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i></a>
                                     <a href="<?= base_url; ?>/admin/event/edit/<?= $row['id'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
@@ -94,7 +106,7 @@
 
                                 </td>
                                 <td class="px-2 py-4">
-                                    <a href="" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Detail</a>
+                                    <a href="<?= base_url; ?>/admin/event/pelamar/<?= $row['id'] ?>" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Pelamar</a>
                                 </td>
                             </tr>
                         <?php $no++;

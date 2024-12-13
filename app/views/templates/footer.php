@@ -27,6 +27,134 @@
 <!-- ===== Content Area End ===== -->
 </div>
 <!-- ===== Page Wrapper End ===== -->
+<script>
+    document.getElementById('addKualifikasiButton').addEventListener('click', function() {
+        const inputField = document.getElementById('kualifikasiInput');
+        const listContainer = document.getElementById('kualifikasiList');
+        const textArea = document.getElementById('kualifikasi');
+
+
+        const inputValue = inputField.value.trim();
+        if (inputValue !== '') {
+            // Buat elemen <li> baru
+            const listItem = document.createElement('li');
+            listItem.textContent = inputValue;
+
+            // Tambahkan item ke daftar
+            listContainer.appendChild(listItem);
+
+            // Tambahkan nilai ke textarea (sebagai JSON atau teks biasa)
+            const currentItems = Array.from(listContainer.children).map(item => item.textContent);
+            textArea.value = currentItems.join('\n');
+
+            // Kosongkan input field
+            inputField.value = '';
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('addJobDescriptionButton').addEventListener('click', function() {
+        const inputField = document.getElementById('jobDescriptionInput');
+        const listContainer = document.getElementById('jobDescriptionList');
+        const textArea = document.getElementById('job_description');
+
+        const inputValue = inputField.value.trim();
+        if (inputValue !== '') {
+            // Buat elemen <li> baru
+            const listItem = document.createElement('li');
+            listItem.textContent = inputValue;
+
+            // Tambahkan item ke daftar
+            listContainer.appendChild(listItem);
+
+            // Perbarui textarea dengan nilai baru
+            const currentItems = Array.from(listContainer.children).map(item => item.textContent);
+            textArea.value = currentItems.join('\n');
+
+            // Kosongkan input field
+            inputField.value = '';
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Parse data dari PHP
+        const jobDescriptionData = `<?= addslashes($data['event']['job_description']); ?>`.split('\n');
+        const kualifikasiData = `<?= addslashes($data['event']['kualifikasi']); ?>`.split('\n');
+
+        const jobDescriptionListEdit = document.getElementById('jobDescriptionListEdit');
+        const kualifikasiListEdit = document.getElementById('kualifikasiListEdit');
+        const jobDescriptionTextarea = document.getElementById('job_description');
+        const kualifikasiTextarea = document.getElementById('kualifikasi');
+
+        // Fungsi untuk mengisi ul dari data
+        function populateList(listElement, dataArray, textarea) {
+            listElement.innerHTML = ''; // Kosongkan daftar
+            dataArray.forEach(item => {
+                if (item.trim() !== '') {
+                    const li = createListItem(item, listElement, textarea);
+                    listElement.appendChild(li);
+                }
+            });
+            updateTextarea(listElement, textarea);
+        }
+
+        // Fungsi untuk membuat elemen <li> dengan tombol hapus
+        function createListItem(text, listElement, textarea) {
+            const listItem = document.createElement('li');
+            listItem.classList.add('flex', 'justify-between', 'items-center', 'mb-1');
+            listItem.textContent = text;
+
+            // Tombol hapus
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Hapus';
+            deleteButton.classList.add('ml-2', 'text-red-500', 'hover:underline', 'text-sm');
+            deleteButton.addEventListener('click', function() {
+                listElement.removeChild(listItem);
+                updateTextarea(listElement, textarea);
+            });
+
+            listItem.appendChild(deleteButton);
+            return listItem;
+        }
+
+        // Fungsi untuk memperbarui hidden textarea
+        function updateTextarea(listElement, textarea) {
+            const items = Array.from(listElement.children).map(item => item.firstChild.textContent);
+            textarea.value = items.join('\n').trim();
+        }
+
+        // Inisialisasi daftar awal dari PHP
+        populateList(jobDescriptionListEdit, jobDescriptionData, jobDescriptionTextarea);
+        populateList(kualifikasiListEdit, kualifikasiData, kualifikasiTextarea);
+
+        // Tambahkan event listener untuk job description
+        document.getElementById('addJobDescriptionButton').addEventListener('click', function() {
+            const inputField = document.getElementById('jobDescriptionInput');
+            const inputValue = inputField.value.trim();
+            if (inputValue !== '') {
+                const listItem = createListItem(inputValue, jobDescriptionListEdit, jobDescriptionTextarea);
+                jobDescriptionListEdit.appendChild(listItem);
+                updateTextarea(jobDescriptionListEdit, jobDescriptionTextarea);
+                inputField.value = ''; // Kosongkan input
+            }
+        });
+
+        // Tambahkan event listener untuk kualifikasi
+        document.getElementById('addKualifikasiButton').addEventListener('click', function() {
+            const inputField = document.getElementById('kualifikasiInput');
+            const inputValue = inputField.value.trim();
+            if (inputValue !== '') {
+                const listItem = createListItem(inputValue, kualifikasiListEdit, kualifikasiTextarea);
+                kualifikasiListEdit.appendChild(listItem);
+                updateTextarea(kualifikasiListEdit, kualifikasiTextarea);
+                inputField.value = ''; // Kosongkan input
+            }
+        });
+    });
+</script>
 
 <script>
     if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
@@ -36,6 +164,7 @@
         });
     }
 </script>
+
 <script>
     document.querySelectorAll('[data-dismiss-target]').forEach(button => {
         button.addEventListener('click', function() {

@@ -66,7 +66,7 @@
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="px-2 py-2 text-center"><?= $no; ?></td>
                                 <td class="flex gap-2 items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-sm object-contain"
+                                    <img class="w-10 h-10 rounded-sm object-cover"
                                         src="<?= isset($row['logo_perusahaan']) && !empty($row['logo_perusahaan'])
                                                     ? base_url . '/uploads/perusahaan/' . $row['logo_perusahaan']
                                                     : base_url . '/uploads/perusahaan/default-logo.png'; ?>"

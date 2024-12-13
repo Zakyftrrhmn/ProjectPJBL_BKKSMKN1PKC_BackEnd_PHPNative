@@ -21,32 +21,32 @@
         <!-- Form Section Start -->
         <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
             <form action="<?= base_url; ?>/admin/logo/updateLogo" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
-                <input type="hidden" name="id" value="<?= isset($data['logo'][0]['id']) ? $data['logo'][0]['id'] : ''; ?>" />
-                <input type="hidden" name="logo_bkk_lama" value="<?= isset($data['logo'][0]['logo_bkk']) ? $data['logo'][0]['logo_bkk'] : ''; ?>" />
-                <input type="hidden" name="logo_sekolah_lama" value="<?= isset($data['logo'][0]['logo_sekolah']) ? $data['logo'][0]['logo_sekolah'] : ''; ?>" />
+                <input type="hidden" name="id" value="<?= isset($data['logoo'][0]['id']) ? $data['logoo'][0]['id'] : ''; ?>" />
+                <input type="hidden" name="logo_bkk_lama" value="<?= isset($data['logoo'][0]['logo_bkk']) ? $data['logoo'][0]['logo_bkk'] : ''; ?>" />
+                <input type="hidden" name="logo_sekolah_lama" value="<?= isset($data['logoo'][0]['logo_sekolah']) ? $data['logoo'][0]['logo_sekolah'] : ''; ?>" />
 
 
                 <!-- Nama Sekolah -->
                 <div class="mb-5">
-                    <label for="nama_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Sekolah</label>
-                    <input type="text" id="nama_sekolah" name="nama_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['logo'][0]['nama_sekolah']) ? $data['logo'][0]['nama_sekolah'] : 'SMKN 1 Pangkalan Kerinci'; ?>" required />
+                    <label for="nama_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Sekolah <span class="text-red-500">*</span></label>
+                    <input type="text" id="nama_sekolah" name="nama_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['logoo'][0]['nama_sekolah']) ? $data['logoo'][0]['nama_sekolah'] : 'SMKN 1 Pangkalan Kerinci'; ?>" required />
                 </div>
 
                 <!-- Alamat Sekolah -->
                 <div class="mb-5">
-                    <label for="alamat_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat Sekolah</label>
-                    <input type="text" id="alamat_sekolah" name="alamat_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['logo'][0]['alamat_sekolah']) ? $data['logo'][0]['alamat_sekolah'] : ' Makmur, Pangkalan Kerinci, Pelalawan Regency, Riau 28654'; ?>" required />
+                    <label for="alamat_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat Sekolah <span class="text-red-500">*</span></label>
+                    <input type="text" id="alamat_sekolah" name="alamat_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['logoo'][0]['alamat_sekolah']) ? $data['logoo'][0]['alamat_sekolah'] : ' Makmur, Pangkalan Kerinci, Pelalawan Regency, Riau 28654'; ?>" required />
                 </div>
 
                 <!-- Input Logo BKK -->
                 <div class="mb-5">
-                    <label for="logo_bkk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo BKK (Bursa Kerja Khusu) <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Rekomendasi ukuran gambar (224px x 128px)</span></label>
+                    <label for="logo_bkk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo BKK (Bursa Kerja Khusus) <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Rekomendasi ukuran gambar (224px x 128px)</span></label>
                     <input type="file" id="logo_bkk" name="logo_bkk" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <div class="mt-3">
                         <p class="text-sm text-gray-600 dark:text-gray-400">Foto saat ini:</p>
                         <?php
-                        $logo_bkk = !empty($data['logo'][0]['logo_bkk']) && file_exists('uploads/logo/logobkk/' . $data['logo'][0]['logo_bkk'])
-                            ? $data['logo'][0]['logo_bkk']
+                        $logo_bkk = !empty($data['logoo'][0]['logo_bkk']) && file_exists('uploads/logo/logobkk/' . $data['logoo'][0]['logo_bkk'])
+                            ? $data['logoo'][0]['logo_bkk']
                             : 'default-logobkk.png';
                         ?>
                         <img src="<?= base_url; ?>/uploads/logo/logobkk/<?= $logo_bkk; ?>" alt="Logo BKK"
@@ -61,8 +61,8 @@
                     <div class="mt-3">
                         <p class="text-sm text-gray-600 dark:text-gray-400">Foto saat ini:</p>
                         <?php
-                        $logo_sekolah = !empty($data['logo'][0]['logo_sekolah']) && file_exists('uploads/logo/logosekolah/' . $data['logo'][0]['logo_sekolah'])
-                            ? $data['logo'][0]['logo_sekolah']
+                        $logo_sekolah = !empty($data['logoo'][0]['logo_sekolah']) && file_exists('uploads/logo/logosekolah/' . $data['logoo'][0]['logo_sekolah'])
+                            ? $data['logoo'][0]['logo_sekolah']
                             : 'default-logosekolah.jpg';
                         ?>
                         <img src="<?= base_url; ?>/uploads/logo/logosekolah/<?= $logo_sekolah; ?>" alt="Logo Sekolah"

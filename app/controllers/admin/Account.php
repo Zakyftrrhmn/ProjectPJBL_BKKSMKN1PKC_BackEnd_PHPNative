@@ -12,6 +12,7 @@ class Account extends Controller
 
     public function index()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         // Ambil data user dari sesi login
         $id = $_SESSION['id'];
         $data['title'] = 'Pengaturan Akun';

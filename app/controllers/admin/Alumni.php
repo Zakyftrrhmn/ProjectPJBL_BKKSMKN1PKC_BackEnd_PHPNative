@@ -14,7 +14,7 @@ class Alumni extends Controller
 
     public function index()
     {
-
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $data['title'] = 'Data Alumni';
         $data['alumni'] = $this->model('AlumniModel')->getAllAlumni();
 
@@ -27,6 +27,7 @@ class Alumni extends Controller
 
     public function tambah()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $data['title'] = 'Tambah Data Alumni';
         $data['jurusan'] = $this->model('JurusanModel')->getAllJurusan();
 
@@ -58,6 +59,7 @@ class Alumni extends Controller
 
     public function edit($id)
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $data['title'] = 'Edit Data Alumni';
         $data['alumni'] = $this->model('AlumniModel')->getAlumniById($id);
         $data['jurusan'] = $this->model('JurusanModel')->getAllJurusan();
@@ -108,6 +110,7 @@ class Alumni extends Controller
 
     public function cari()
     {
+        $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $data['title'] = 'Data Alumni';
         $data['alumni'] = $this->model('AlumniModel')->cariAlumni();
         $data['key'] = $_POST['key'];

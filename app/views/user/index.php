@@ -24,7 +24,7 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
                 <!-- Tambah Users Button -->
                 <a href="<?= base_url; ?>/admin/user/tambah" class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    <i class='bx bxs-user text-lg mr-2'></i> Tambah Users
+                    <i class='bx bxs-user text-lg mr-2'></i> Tambah User
                 </a>
 
                 <!-- Form Search -->
