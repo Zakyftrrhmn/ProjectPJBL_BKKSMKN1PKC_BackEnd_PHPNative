@@ -1256,6 +1256,10 @@ body{
   height: 2.5rem;
 }
 
+.h-100{
+  height: 25rem;
+}
+
 .h-11{
   height: 2.75rem;
 }
@@ -1364,6 +1368,10 @@ body{
   height: 1.875rem;
 }
 
+.h-72{
+  height: 18rem;
+}
+
 .h-8{
   height: 2rem;
 }
@@ -1398,14 +1406,6 @@ body{
 
 .h-screen{
   height: 100vh;
-}
-
-.h-100{
-  height: 25rem;
-}
-
-.h-72{
-  height: 18rem;
 }
 
 .max-h-full{
@@ -5315,28 +5315,20 @@ span.flatpickr-weekday:is(.dark *),
     display: none;
   }
 
-  .lg\:h-48{
-    height: 12rem;
+  .lg\:h-80{
+    height: 20rem;
   }
 
   .lg\:h-\[calc\(100vh_-_5\.625rem\)\]{
     height: calc(100vh - 5.625rem);
   }
 
-  .lg\:h-100{
-    height: 25rem;
-  }
-
-  .lg\:h-80{
-    height: 20rem;
-  }
-
   .lg\:w-1\/2{
     width: 50%;
   }
 
-  .lg\:w-48{
-    width: 12rem;
+  .lg\:w-80{
+    width: 20rem;
   }
 
   .lg\:w-\[60\%\]{
@@ -5345,14 +5337,6 @@ span.flatpickr-weekday:is(.dark *),
 
   .lg\:w-auto{
     width: auto;
-  }
-
-  .lg\:w-100{
-    width: 25rem;
-  }
-
-  .lg\:w-80{
-    width: 20rem;
   }
 
   .lg\:max-w-3xl{

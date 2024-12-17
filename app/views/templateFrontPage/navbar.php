@@ -15,6 +15,7 @@
 
         <!-- Desktop Menu -->
         <div class="hidden lg:flex space-x-6 mx-auto">
+            <!-- tambah kan nav-link jika mau -->
             <a
                 href="<?= base_url ?>/#beranda"
                 class="text-sm font-semibold hover:font-bold text-gray-600 hover:text-[#44808B]">Beranda</a>

@@ -17,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title class=""><?= $data['title']; ?> - BKK SMKN 1 PKC</title>
     <link rel="icon" href="<?= !empty($data['logo']['logo_bkk']) ? base_url . '/uploads/logo/logobkk/' . $data['logo']['logo_bkk'] : base_url . '/assets/img/1._Logo_BKK-removebg-preview.png' ?>" />
+
     <style>
         /* Custom CSS for image */
         .flexible-img {
@@ -36,9 +37,20 @@
             }
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         .animate-slide-left {
             animation: slideLeft 20s linear infinite;
         }
+
+        /* .nav-link.active {
+            color: blue;
+            font-weight: bold;
+        }
+
+        */
     </style>
 </head>
 

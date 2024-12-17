@@ -54,6 +54,7 @@
 </div>
 
 
+
 <script>
     // Function to toggle modal visibility
     function toggleModal() {
@@ -92,6 +93,42 @@
         });
     });
 </script>
+
+<!-- nav link jika pengen -->
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("section");
+
+        // Fungsi untuk mengatur menu aktif berdasarkan posisi scroll
+        function setActiveMenu() {
+            let currentSection = "";
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop - 120; // Offset agar lebih akurat
+                const sectionHeight = section.clientHeight;
+
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute("id");
+                }
+            });
+
+            // Hapus semua class 'active', lalu tambahkan ke link yang sesuai
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(currentSection)) {
+                    link.classList.add("active");
+                }
+            });
+        }
+
+        // Event Listener saat scroll
+        window.addEventListener("scroll", setActiveMenu);
+
+        // Trigger fungsi sekali saat halaman dimuat
+        setActiveMenu();
+    });
+</script> -->
 
 <!-- JavaScript to toggle visibility of extra images -->
 <script>
