@@ -46,7 +46,7 @@ class Beranda extends Controller
         $this->cekAkses('Super Admin');
         $dataCount = $this->model('BerandaModel')->countData();
 
-        $inputs = ['video', 'title'];
+        $inputs = ['title'];
         foreach ($inputs as $input) {
             if (empty(trim($_POST[$input]))) {
                 Flasher::setMessage("$input tidak boleh kosong atau hanya berisi spasi!", 'danger');

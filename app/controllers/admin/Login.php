@@ -27,6 +27,7 @@ class Login extends Controller
 
         if ($row) {
             $_SESSION['id'] = $row['id'];
+            $_SESSION['uuid'] = $row['uuid'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['nama'] = $row['nama'];

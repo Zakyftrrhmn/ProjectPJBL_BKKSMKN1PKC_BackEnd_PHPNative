@@ -89,9 +89,9 @@
 
 
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="<?= base_url; ?>/admin/alumni/detail/<?= $row['id'] ?>" class="text-lg text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i></a>
-                                    <a href="<?= base_url; ?>/admin/alumni/edit/<?= $row['id'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
-                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/admin/alumni/hapus/<?= $row['id'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
+                                    <a href="<?= base_url; ?>/admin/alumni/detail/<?= $row['uuid'] ?>" class="text-lg text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i></a>
+                                    <a href="<?= base_url; ?>/admin/alumni/edit/<?= $row['uuid'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
+                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/admin/alumni/hapus/<?= $row['uuid'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
                                         <i class='bx bxs-trash'></i>
                                     </a>
 

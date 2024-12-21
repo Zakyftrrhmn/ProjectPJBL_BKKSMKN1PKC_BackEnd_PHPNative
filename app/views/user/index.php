@@ -56,7 +56,7 @@
                             <th scope="col" class="px-6 py-3">Nama pengguna </th>
                             <th scope="col" class="px-6 py-3">Username</th>
                             <th scope="col" class="px-6 py-3">Role</th>
-                            <th scope="col" class="px-6 py-3 ">Action</th>
+                            <th scope="col" class="px-6 py-3 text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,13 +90,20 @@
                                         <?= $row['role']; ?>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="<?= base_url; ?>/admin/user/edit/<?= $row['id'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
-                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/admin/user/hapus/<?= $row['id'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
-                                        <i class='bx bxs-trash'></i>
-                                    </a>
+                                <?php if ($row['uuid'] != FIXED_SUPERADMIN_ID): ?>
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                                        <a href="<?= base_url; ?>/admin/user/edit/<?= $row['uuid'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
+                                        <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/admin/user/hapus/<?= $row['uuid'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
+                                            <i class='bx bxs-trash'></i>
+                                        </a>
 
-                                </td>
+                                    </td>
+                                <?php else: ?>
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                                        <span class="text-gray-500 italic">Tidak bisa diubah</span>
+                                    </td>
+                                <?php endif; ?>
+
                             </tr>
                         <?php $no++;
                         endforeach; ?>

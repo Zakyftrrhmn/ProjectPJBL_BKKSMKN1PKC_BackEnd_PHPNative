@@ -121,7 +121,7 @@
                         <!-- Button -->
                         <div class="mt-6 mb-[-35px]">
                             <a
-                                href="<?= base_url; ?>/landing/pendaftaran/<?= $row['id'] ?>"
+                                href="<?= base_url; ?>/landing/pendaftaran/<?= $row['uuid'] ?>"
                                 class="block text-sm bg-purple-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-purple-600 hover:shadow-xl transition duration-200 cursor-pointer text-center">
                                 Daftar Sekarang
                             </a>

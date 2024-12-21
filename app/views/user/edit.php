@@ -24,12 +24,12 @@
             <!-- Responsive Table -->
             <form action="<?= base_url; ?>/admin/user/updateUser" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
                 <!-- Hidden Input for User ID -->
-                <input type="hidden" name="id" value="<?= $data['user']['id']; ?>">
+                <input type="hidden" name="uuid" value="<?= $data['user']['uuid']; ?>">
 
                 <!-- Nama -->
                 <div class="mb-5">
                     <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama <span class="text-red-500">*</span></label>
-                    <input type="text" id="nama" name="nama"
+                    <input maxlength="100" type="text" id="nama" name="nama"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= $data['user']['nama']; ?>" required />
                 </div>
@@ -37,7 +37,7 @@
                 <!-- Username -->
                 <div class="mb-5">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username <span class="text-red-500">*</span></label>
-                    <input type="text" id="username" name="username"
+                    <input maxlength="100" type="text" id="username" name="username"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= $data['user']['username']; ?>" required />
                 </div>
@@ -45,7 +45,7 @@
                 <!-- Email -->
                 <div class="mb-5">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email <span class="text-red-500">*</span></label>
-                    <input type="email" id="email" name="email"
+                    <input maxlength="100" type="email" id="email" name="email"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= $data['user']['email']; ?>" required />
                 </div>
@@ -55,7 +55,7 @@
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">password
                         <span class="bg-red-200 text-red-800 rounded-full px-2 py-1">Abaikan Jika Tidak Diubah</span>
                     </label>
-                    <input type="password" id="password" name="password"
+                    <input maxlength="255" type="password" id="password" name="password"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" />
                 </div>
 

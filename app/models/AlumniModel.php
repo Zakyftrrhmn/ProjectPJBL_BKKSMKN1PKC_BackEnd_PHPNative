@@ -21,10 +21,10 @@ class AlumniModel
     }
 
 
-    public function getAlumniById($id)
+    public function getAlumniByUuid($uuid)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         return $this->db->single();
     }
 
@@ -33,6 +33,7 @@ class AlumniModel
         // Cek apakah NISN sudah ada
         $queryCheckNISN = "SELECT * FROM alumni WHERE nisn = :nisn";
         $this->db->query($queryCheckNISN);
+
         $this->db->bind('nisn', $data['nisn']);
         $this->db->execute();
 
@@ -51,11 +52,12 @@ class AlumniModel
         if ($this->db->rowCount() > 0) {
             return false; // NIS sudah ada, kembalikan false
         }
-
+        $uuid = uniqid(); // Atau gunakan library UUID
         // Jika NISN belum terdaftar, lanjutkan insert data
-        $query = "INSERT INTO alumni (nisn, nis, nama, id_jurusan, kelamin, tempat_lahir, tanggal_lahir, tahun_lulus, status) 
-                  VALUES (:nisn, :nis, :nama, :id_jurusan, :kelamin, :tempat_lahir, :tanggal_lahir, :tahun_lulus, :status)";
+        $query = "INSERT INTO alumni (uuid,nisn, nis, nama, id_jurusan, kelamin, tempat_lahir, tanggal_lahir, tahun_lulus, status) 
+                  VALUES (:uuid ,:nisn, :nis, :nama, :id_jurusan, :kelamin, :tempat_lahir, :tanggal_lahir, :tahun_lulus, :status)";
         $this->db->query($query);
+        $this->db->bind('uuid', $uuid);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nis', $data['nis']);
         $this->db->bind('nama', $data['nama']);
@@ -107,12 +109,12 @@ class AlumniModel
                     tanggal_lahir = :tanggal_lahir,
                     tahun_lulus = :tahun_lulus,
                     status = :status
-                  WHERE id = :id";
+                  WHERE uuid = :uuid";
 
         $this->db->query($query);
 
         // Binding parameter
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('uuid', $data['uuid']);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nis', $data['nis']);
         $this->db->bind('nama', $data['nama']);
@@ -131,10 +133,10 @@ class AlumniModel
     }
 
 
-    public function deleteAlumni($id)
+    public function deleteAlumni($Uuid)
     {
-        $this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $Uuid);
         $this->db->execute();
 
         return $this->db->rowCount();

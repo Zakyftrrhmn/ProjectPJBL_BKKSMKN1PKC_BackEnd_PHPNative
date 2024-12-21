@@ -19,18 +19,20 @@ class PengumumanModel
         return $this->db->resultSet();
     }
 
-    public function getPengumumanById($id)
+    public function getPengumumanByUuid($uuid)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         return $this->db->single();
     }
 
 
     public function tambahPengumuman($data)
     {
-        $query = "INSERT INTO pengumuman (nama_pengumuman, tanggal_pengumuman, file_pengumuman) values (:nama_pengumuman, :tanggal_pengumuman, :file_pengumuman)";
+        $uuid = uniqid();
+        $query = "INSERT INTO pengumuman (uuid, nama_pengumuman, tanggal_pengumuman, file_pengumuman) values (:uuid, :nama_pengumuman, :tanggal_pengumuman, :file_pengumuman)";
         $this->db->query($query);
+        $this->db->bind('uuid', $uuid);
         $this->db->bind('nama_pengumuman', $data['nama_pengumuman']);
         $this->db->bind('tanggal_pengumuman', $data['tanggal_pengumuman']);
         $this->db->bind('file_pengumuman', $data['file_pengumuman']);
@@ -41,9 +43,9 @@ class PengumumanModel
 
     public function updateDataPengumuman($data)
     {
-        $query = "UPDATE pengumuman SET nama_pengumuman=:nama_pengumuman, tanggal_pengumuman=:tanggal_pengumuman, file_pengumuman=:file_pengumuman WHERE id=:id";
+        $query = "UPDATE pengumuman SET nama_pengumuman=:nama_pengumuman, tanggal_pengumuman=:tanggal_pengumuman, file_pengumuman=:file_pengumuman WHERE uuid=:uuid";
         $this->db->query($query);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('uuid', $data['uuid']);
         $this->db->bind('nama_pengumuman', $data['nama_pengumuman']);
         $this->db->bind('tanggal_pengumuman', $data['tanggal_pengumuman']);
         $this->db->bind('file_pengumuman', $data['file_pengumuman']);
@@ -54,10 +56,10 @@ class PengumumanModel
 
 
 
-    public function deletePengumuman($id)
+    public function deletePengumuman($uuid)
     {
-        $this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         $this->db->execute();
 
         return $this->db->rowCount();

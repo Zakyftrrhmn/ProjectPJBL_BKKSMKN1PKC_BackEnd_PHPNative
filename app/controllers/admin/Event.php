@@ -77,12 +77,12 @@ class Event extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit($uuid)
     {
         $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Data Event';
-        $data['event'] = $this->model('EventModel')->getEventById($id);
+        $data['event'] = $this->model('EventModel')->getEventByUuid($uuid);
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
 
 
@@ -108,10 +108,10 @@ class Event extends Controller
     }
 
 
-    public function hapus($id)
+    public function hapus($uuid)
     {
         $this->cekAkses('Super Admin');
-        if ($this->model('EventModel')->deleteEvent($id) > 0) {
+        if ($this->model('EventModel')->deleteEvent($uuid) > 0) {
             Flasher::setMessage(' Event berhasil dihapus!', 'success');
             header('location:' . base_url . '/admin/event');
             exit;
@@ -137,11 +137,11 @@ class Event extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function detail($id)
+    public function detail($uuid)
     {
         $this->cekAkses('Super Admin');
         $data['title'] = 'Detail Data Event';
-        $data['event'] = $this->model('EventModel')->getEventById($id);
+        $data['event'] = $this->model('EventModel')->getEventByUuid($uuid);
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
 
         $this->view('templates/header', $data);
@@ -151,19 +151,22 @@ class Event extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function pelamar($id)
+    public function pelamar($uuid)
     {
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Pelamar';
-        // Ambil data event berdasarkan id yang dipilih
-        $data['event'] = $this->model('EventModel')->getEventById($id);
+
+        // Ambil data event berdasarkan uuid yang dipilih
+        $data['event'] = $this->model('EventModel')->getEventByUuid($uuid);
+
+        // Ambil ID event
+        $id_event = $data['event']['id'];
 
         // Ambil pelamar yang terdaftar untuk event tersebut
-        $data['pelamar'] = $this->model('PendaftaranModel')->getPelamarByEvent($id);
+        $data['pelamar'] = $this->model('PendaftaranModel')->getPelamarByEvent($id_event);
 
-        $pelamarData = $this->model('PendaftaranModel')->getPelamarByEvent($id);
-        $totalPelamar = count($pelamarData);
-        $data['totalPelamar'] = $totalPelamar;
+        // Hitung total pelamar
+        $data['totalPelamar'] = count($data['pelamar']);
 
         // Ambil data perusahaan (jika diperlukan)
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
@@ -176,15 +179,14 @@ class Event extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function detailpelamar($id)
+
+    public function detailpelamar($uuid)
     {
         $this->cekAkses('Super Admin');
         $data['title'] = 'Data Pelamar';
 
-        $data['event'] = $this->model('EventModel')->getEventById($id);
-        // Ambil pelamar yang terdaftar untuk event tersebut
-        $data['pelamar'] = $this->model('PendaftaranModel')->getPelamarByEvent($id);
-        $data['pelamar'] = $this->model('PendaftaranModel')->getPendaftaranById($id);
+        $data['event'] = $this->model('EventModel')->getEventByUuid($uuid);
+        $data['pelamar'] = $this->model('PendaftaranModel')->getPendaftaranByUuid($uuid);
         // Load views
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -193,17 +195,25 @@ class Event extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function cetakPelamar($eventId)
+    public function cetakPelamar($uuid)
     {
         $this->cekAkses('Super Admin');
 
-        // Ambil data pelamar dan informasi terkait
-        $dataPelamar = $this->model('PendaftaranModel')->getPelamarByEvent($eventId);
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
-        $data['event'] = $this->model('EventModel')->getEventById($eventId);
+        $data['event'] = $this->model('EventModel')->getEventByUuid($uuid);
+
+        if (!$data['event']) {
+            exit('Event tidak ditemukan.');
+        }
+
+        // Ambil ID event
+        $id_event = $data['event']['id'];
+
+        // Ambil pelamar yang terdaftar untuk event tersebut
+        $data['pelamar'] = $this->model('PendaftaranModel')->getPelamarByEvent($id_event);
 
         // Validasi data pelamar
-        if (empty($dataPelamar)) {
+        if (empty($data['pelamar'])) {
             exit('Tidak ada data pelamar untuk event ini.');
         }
 
@@ -261,7 +271,7 @@ class Event extends Controller
         $baseUrl = 'http://localhost/bkk_smkn1pkc/public/uploads/pelamar/';
         $rowNum = 3;
 
-        foreach ($dataPelamar as $index => $pelamar) {
+        foreach ($data['pelamar'] as $index => $pelamar) {
             $sheet->fromArray([
                 $index + 1,
                 $pelamar['nama_lengkap'],

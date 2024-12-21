@@ -22,7 +22,7 @@
         <div class="bg-white w-full dark:bg-gray-800 shadow rounded-lg p-6">
             <!-- Responsive Table -->
             <form action="<?= base_url; ?>/admin/info/updateInfo" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
-                <input type="hidden" name="id" value="<?= isset($data['info'][0]['id']) ? $data['info'][0]['id'] : ''; ?>" />
+                <input maxlength="100" type="hidden" name="id" value="<?= isset($data['info'][0]['id']) ? $data['info'][0]['id'] : ''; ?>" />
 
                 <div class="mb-5">
                     <label for="link_facebook" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Facebook <span class="text-red-500">*</span></label>
@@ -33,28 +33,28 @@
 
                 <div class="mb-5">
                     <label for="link_instagram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Instagram <span class="text-red-500">*</span></label>
-                    <input type="text" id="link_instagram" name="link_instagram"
+                    <input maxlength="100" type="text" id="link_instagram" name="link_instagram"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= !empty($data['info'][0]['link_instagram']) ? $data['info'][0]['link_instagram'] : 'https://www.instagram.com/'; ?>" required />
                 </div>
 
                 <div class="mb-5">
                     <label for="link_youtube" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Youtube <span class="text-red-500">*</span></label>
-                    <input type="text" id="link_youtube" name="link_youtube"
+                    <input maxlength="100" type="text" id="link_youtube" name="link_youtube"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= !empty($data['info'][0]['link_youtube']) ? $data['info'][0]['link_youtube'] : 'https://www.youtube.com/'; ?>" required />
                 </div>
 
                 <div class="mb-5">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Sekolah <span class="text-red-500">*</span></label>
-                    <input type="text" id="email" name="email"
+                    <input maxlength="100" type="text" id="email" name="email"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= !empty($data['info'][0]['email']) ? $data['info'][0]['email'] : 'SMKN1PKC@gmail.com'; ?>" required />
                 </div>
 
                 <div class="mb-5">
                     <label for="telepon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telepon Sekolah <span class="text-red-500">*</span></label>
-                    <input type="text" id="telepon" name="telepon"
+                    <input maxlength="100" type="text" id="telepon" name="telepon"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= !empty($data['info'][0]['telepon']) ? $data['info'][0]['telepon'] : '0812xxxxx'; ?>" required />
                 </div>

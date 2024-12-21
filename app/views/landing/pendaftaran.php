@@ -136,7 +136,7 @@
 
             <div class="bg-white p-6 rounded-lg shadow-md col-span-1" data-aos="fade-left" data-aos-delay="50">
                 <h3 class="text-2xl font-bold mb-4">Form Pendaftaran</h3>
-                <form action="<?= base_url ?>/landing/pendaftaranSimpan/<?= $data['event']['id'] ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url ?>/landing/pendaftaranSimpan/<?= $data['event']['uuid'] ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id_event" value="<?= $data['event']['id'] ?>">
                     <div class="space-y-5">
                         <?php Flasher::flash(); ?>

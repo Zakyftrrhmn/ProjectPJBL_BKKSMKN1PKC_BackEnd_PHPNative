@@ -98,15 +98,15 @@
                                     ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="<?= base_url; ?>/admin/event/detail/<?= $row['id'] ?>" class="text-lg text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i></a>
-                                    <a href="<?= base_url; ?>/admin/event/edit/<?= $row['id'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
-                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/admin/event/hapus/<?= $row['id'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
+                                    <a href="<?= base_url; ?>/admin/event/detail/<?= $row['uuid'] ?>" class="text-lg text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i></a>
+                                    <a href="<?= base_url; ?>/admin/event/edit/<?= $row['uuid'] ?>" class="text-lg text-yellow-500 dark:text-blue-500"><i class='bx bxs-edit'></i></a>
+                                    <a href="javascript:void(0);" data-modal-target="popup-modal" data-delete-url="<?= base_url; ?>/admin/event/hapus/<?= $row['uuid'] ?>" class="text-lg text-red-500 dark:text-blue-500 btn-delete">
                                         <i class='bx bxs-trash'></i>
                                     </a>
 
                                 </td>
                                 <td class="px-2 py-4">
-                                    <a href="<?= base_url; ?>/admin/event/pelamar/<?= $row['id'] ?>" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Pelamar</a>
+                                    <a href="<?= base_url; ?>/admin/event/pelamar/<?= $row['uuid'] ?>" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Pelamar</a>
                                 </td>
                             </tr>
                         <?php $no++;

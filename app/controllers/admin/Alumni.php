@@ -57,11 +57,11 @@ class Alumni extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit($uuid)
     {
         $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $data['title'] = 'Edit Data Alumni';
-        $data['alumni'] = $this->model('AlumniModel')->getAlumniById($id);
+        $data['alumni'] = $this->model('AlumniModel')->getAlumniByUuid($uuid);
         $data['jurusan'] = $this->model('JurusanModel')->getAllJurusan();
 
         $this->view('templates/header', $data);
@@ -95,9 +95,9 @@ class Alumni extends Controller
         }
     }
 
-    public function hapus($id)
+    public function hapus($uuid)
     {
-        if ($this->model('AlumniModel')->deleteAlumni($id) > 0) {
+        if ($this->model('AlumniModel')->deleteAlumni($uuid) > 0) {
             Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/admin/alumni');
             exit;
@@ -122,10 +122,10 @@ class Alumni extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function detail($id)
+    public function detail($uuid)
     {
         $data['title'] = 'Detail Data Alumni';
-        $data['alumni'] = $this->model('AlumniModel')->getAlumniById($id);
+        $data['alumni'] = $this->model('AlumniModel')->getAlumniByUuid($uuid);
         $data['jurusan'] = $this->model('JurusanModel')->getAllJurusan();
 
         $this->view('templates/header', $data);

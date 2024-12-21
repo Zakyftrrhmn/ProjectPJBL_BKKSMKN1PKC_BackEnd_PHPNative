@@ -17,18 +17,20 @@ class PerusahaanModel
         return $this->db->resultSet();
     }
 
-    public function getPerusahaanById($id)
+    public function getPerusahaanByUuid($uuid)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         return $this->db->single();
     }
 
     public function tambahPerusahaan($data)
     {
-        $query = "INSERT INTO perusahaan (nama_perusahaan, alamat_perusahaan, email_perusahaan, telepon_perusahaan, logo_perusahaan, industry_perusahaan)
-        VALUES (:nama_perusahaan, :alamat_perusahaan, :email_perusahaan, :telepon_perusahaan, :logo_perusahaan, :industry_perusahaan)";
+        $uuid = uniqid(); // Atau gunakan library UUID
+        $query = "INSERT INTO perusahaan (uuid, nama_perusahaan, alamat_perusahaan, email_perusahaan, telepon_perusahaan, logo_perusahaan, industry_perusahaan)
+        VALUES (:uuid, :nama_perusahaan, :alamat_perusahaan, :email_perusahaan, :telepon_perusahaan, :logo_perusahaan, :industry_perusahaan)";
         $this->db->query($query);
+        $this->db->bind('uuid', $uuid);
         $this->db->bind('nama_perusahaan', $data['nama_perusahaan']);
         $this->db->bind('alamat_perusahaan', $data['alamat_perusahaan']);
         $this->db->bind('email_perusahaan', $data['email_perusahaan']);
@@ -49,7 +51,7 @@ class PerusahaanModel
                     telepon_perusahaan = :telepon_perusahaan,
                     logo_perusahaan = :logo_perusahaan,
                     industry_perusahaan = :industry_perusahaan
-                  WHERE id = :id";
+                  WHERE uuid = :uuid";
 
         $this->db->query($query);
         $this->db->bind('nama_perusahaan', $data['nama_perusahaan']);
@@ -58,17 +60,17 @@ class PerusahaanModel
         $this->db->bind('telepon_perusahaan', $data['telepon_perusahaan']);
         $this->db->bind('logo_perusahaan', $data['logo_perusahaan'] ?? null);
         $this->db->bind('industry_perusahaan', $data['industry_perusahaan']);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('uuid', $data['uuid']);
 
         $this->db->execute();
         return $this->db->rowCount();
     }
 
 
-    public function deletePerusahaan($id)
+    public function deletePerusahaan($uuid)
     {
-        $this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         $this->db->execute();
 
         return $this->db->rowCount();

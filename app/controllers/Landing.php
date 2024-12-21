@@ -110,7 +110,7 @@ class Landing extends Controller
     }
 
 
-    public function pendaftaran($id)
+    public function pendaftaran($uuid)
     {
         $data['title'] = 'Form Pendaftaran';
         $data['title'] = 'BKK SMKN 1 Pangkalan Kerinci';
@@ -122,7 +122,7 @@ class Landing extends Controller
         $data['tujuan'] = $this->model('TujuanModel')->getAllTujuan();
         $data['event'] = $this->model('EventModel')->getActiveEvents();
         $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
-        $data['event'] = $this->model('EventModel')->getEventById($id);
+        $data['event'] = $this->model('EventModel')->getEventByUuid($uuid);
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
 
         $this->view('templateFrontPage/header', $data);
@@ -132,7 +132,7 @@ class Landing extends Controller
         $this->view('templateFrontPage/footer', $data);
     }
 
-    public function pendaftaranSimpan($id)
+    public function pendaftaranSimpan($uuid)
     {
 
         // Validasi file upload
@@ -148,7 +148,7 @@ class Landing extends Controller
 
                 if (!in_array($fileExtension, $allowedExtensions)) {
                     Flasher::setMessage("File $fileKey harus berupa format: jpg, jpeg, png, pdf, docx, atau xls!", 'danger');
-                    header('location:' . base_url . '/landing/pendaftaran/' . $id);
+                    header('location:' . base_url . '/landing/pendaftaran/' . $uuid);
                     exit;
                 }
 
@@ -173,11 +173,11 @@ class Landing extends Controller
         // Simpan data ke model
 
         $pendaftaranModel = $this->model('PendaftaranModel');
-        $id = $pendaftaranModel->tambahPendaftaran($data);  // Langsung ambil ID dari tambahPendaftaran
+        $uuidPelamar = $pendaftaranModel->tambahPendaftaran($data);  // Langsung ambil ID dari tambahPendaftaran
 
-        if ($id > 0) {  // ID yang lebih besar dari 0 berarti berhasil disimpan
+        if ($uuidPelamar > 0) {  // ID yang lebih besar dari 0 berarti berhasil disimpan
             Flasher::setMessage('Pendaftaran berhasil disimpan!', 'success');
-            header('location:' . base_url . '/landing/success/' . $id);
+            header('location:' . base_url . '/landing/success/' . $uuidPelamar);
             exit;
         } else {
             Flasher::setMessage('Pendaftaran gagal disimpan!', 'danger');
@@ -228,7 +228,7 @@ class Landing extends Controller
         $this->view('templateFrontPage/footer', $data);
     }
 
-    public function success($id)
+    public function success($uuidPelamar)
     {
         $data['title'] = 'Pendaftaran Success';
         $data['title'] = 'BKK SMKN 1 Pangkalan Kerinci';
@@ -241,7 +241,7 @@ class Landing extends Controller
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
         $data['event'] = $this->model('EventModel')->getActiveEvents();
         $data['gallery'] = $this->model('GalleryModel')->getAllGallery();
-        $data['pelamar'] = $this->model('PendaftaranModel')->getPendaftaranById($id); // Ambil data berdasarkan ID pelamar
+        $data['pelamar'] = $this->model('PendaftaranModel')->getPendaftaranByUuid($uuidPelamar); // Ambil data berdasarkan ID pelamar
 
         $this->view('templateFrontPage/header', $data);
         $this->view('templateFrontPage/navbar', $data);
@@ -262,10 +262,10 @@ class Landing extends Controller
      * @param int $id The ID of the applicant for which the registration proof is generated.
      */
     /******  e12bb81e-9d34-4316-be41-d89594526c66  *******/
-    public function buktiPendaftaran($id)
+    public function buktiPendaftaran($uuid)
     {
         // Mengambil data pelamar dan event berdasarkan ID
-        $data['pelamar'] = $this->model('PendaftaranModel')->getPendaftaranById($id);
+        $data['pelamar'] = $this->model('PendaftaranModel')->getPendaftaranByUuid($uuid);
         $data['perusahaan'] = $this->model('PerusahaanModel')->getAllPerusahaan();
 
         // Membuat PDF

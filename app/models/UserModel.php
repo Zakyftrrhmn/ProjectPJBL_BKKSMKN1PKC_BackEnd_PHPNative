@@ -20,21 +20,23 @@ class UserModel
     }
 
 
-    public function getUserById($id)
+    public function getUserByUuid($uuid)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         return $this->db->single();
     }
 
     public function tambahUser($data)
     {
-        $query = "INSERT INTO user (nama, username, email, password,role, photo ) values (:nama, :username, :email, :password, :role, :photo )";
+        $uuid = uniqid(); // Atau gunakan library UUID
+        $query = "INSERT INTO user (uuid, nama, username, email, password, role, photo) values (:uuid, :nama, :username, :email, :password, :role, :photo)";
         $this->db->query($query);
+        $this->db->bind('uuid', $uuid);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('username', $data['username']);
         $this->db->bind('email', $data['email']);
-        $this->db->bind('password', md5($data['password']));
+        $this->db->bind('password', password_hash($data['password'], PASSWORD_DEFAULT)); // Menggunakan password_hash
         $this->db->bind('role', $data['role']);
         $this->db->bind('photo', $data['photo'] ?? null);
         $this->db->execute();
@@ -65,26 +67,23 @@ class UserModel
 
     public function updateUser($data)
     {
-        // Cek apakah password kosong atau tidak
         if (empty($data['password'])) {
-            // Jika password kosong, tidak mengupdate field password
-            $query = "UPDATE user SET nama=:nama, username=:username, email=:email, role=:role, photo=:photo WHERE id=:id";
+            $query = "UPDATE user SET nama=:nama, username=:username, email=:email, role=:role, photo=:photo WHERE uuid=:uuid";
             $this->db->query($query);
-            $this->db->bind('id', $data['id']);
+            $this->db->bind('uuid', $data['uuid']);
             $this->db->bind('nama', $data['nama']);
             $this->db->bind('username', $data['username']);
             $this->db->bind('email', $data['email']);
             $this->db->bind('role', $data['role']);
             $this->db->bind('photo', $data['photo'] ?? null);
         } else {
-            // Jika password tidak kosong, field password juga ikut diupdate
-            $query = "UPDATE user SET nama=:nama, username=:username, email=:email, password=:password, role=:role, photo=:photo WHERE id=:id";
+            $query = "UPDATE user SET nama=:nama, username=:username, email=:email, password=:password, role=:role, photo=:photo WHERE uuid=:uuid";
             $this->db->query($query);
-            $this->db->bind('id', $data['id']);
+            $this->db->bind('uuid', $data['uuid']);
             $this->db->bind('nama', $data['nama']);
             $this->db->bind('username', $data['username']);
             $this->db->bind('email', $data['email']);
-            $this->db->bind('password', md5($data['password']));
+            $this->db->bind('password', password_hash($data['password'], PASSWORD_DEFAULT)); // Menggunakan password_hash
             $this->db->bind('role', $data['role']);
             $this->db->bind('photo', $data['photo'] ?? null);
         }
@@ -94,10 +93,10 @@ class UserModel
     }
 
 
-    public function deleteUser($id)
+    public function deleteUser($uuid)
     {
-        $this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         $this->db->execute();
 
         return $this->db->rowCount();

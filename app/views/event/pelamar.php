@@ -34,7 +34,7 @@
               dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                         Kembali
                     </a>
-                    <a href="<?= base_url; ?>/admin/event/cetakPelamar/<?= $data['event']['id']; ?>"
+                    <a href="<?= base_url; ?>/admin/event/cetakPelamar/<?= $data['event']['uuid']; ?>"
                         class="flex items-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 text-sm rounded-lg px-4 py-2 
           dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
                         Cetak
@@ -94,7 +94,7 @@
                                     <td class="px-6 py-4"><?= $row['no_handphone']; ?></td>
                                     <td class="px-6 py-4"><?= $row['email']; ?></td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <a href="<?= base_url; ?>/admin/event/detailpelamar/<?= $row['id'] ?>" class="text-sm flex items-center gap-1 text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i>detail</a>
+                                        <a href="<?= base_url; ?>/admin/event/detailpelamar/<?= $row['uuid'] ?>" class="text-sm flex items-center gap-1 text-blue-700 dark:text-blue-500"><i class='bx bx-show'></i>detail</a>
                                     </td>
                                 </tr>
                             <?php $no++;

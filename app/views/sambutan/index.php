@@ -28,7 +28,7 @@
                 <!--Nama Kepsek -->
                 <div class="mb-5">
                     <label for="nama_kepsek" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Kepala Sekolah <span class="text-red-500">*</span></label>
-                    <input type="text" id="nama_kepsek" name="nama_kepsek" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['sambutan'][0]['nama_kepsek']) ? $data['sambutan'][0]['nama_kepsek'] : 'H. Nasril, M.Pd'; ?>" required />
+                    <input maxlength="100" type="text" id="nama_kepsek" name="nama_kepsek" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['sambutan'][0]['nama_kepsek']) ? $data['sambutan'][0]['nama_kepsek'] : 'H. Nasril, M.Pd'; ?>" required />
                 </div>
 
                 <!-- Sambutan Dari Kepsek -->

@@ -18,8 +18,7 @@ class LoginModel
         $user = $this->db->single();
 
         // Cek apakah user ada dan verifikasi password
-        if ($user && md5($data['password']) === $user['password']) {
-            // Simpan data user ke session
+        if ($user && password_verify($data['password'], $user['password'])) {
             $_SESSION['username'] = $user['username'];
             $_SESSION['nama'] = $user['nama'];
             $_SESSION['role'] = $user['role'];

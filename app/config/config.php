@@ -6,3 +6,5 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'smkn1db_pjbl');
+
+define('FIXED_SUPERADMIN_ID', '6766975948ad1');

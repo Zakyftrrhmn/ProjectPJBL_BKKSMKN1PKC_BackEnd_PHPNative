@@ -29,19 +29,19 @@
                 <!-- Nama Sekolah -->
                 <div class="mb-5">
                     <label for="nama_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Sekolah <span class="text-red-500">*</span></label>
-                    <input type="text" id="nama_sekolah" name="nama_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['logoo'][0]['nama_sekolah']) ? $data['logoo'][0]['nama_sekolah'] : 'SMKN 1 Pangkalan Kerinci'; ?>" required />
+                    <input maxlength="255" type="text" id="nama_sekolah" name="nama_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['logoo'][0]['nama_sekolah']) ? $data['logoo'][0]['nama_sekolah'] : 'SMKN 1 Pangkalan Kerinci'; ?>" required />
                 </div>
 
                 <!-- Alamat Sekolah -->
                 <div class="mb-5">
                     <label for="alamat_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat Sekolah <span class="text-red-500">*</span></label>
-                    <input type="text" id="alamat_sekolah" name="alamat_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['logoo'][0]['alamat_sekolah']) ? $data['logoo'][0]['alamat_sekolah'] : ' Makmur, Pangkalan Kerinci, Pelalawan Regency, Riau 28654'; ?>" required />
+                    <input maxlength="255" type="text" id="alamat_sekolah" name="alamat_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['logoo'][0]['alamat_sekolah']) ? $data['logoo'][0]['alamat_sekolah'] : ' Makmur, Pangkalan Kerinci, Pelalawan Regency, Riau 28654'; ?>" required />
                 </div>
 
                 <!-- Input Logo BKK -->
                 <div class="mb-5">
                     <label for="logo_bkk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo BKK (Bursa Kerja Khusus) <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Rekomendasi ukuran gambar (224px x 128px)</span></label>
-                    <input type="file" id="logo_bkk" name="logo_bkk" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                    <input maxlength="255" type="file" id="logo_bkk" name="logo_bkk" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <div class="mt-3">
                         <p class="text-sm text-gray-600 dark:text-gray-400">Foto saat ini:</p>
                         <?php
@@ -57,7 +57,7 @@
                 <!-- Input Logo Sekolah -->
                 <div class="mb-5">
                     <label for="logo_sekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logo Sekolah <span class="bg-green-200 text-green-800 rounded-full px-2 py-1">Rekomendasi ukuran gambar (128px x 128px)</span></label>
-                    <input type="file" id="logo_sekolah" name="logo_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                    <input maxlength="255" type="file" id="logo_sekolah" name="logo_sekolah" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     <div class="mt-3">
                         <p class="text-sm text-gray-600 dark:text-gray-400">Foto saat ini:</p>
                         <?php

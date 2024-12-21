@@ -19,17 +19,19 @@ class GalleryModel
         return $this->db->resultSet();
     }
 
-    public function getGalleryById($id)
+    public function getGalleryByUuid($uuid)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         return $this->db->single();
     }
 
     public function tambahGallery($data)
     {
-        $query = "INSERT INTO gallery (keterangan, gambar) values (:keterangan, :gambar)";
+        $uuid = uniqid();
+        $query = "INSERT INTO gallery (uuid, keterangan, gambar) values (:uuid, :keterangan, :gambar)";
         $this->db->query($query);
+        $this->db->bind('uuid', $uuid);
         $this->db->bind('keterangan', $data['keterangan']);
         $this->db->bind('gambar', $data['gambar']);
         $this->db->execute();
@@ -39,9 +41,9 @@ class GalleryModel
 
     public function updateDataGallery($data)
     {
-        $query = "UPDATE gallery SET keterangan=:keterangan, gambar=:gambar WHERE id=:id";
+        $query = "UPDATE gallery SET keterangan=:keterangan, gambar=:gambar WHERE uuid=:uuid";
         $this->db->query($query);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('uuid', $data['uuid']);
         $this->db->bind('keterangan', $data['keterangan']);
         $this->db->bind('gambar', $data['gambar']);
         $this->db->execute();
@@ -49,10 +51,10 @@ class GalleryModel
         return $this->db->rowCount();
     }
 
-    public function deleteGallery($id)
+    public function deleteGallery($uuid)
     {
-        $this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         $this->db->execute();
 
         return $this->db->rowCount();

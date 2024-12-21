@@ -127,12 +127,18 @@ class User extends Controller
 
 
 
-    public function edit($id)
+    public function edit($uuid)
     {
         $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit User';
-        $data['user'] = $this->model('UserModel')->getUserById($id);
+        $data['user'] = $this->model('UserModel')->getUserByUuid($uuid);
+
+        if ($uuid == FIXED_SUPERADMIN_ID) {
+            Flasher::setMessage('Akun ini tidak dapat diubah!', 'danger');
+            header('location:' . base_url . '/admin/user');
+            exit;
+        }
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -144,6 +150,11 @@ class User extends Controller
     public function updateUser()
     {
         $this->cekAkses('Super Admin');
+        if ($_POST['id'] == FIXED_SUPERADMIN_ID) {
+            Flasher::setMessage('Akun ini tidak dapat diubah!', 'danger');
+            header('location:' . base_url . '/admin/user');
+            exit;
+        }
         // Periksa apakah username sudah digunakan oleh pengguna lain
         $existingUser = $this->model('UserModel')->checkUniqueUsername($_POST['username'], $_POST['id']);
         if ($existingUser) {
@@ -209,10 +220,17 @@ class User extends Controller
     }
 
 
-    public function hapus($id)
+    public function hapus($uuid)
     {
+
         $this->cekAkses('Super Admin');
-        if ($this->model('UserModel')->deleteUser($id) > 0) {
+        if ($uuid == FIXED_SUPERADMIN_ID) {
+            Flasher::setMessage('Akun ini tidak dapat dihapus!', 'danger');
+            header('location:' . base_url . '/admin/user');
+            exit;
+        }
+
+        if ($this->model('UserModel')->deleteUser($uuid) > 0) {
             Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/admin/user');
             exit;

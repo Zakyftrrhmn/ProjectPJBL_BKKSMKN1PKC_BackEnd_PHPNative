@@ -118,12 +118,12 @@ class Perusahaan extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit($uuid)
     {
         $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Data Perusahaan';
-        $data['perusahaan'] = $this->model('PerusahaanModel')->getPerusahaanById($id);
+        $data['perusahaan'] = $this->model('PerusahaanModel')->getPerusahaanByUuid($uuid);
 
 
         $this->view('templates/header', $data);
@@ -192,10 +192,10 @@ class Perusahaan extends Controller
         }
     }
 
-    public function hapus($id)
+    public function hapus($uuid)
     {
         $this->cekAkses('Super Admin');
-        if ($this->model('PerusahaanModel')->deletePerusahaan($id) > 0) {
+        if ($this->model('PerusahaanModel')->deletePerusahaan($uuid) > 0) {
             Flasher::setMessage(' Data berhasil dihapus!', 'success');
             header('location:' . base_url . '/admin/perusahaan');
             exit;

@@ -113,12 +113,12 @@ class Pengumuman extends Controller
     }
 
 
-    public function edit($id)
+    public function edit($uuid)
     {
         $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Pengumuman';
-        $data['pengumuman'] = $this->model('PengumumanModel')->getPengumumanById($id);
+        $data['pengumuman'] = $this->model('PengumumanModel')->getPengumumanByUuid($uuid);
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -174,10 +174,10 @@ class Pengumuman extends Controller
         }
     }
 
-    public function hapus($id)
+    public function hapus($uuid)
     {
         $this->cekAkses('Super Admin');
-        if ($this->model('PengumumanModel')->deletePengumuman($id) > 0) {
+        if ($this->model('PengumumanModel')->deletePengumuman($uuid) > 0) {
             Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/admin/pengumuman');
             exit;

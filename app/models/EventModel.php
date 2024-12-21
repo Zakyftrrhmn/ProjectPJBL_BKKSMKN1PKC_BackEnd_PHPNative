@@ -20,10 +20,10 @@ class EventModel
     }
 
 
-    public function getEventById($id)
+    public function getEventByUuid($uuid)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         return $this->db->single();
     }
 
@@ -44,9 +44,11 @@ class EventModel
 
     public function tambahEvent($data)
     {
-        $query = "INSERT INTO event (id_perusahaan, posisi, lokasi, tipe, gaji, tanggal_terakhir, job_description, kualifikasi )
-        VALUES (:id_perusahaan, :posisi, :lokasi, :tipe, :gaji, :tanggal_terakhir, :job_description, :kualifikasi )";
+        $uuid = uniqid();
+        $query = "INSERT INTO event (uuid, id_perusahaan, posisi, lokasi, tipe, gaji, tanggal_terakhir, job_description, kualifikasi )
+        VALUES (:uuid, :id_perusahaan, :posisi, :lokasi, :tipe, :gaji, :tanggal_terakhir, :job_description, :kualifikasi )";
         $this->db->query($query);
+        $this->db->bind('uuid', $uuid);
         $this->db->bind('id_perusahaan', $data['id_perusahaan']);
         $this->db->bind('posisi', $data['posisi']);
         $this->db->bind('lokasi', $data['lokasi']);
@@ -62,9 +64,9 @@ class EventModel
 
     public function updateDataEvent($data)
     {
-        $query = "UPDATE event SET id_perusahaan=:id_perusahaan, posisi=:posisi, lokasi=:lokasi, tipe=:tipe, gaji=:gaji, tanggal_terakhir=:tanggal_terakhir, job_description=:job_description, kualifikasi=:kualifikasi  WHERE id=:id";
+        $query = "UPDATE event SET id_perusahaan=:id_perusahaan, posisi=:posisi, lokasi=:lokasi, tipe=:tipe, gaji=:gaji, tanggal_terakhir=:tanggal_terakhir, job_description=:job_description, kualifikasi=:kualifikasi  WHERE uuid=:uuid";
         $this->db->query($query);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('uuid', $data['uuid']);
         $this->db->bind('id_perusahaan', $data['id_perusahaan']);
         $this->db->bind('posisi', $data['posisi']);
         $this->db->bind('lokasi', $data['lokasi']);
@@ -80,10 +82,10 @@ class EventModel
 
 
 
-    public function deleteEvent($id)
+    public function deleteEvent($uuid)
     {
-        $this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE uuid=:uuid');
+        $this->db->bind('uuid', $uuid);
         $this->db->execute();
 
         return $this->db->rowCount();

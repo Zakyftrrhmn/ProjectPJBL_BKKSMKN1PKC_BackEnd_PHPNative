@@ -26,7 +26,7 @@
                 <!-- Nama -->
                 <div class="mb-5">
                     <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama <span class="text-red-500">*</span></label>
-                    <input type="text" id="nama" name="nama"
+                    <input maxlength="100" type="text" id="nama" name="nama"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan Nama pengguna" required />
                 </div>
@@ -34,7 +34,7 @@
                 <!-- username -->
                 <div class="mb-5">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">username <span class="text-red-500">*</span></label>
-                    <input type="text" id="username" name="username"
+                    <input maxlength="100" type="text" id="username" name="username"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan username pengguna" required />
                 </div>
@@ -42,7 +42,7 @@
                 <!-- email -->
                 <div class="mb-5">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">email <span class="text-red-500">*</span></label>
-                    <input type="email" id="email" name="email"
+                    <input maxlength="100" type="email" id="email" name="email"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan email pengguna" required />
                 </div>
@@ -50,7 +50,7 @@
                 <!-- password -->
                 <div class="mb-5">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">password <span class="text-red-500">*</span></label>
-                    <input type="password" id="password" name="password"
+                    <input maxlength="255" type="password" id="password" name="password"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan password pengguna" required />
                 </div>
@@ -58,7 +58,7 @@
                 <!-- password -->
                 <div class="mb-5">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ulangi Password <span class="text-red-500">*</span></label>
-                    <input type="password" id="password" name="ulangi_password"
+                    <input maxlength="255" type="password" id="password" name="ulangi_password"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         placeholder="Masukkan password pengguna" required />
                 </div>

@@ -23,13 +23,13 @@
 
             <!-- Responsive Table -->
             <form action="<?= base_url; ?>/admin/perusahaan/updatePerusahaan" method="post" class="w-full mx-auto" enctype="multipart/form-data" id="form">
-                <input type="hidden" name="id" value="<?= $data['perusahaan']['id']; ?>" />
+                <input type="hidden" name="uuid" value="<?= $data['perusahaan']['uuid']; ?>" />
                 <input type="hidden" name="logo_perusahaan_lama" value="<?= $data['perusahaan']['logo_perusahaan']; ?>" />
 
                 <!-- Nama Perusahaan -->
                 <div class="mb-5">
                     <label for="nama_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Perusahaan <span class="text-red-500">*</span></label>
-                    <input type="text" id="nama_perusahaan" name="nama_perusahaan"
+                    <input maxlength="100" type="text" id="nama_perusahaan" name="nama_perusahaan"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= $data['perusahaan']['nama_perusahaan']; ?>" placeholder="Nama perusahaan" required />
                 </div>
@@ -37,7 +37,7 @@
                 <!-- Email Perusahaan -->
                 <div class="mb-5">
                     <label for="email_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Perusahaan <span class="text-red-500">*</span></label>
-                    <input type="email" id="email_perusahaan" name="email_perusahaan"
+                    <input maxlength="100" type="email" id="email_perusahaan" name="email_perusahaan"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= $data['perusahaan']['email_perusahaan']; ?>" placeholder="email@perusahaan.com" required />
                 </div>
@@ -45,15 +45,15 @@
                 <!-- Alamat Perusahaan -->
                 <div class="mb-5">
                     <label for="alamat_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat Perusahaan <span class="text-red-500">*</span></label>
-                    <input id="alamat_perusahaan" name="alamat_perusahaan" rows="3"
+                    <input maxlength="100" type="text" id="alamat_perusahaan" name="alamat_perusahaan" rows="3"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        value="<?= $data['perusahaan']['alamat_perusahaan']; ?>" placeholder="Alamat lengkap perusahaan" required></input>
+                        value="<?= $data['perusahaan']['alamat_perusahaan']; ?>" placeholder="Alamat lengkap perusahaan" required>
                 </div>
 
                 <!-- Telepon Perusahaan -->
                 <div class="mb-5">
                     <label for="telepon_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telepon Perusahaan <span class="text-red-500">*</span></label>
-                    <input type="text" id="telepon_perusahaan" name="telepon_perusahaan"
+                    <input maxlength="15" type="text" id="telepon_perusahaan" name="telepon_perusahaan"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= $data['perusahaan']['telepon_perusahaan']; ?>" placeholder="08xxxxxxxxxx" required />
                 </div>
@@ -98,7 +98,7 @@
                 <!-- Industri Perusahaan -->
                 <div class="mb-5">
                     <label for="industry_perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Industri Perusahaan <span class="text-red-500">*</span></label>
-                    <input type="text" id="industry_perusahaan" name="industry_perusahaan"
+                    <input maxlength="100" type="text" id="industry_perusahaan" name="industry_perusahaan"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         value="<?= $data['perusahaan']['industry_perusahaan']; ?>" placeholder="Industri perusahaan (misalnya: Teknologi, Keuangan, dll.)" required />
                 </div>

@@ -17,7 +17,7 @@ class PendaftaranModel
         return $this->db->resultSet();
     }
 
-    public function getPendaftaranById($id)
+    public function getPendaftaranByUuid($uuid)
     {
         // Query untuk mengambil data pelamar beserta data event dan perusahaan
         $this->db->query('
@@ -30,18 +30,18 @@ class PendaftaranModel
             FROM pelamar
             JOIN event ON pelamar.id_event = event.id
             JOIN perusahaan ON event.id_perusahaan = perusahaan.id
-            WHERE pelamar.id = :id
+            WHERE pelamar.uuid = :uuid
         ');
 
-        $this->db->bind('id', $id);
+        $this->db->bind('uuid', $uuid);
 
         return $this->db->single();
     }
 
     // Di model PelamarModel
-    public function getPelamarByEvent($id)
+    public function getPelamarByEvent($id_event)
     {
-        // Query untuk mengambil data pelamar berdasarkan id_event yang cocok dengan id di tabel event
+        // Query untuk mengambil data pelamar berdasarkan id_event
         $query = "SELECT pelamar.* 
                   FROM pelamar 
                   JOIN event ON pelamar.id_event = event.id
@@ -51,26 +51,29 @@ class PendaftaranModel
         $this->db->query($query);
 
         // Binding id_event ke query
-        $this->db->bind(':id_event', $id);
+        $this->db->bind(':id_event', $id_event);
 
         // Mengembalikan hasil query sebagai array hasil
         return $this->db->resultSet();
     }
 
 
+
     public function tambahPendaftaran($data)
     {
+        $uuidPelamar = uniqid();
         $query = "INSERT INTO pelamar (
-            nama_lengkap, nomor_ktp, tanggal_lahir, tempat_lahir, usia, jenis_kelamin, no_handphone, email, 
+            uuid, nama_lengkap, nomor_ktp, tanggal_lahir, tempat_lahir, usia, jenis_kelamin, no_handphone, email, 
             agama, tinggi_badan, berat_badan, alamat_sekarang, asal_sekolah, jurusan, tahun_lulus, 
             foto_kk, foto_ktp, file_cv, id_event, sertifikat
         ) VALUES (
-            :nama_lengkap, :nomor_ktp, :tanggal_lahir, :tempat_lahir, :usia, :jenis_kelamin, :no_handphone, :email, 
+            :uuid, :nama_lengkap, :nomor_ktp, :tanggal_lahir, :tempat_lahir, :usia, :jenis_kelamin, :no_handphone, :email, 
             :agama, :tinggi_badan, :berat_badan, :alamat_sekarang, :asal_sekolah, :jurusan, :tahun_lulus, 
             :foto_kk, :foto_ktp, :file_cv, :id_event, :sertifikat
         )";
 
         $this->db->query($query);
+        $this->db->bind('uuid', $uuidPelamar);
         $this->db->bind('nama_lengkap', $data['nama_lengkap']);
         $this->db->bind('nomor_ktp', $data['nomor_ktp']);
         $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
@@ -94,10 +97,8 @@ class PendaftaranModel
 
         $this->db->execute();
 
-        // Mengambil ID terakhir yang dimasukkan
-        $lastIdQuery = "SELECT LAST_INSERT_ID() AS last_id";
-        $this->db->query($lastIdQuery);
-        $result = $this->db->single();
-        return $result['last_id'];  // Mengembalikan ID terakhir
+
+        // Mengembalikan UUID yang baru dibuat
+        return $uuidPelamar;
     }
 }

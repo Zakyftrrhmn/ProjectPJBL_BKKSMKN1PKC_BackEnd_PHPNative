@@ -28,7 +28,7 @@
                 <!-- Input Title -->
                 <div class="mb-5">
                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title <span class="text-red-500">*</span></label>
-                    <input type="text" id="title" name="title" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['beranda'][0]['title']) ? $data['beranda'][0]['title'] : 'Proses mencari pekerjaan mungkin panjang, tapi percayalah, usaha yang tak kenal lelah akan membawa hasil.'; ?>" required />
+                    <input maxlength="150" type="text" id="title" name="title" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="<?= !empty($data['beranda'][0]['title']) ? $data['beranda'][0]['title'] : 'Proses mencari pekerjaan mungkin panjang, tapi percayalah, usaha yang tak kenal lelah akan membawa hasil.'; ?>" required />
                 </div>
 
                 <div class="mb-5">

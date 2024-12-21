@@ -117,7 +117,7 @@
                     <?php if (!empty($data['sambutan']) && isset($data['sambutan']['sambutan_kepsek'])): ?>
                         <?= $data['sambutan']['sambutan_kepsek'] ?>
                     <?php else: ?>
-                        Assalaamualaikum Wr. Wb. Selamat datang di SMKN 1 Pangkalan Kerinci. Kami berkomitmen memberikan layanan pendidikan terbaik bagi anak bangsa. Kami mengutamakan kualitas, lingkungan belajar yang nyaman, serta penanaman nilai-nilai agama dan Pancasila.
+                        Assalamualaikum Wr. Wb. Selamat Datang di SMKN 1 Pangkalan Kerinci. SMK yang mengedepankan kualitas, lingkungan belajar yang nyaman serta penanaman nilai-nilai Agama. Kami berkomitmen untuk memberikan layanan pendidikan yang terbaik bagi anak bangsa, mendidik dengan sepenuh hati, mengajar dengan kompetensi dan membimbing dengan budi pekerti. Kami bertekad mendidik penerus bangsa yang tidak hanya cerdas, tetapi juga kreatif, inovatif dan juga Pancasilais.
                     <?php endif; ?>
                 </p>
                 <p class="text-xl font-semibold text-gray-900 dark:text-white italic">
@@ -432,7 +432,7 @@
 
                         <!-- Button -->
                         <div class="mt-6 mb-[-35px]">
-                            <a href="<?= base_url; ?>/landing/pendaftaran/<?= $row['id'] ?>"
+                            <a href="<?= base_url; ?>/landing/pendaftaran/<?= $row['uuid'] ?>"
                                 class="block text-sm bg-purple-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-purple-600 hover:shadow-xl transition duration-200 cursor-pointer text-center">
                                 Daftar Sekarang
                             </a>

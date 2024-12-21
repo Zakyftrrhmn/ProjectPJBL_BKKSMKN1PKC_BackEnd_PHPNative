@@ -103,12 +103,12 @@ class Gallery extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit($uuid)
     {
         $data['logo'] = $this->model('LogoModel')->getAllLogoo();
         $this->cekAkses('Super Admin');
         $data['title'] = 'Edit Gallery';
-        $data['gallery'] = $this->model('GalleryModel')->getGalleryById($id);
+        $data['gallery'] = $this->model('GalleryModel')->getGalleryByUuid($uuid);
 
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
@@ -168,10 +168,10 @@ class Gallery extends Controller
     }
 
 
-    public function hapus($id)
+    public function hapus($uuid)
     {
         $this->cekAkses('Super Admin');
-        if ($this->model('GalleryModel')->deleteGallery($id) > 0) {
+        if ($this->model('GalleryModel')->deleteGallery($uuid) > 0) {
             Flasher::setMessage(' Data berhasil di Hapus!', 'success');
             header('location:' . base_url . '/admin/gallery');
             exit;

@@ -23,7 +23,7 @@
                         Kembali
                     </a>
 
-                    <a href="<?= base_url ?>/landing/buktiPendaftaran/<?= $data['pelamar']['id'] ?>" class="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <a href="<?= base_url ?>/landing/buktiPendaftaran/<?= $data['pelamar']['uuid'] ?>" class="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
                         Cetak Bukti Pendaftaran
                     </a>
                 </div>

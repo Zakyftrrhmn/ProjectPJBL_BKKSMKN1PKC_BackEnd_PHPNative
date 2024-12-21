@@ -39,7 +39,7 @@
                 <!-- Posisi -->
                 <div class="mb-5">
                     <label for="posisi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posisi <span class="text-red-500">*</span></label>
-                    <input type="text" id="posisi" name="posisi"
+                    <input maxlength="100" type="text" id="posisi" name="posisi"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Masukkan posisi pekerjaan" required />
                 </div>
@@ -59,7 +59,7 @@
                 <!-- Lokasi -->
                 <div class="mb-5">
                     <label for="lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lokasi Event <span class="text-red-500">*</span></label>
-                    <input type="text" id="lokasi" name="lokasi"
+                    <input maxlength="100" type="text" id="lokasi" name="lokasi"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Masukkan Lokasi event (Contoh : Pekanbaru)" required />
                 </div>
@@ -67,7 +67,7 @@
                 <!-- Gaji -->
                 <div class="mb-5">
                     <label for="gaji" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Range Gaji <span class="text-red-500">*</span></label>
-                    <input type="text" id="gaji" name="gaji"
+                    <input maxlength="50" type="text" id="gaji" name="gaji"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Masukkan Range Gaji (Contoh : Rp500.000 - Rp1.000.000)" required />
                 </div>
